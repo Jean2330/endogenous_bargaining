@@ -154,31 +154,49 @@ def nash_foc_static(beta, W, delta, w_bar_ll, gamma_w, y_lower, theta, k,
     return (1 - delta) * dPi / Pi_s + delta * dCE / CE_s
 
 
+def feasible_beta_bracket(W, w_bar_ll, gamma_w, y_lower, theta, k, gamma,
+                          sigma, u_p_bar, ce_bar):
+    """
+    Compute the feasible interval [lo, hi] for beta in the binding regime
+    analytically, without scanning.
+
+    Pi_s(beta) = D(beta) + beta*y_lower - w_lower(W) - u_p_bar
+    CE_s(beta) = C(beta) - beta*y_lower + w_lower(W) - ce_bar
+
+    Both are smooth; the feasible set is where Pi_s > 0 AND CE_s > 0.
+    We find the zeros of each by bracketed search over a coarse grid (20 pts),
+    which is fast and exact enough for bracket purposes.
+    Returns (lo, hi) or None if the feasible set is empty.
+    """
+    wl = w_lower(W, w_bar_ll, gamma_w)
+    betas = np.linspace(0.01, 0.99, 20)
+    Pi_vals = np.array([D(b, theta, k) + b * y_lower - wl - u_p_bar
+                        for b in betas])
+    CE_vals = np.array([C(b, theta, k, gamma, sigma) - b * y_lower + wl - ce_bar
+                        for b in betas])
+    feasible_mask = (Pi_vals > 0) & (CE_vals > 0)
+    if feasible_mask.sum() < 2:
+        return None
+    lo = betas[feasible_mask][0]  + 1e-5
+    hi = betas[feasible_mask][-1] - 1e-5
+    if lo >= hi:
+        return None
+    return lo, hi
+
+
 def solve_beta_static(W, delta, w_bar_ll, gamma_w, y_lower, theta, k, gamma,
                       sigma, u_p_bar, ce_bar):
     """
     Solve the static Nash FOC for beta*(W) using Brent's method.
-    Automatically detects the feasible interval where Pi_s > 0 and CE_s > 0,
-    then finds the root of the FOC within that interval.
+    Uses analytic bracket detection (20-point coarse scan) for speed.
     Returns beta* in (0,1), or beta_eff if no feasible interior root exists.
     """
     b_eff = beta_eff(theta, k, gamma, sigma)
-
-    # Scan for the feasible interval
-    betas = np.linspace(0.02, 0.98, 500)
-    feasible = []
-    for bv in betas:
-        Pi = Pi_binding(bv, W, w_bar_ll, gamma_w, y_lower, theta, k, u_p_bar)
-        CE = CE_binding(bv, W, w_bar_ll, gamma_w, y_lower, theta, k, gamma,
-                        sigma, ce_bar)
-        if Pi > 0 and CE > 0:
-            feasible.append(bv)
-
-    if len(feasible) < 2:
+    bracket = feasible_beta_bracket(W, w_bar_ll, gamma_w, y_lower, theta, k,
+                                    gamma, sigma, u_p_bar, ce_bar)
+    if bracket is None:
         return b_eff
-
-    lo = feasible[0]  + 1e-6
-    hi = feasible[-1] - 1e-6
+    lo, hi = bracket
 
     f = lambda b: nash_foc_static(b, W, delta, w_bar_ll, gamma_w, y_lower,
                                   theta, k, gamma, sigma, u_p_bar, ce_bar)
@@ -188,7 +206,6 @@ def solve_beta_static(W, delta, w_bar_ll, gamma_w, y_lower, theta, k, gamma,
         if np.isnan(foc_lo) or np.isnan(foc_hi):
             return b_eff
         if foc_lo * foc_hi > 0:
-            # No sign change: return the endpoint with smaller |FOC|
             return lo if abs(foc_lo) < abs(foc_hi) else hi
         beta_opt = brentq(f, lo, hi, xtol=1e-10)
     except ValueError:
