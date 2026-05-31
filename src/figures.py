@@ -237,9 +237,9 @@ def fig_pareto_frontiers(params, W_bar):
             fontsize=9, color='steelblue', va='center')
 
     if not np.isnan(lam_bind):
-        ax.text(Pi_N_bd - lim * 0.02, CE_N_bd + lim * 0.04,
+        ax.text(Pi_N_bd + lim * 0.02, CE_N_bd - lim * 0.05,
                 r'$\lambda^{{\mathrm{{bind}}}} = {:.3f} \neq \delta$'.format(lam_bind),
-                fontsize=9, color='firebrick', va='bottom', ha='right')
+                fontsize=9, color='firebrick', va='center', ha='right')
 
     ax.set_xlabel(r'Principal surplus $\Pi_s$')
     ax.set_ylabel(r'Agent surplus $\mathrm{CE}_s$')
