@@ -97,17 +97,13 @@ We now assume the principal observes only output $y_t$, not effort $a_t$. The ag
 a_t \in \arg\max_{a} \left[\alpha_t + \beta_t \theta a - \frac{\gamma}{2}\beta_t^2 \sigma^2 - \frac{k}{2}a^2\right].
 \]
 
-\textcolor{olive}{Aclarar por qué aquí no hace falta el first order approach ni sus condiciones de validez, a diferencia de la literatura general de moral hazard}
+In general moral hazard problems, replacing the agent's incentive compatibility constraint, $a \in \arg\max_a \mathbb{E}[v(w,a)]$, with the first-order condition of that problem is called the first-order approach, and it is valid only under additional regularity conditions on the family of conditional output distributions $F(y\mid a)$, since the agent's objective need not be concave in $a$ in general \parencite{mirrlees1999}. \textcite{rogerson1985} gives sufficient conditions, the monotone likelihood ratio condition together with the convexity of the distribution function condition (MLRC and CDFC), and \textcite{jewitt1988} provides an alternative, less restrictive set of conditions.
 
-\textcolor{blue}{
-In general moral hazard problems, replacing the agent's incentive compatibility constraint, $a \in \arg\max_a \mathbb{E}[v(w,a)]$, with the first-order condition of that problem is called the first-order approach, and it is only valid under
-additional regularity conditions on the family of conditional output distributions $F(y\mid a)$, since the agent's objective need not be concave in $a$ in general \parencite{mirrlees1999}. \textcite{rogerson1985} gives sufficient conditions, the monotone likelihood ratio condition together with the convexity of the distribution function condition (MLRC and CDFC), and \textcite{jewitt1988} provides an alternative, less restrictive set of conditions. \\
-Under the CARA-normal-quadratic specification (the same structure used by \textcite{holmstrom1987}), output enters only through a linear shift in the mean of a normal distribution, $y = \theta a + \sigma\varepsilon$, and the cost of effort is quadratic. For any fixed contract $(\alpha,\beta)$, the agent's certainty equivalent
+Under the CARA-normal-quadratic specification used here (the same structure as \textcite{holmstrom1987}), output enters only through a linear shift in the mean of a normal distribution, $y = \theta a + \sigma\varepsilon$, and the cost of effort is quadratic. For any fixed contract $(\alpha,\beta)$, the agent's certainty equivalent
 \[
 \alpha + \beta\theta a - \frac{\gamma}{2}\beta^2\sigma^2 - \frac{k}{2}a^2
 \]
-is a strictly concave, twice differentiable function of $a$ alone, since its second derivative is $-k < 0$ for all $a$. The first-order condition $a_t^*(\beta_t) = \beta_t\theta/k$ is therefore both necessary and globally sufficient for the agent's problem, with no need to impose MLRC, CDFC, or any other condition on a family of output distributions. Incentive compatibility reduces to this single substitution throughout the paper. We flag this explicitly because it is the point in the model where the general moral hazard literature usually requires the most care, and it is worth being clear about exactly why that care is unnecessary here.
-}
+is a strictly concave, twice differentiable function of $a$ alone, since its second derivative is $-k < 0$ for all $a$, regardless of $(\alpha,\beta)$. The first-order condition $a_t^*(\beta_t) = \beta_t\theta/k$ is therefore both necessary and globally sufficient for the agent's problem, with no need to impose MLRC, CDFC, or any other condition on the family of output distributions. Incentive compatibility reduces to this single substitution throughout the paper. This is worth stating explicitly because it is the point in the model where the general moral hazard literature usually requires the most care, and it is worth being clear about exactly why that care is unnecessary here.
 
 The first-order condition yields
 \[
@@ -129,21 +125,16 @@ Total surplus under moral hazard is
 S(\beta_t) = C(\beta_t) + D(\beta_t) = \frac{\beta_t \theta^2}{k} - \frac{\beta_t^2 \theta^2}{2k} - \frac{\gamma}{2}\beta_t^2 \sigma^2.
 \]
 
-\textcolor{olive}{Pensar en reescribir esta expresión para sacar un resultado interpretativo sobre las raíces}\\
-\textcolor{red}{\[
-S(\beta_t)  = \frac{\beta_t \theta^2}{k} - \frac{\beta_t^2 \theta^2}{2k} - \frac{\gamma}{2}\beta_t^2 \sigma^2.
-\]}
-
-\textcolor{blue}{
+Factoring out $\beta_t$,
 \begin{align*}
     S(\beta_t) &= \frac{ \theta^2}{k} \beta_t -\left[ \frac{ \theta^2}{2k} + \frac{\gamma}{2} \sigma^2\right]\beta_t^2\\
     &=\left(\frac{\theta^2}{k} -\left[\dfrac{\theta^2}{2k}+\dfrac{\gamma}{2}\sigma^2 \right]\beta_t \right)\beta_t
 \end{align*}
-This factorization shows that $S(\beta_t)$ has two roots in $\beta_t$, namely $\beta_t = 0$ and 
+shows that $S(\beta_t)$ is a downward-opening parabola in $\beta_t$ with two roots, $\beta_t = 0$ and
 \[
-    \beta^{\text{SR}}=\dfrac{2\theta^2/k}{\gamma\sigma^2+\theta^2/k}
+    \beta^{\text{SR}}=\dfrac{2\theta^2/k}{\gamma\sigma^2+\theta^2/k},
 \]
-}
+the second root being an economically meaningful boundary: for $\beta_t > \beta^{\text{SR}}$, the incentive slope is so steep that the risk premium it imposes on the agent exceeds the output gain it induces, and total surplus turns negative.
 
 The efficient slope maximizes $S(\beta_t)$. The first-order condition is
 \[
@@ -156,16 +147,11 @@ yielding
 
 This reflects the standard trade-off between incentive provision and risk sharing. Note that $\beta^{\text{eff}} < 1$: some insurance is sacrificed to provide incentives.
 
-\textcolor{blue}{
-Note that now that we know $\beta^{\text{eff}}\in (0,1)$ we can infer things on the second root of $S(\beta_t)$, note that $\beta^{\text{SR}}=2\beta^{\text{eff}}$, thus it could be that $\beta^{\text{SR}}$ is either greater than, less than or equal to 1, the most interesting case is $\beta^{\text{SR}}<1$, since this means that there are some values of $\beta_t$ that lead to a negative surplus, this would happen if
-\begin{align*}
-    \dfrac{2\theta^2/k}{\gamma\sigma^2+\theta^2/k}&<1\\
-    \dfrac{2\theta^2}{k}&<\gamma\sigma^2+\dfrac{\theta^2}{k}\\
-    \dfrac{\theta^2}{k}&<\gamma\sigma^2\\
-    \dfrac{\theta^2}{2k}&<\dfrac{\gamma\sigma^2}{2}
-\end{align*}
-Note that the left side of this inequality is the total surplus in the symmetric information benchmark, and the right side corresponds to the risk premium when $\beta_t=1$. In other words, the condition states that the first-best surplus, the total size of the pie in the frictionless benchmark, is smaller than the risk premium the agent would bear under full residual claimancy. Put differently, even at its best the relationship does not generate enough value to cover the cost of exposing the agent to all of the production risk.
-}
+Since $S(\beta_t)$ is a parabola with roots $0$ and $\beta^{\text{SR}}$, its maximizer is their midpoint, $\beta^{\text{eff}} = \beta^{\text{SR}}/2$, so knowing $\beta^{\text{eff}} \in (0,1)$ pins down where $\beta^{\text{SR}}$ can lie: it may be greater than, less than, or equal to $1$. The case $\beta^{\text{SR}} < 1$ is the economically interesting one, since it means some feasible slopes $\beta_t \in (0,1)$ already yield negative surplus. This occurs precisely when
+\[
+\frac{2\theta^2/k}{\gamma\sigma^2+\theta^2/k} < 1 \iff \frac{\theta^2}{k} < \gamma\sigma^2 \iff \frac{\theta^2}{2k} < \frac{\gamma\sigma^2}{2}.
+\]
+The left side of the last inequality is total surplus in the symmetric-information benchmark, $S^{\text{FB}}$, and the right side is the risk premium the agent would bear under full residual claimancy, $\beta_t=1$. The condition therefore says that the first-best surplus, the entire size of the pie in the frictionless benchmark, is smaller than the risk premium of exposing the agent to all production risk: even at its best, the relationship does not generate enough value to cover that cost.
 
 With $\beta_t = \beta^{\text{eff}}$, induced effort is
 \[
