@@ -791,6 +791,8 @@ When the limited liability floor is wealth-dependent with $\gamma_w > 0$, bindin
 where $\lambda'(W_t) > 0$ under condition \eqref{eq:lambda_sign_condition}. The wealth process $\{W_t\}$ is geometrically ergodic and admits a unique invariant distribution $\Phi^*$, that is, a probability measure on the wealth domain to which the distribution of $W_t$ converges regardless of initial conditions. When $\gamma_w = 0$ or when limited liability is slack, $\lambda_t = \delta$ in every period and the standard framework is recovered exactly.
 \end{theorem}
 
+\textcolor{olive}{PENDIENTE: verificado numéricamente (\texttt{src/model.py}, calibración base) que $\lambda'(W_t) < 0$ en el régimen binding, no $>0$: $\lambda(W)$ cae de $0.4446$ en $W=0.05$ a $\delta=0.40$ en $\overline W$, y $\mathrm{CE}_t'(\beta^*)>0$ (no $<0$) porque $\theta^2/k=0.5 > \gamma\sigma^2=0.09$ en la calibración base. Esto coincide con lo ya reportado en la Sección \ref{subsec:numericalresults} pero contradice este enunciado y la Figura \ref{fig:wealth_dynamics}. La causa raíz está en el Apéndice \ref{ProofProp2} (ver nota ahí). Falta: reescribir este teorema, la Proposición \ref{prop:dynamics}, y la Figura \ref{fig:wealth_dynamics} con la dirección correcta ($\lambda$ decreciente en $W$: el agente restringido en riqueza captura más que $\delta$, no menos).}
+
 \begin{proof}
 The result follows from Propositions \ref{prop:tu_ntu}, \ref{prop:dynamics}, and \ref{prop:ergodic} in sequence. Proposition \ref{prop:tu_ntu} establishes the two-regime structure and the deviation $\lambda(W) \neq \delta$ in the binding regime. Proposition \ref{prop:dynamics} characterizes the law of motion of $\ell_t$ and the sign of $\lambda'(W_t)$. Proposition \ref{prop:ergodic} establishes geometric ergodicity and uniqueness of $\Phi^*$.
 \end{proof}
@@ -845,6 +847,8 @@ Since the left derivative of $V_P$ at $\overline{W}$ is generically nonzero whil
 
 This is without consequence for the main results. Under the ergodic distribution $\Phi^*$, the boundary $\overline{W}$ is a single point of Lebesgue measure zero; since $\Phi^*$ is absolutely continuous with respect to Lebesgue measure, as follows from the Gaussian transition kernel of the wealth process, it assigns zero probability to any single point. The process $\{W_t\}$ visits $\overline{W}$ with probability zero at any fixed date and the set of times at which $W_t = \overline{W}$ has measure zero almost surely. The dynamics of Proposition \ref{prop:dynamics} therefore characterize the evolution of bargaining power for almost every realization of the process, and the welfare decomposition of Remark \ref{rem:welfare} is unaffected.
 \end{remark}
+
+\textcolor{olive}{PENDIENTE: la curva roja de abajo va en la dirección equivocada. Debe empezar por ARRIBA de $\delta$ en $W$ bajo y descender hasta cruzar $\delta$ en $\overline W$ (agente restringido en riqueza captura más que $\delta$), no subir desde abajo. Ver notas en el Teorema \ref{thm:central} y el Apéndice \ref{ProofProp2}.}
 
 \begin{figure}[htbp]
 \centering
@@ -1653,6 +1657,8 @@ More generally, this thesis demonstrates that observed changes in bargaining out
     \frac{\partial G}{\partial\underline{w}} = \frac{(1-\delta)\Pi'(\beta^*)}{\Pi_s^2} - \frac{\delta\,\mathrm{CE}'(\beta^*)}{\mathrm{CE}_s^2}.
     \]
     At the Nash optimum the FOC gives $(1-\delta)\Pi'(\beta^*)/\Pi_s = -\delta\,\mathrm{CE}'(\beta^*)/\mathrm{CE}_s$, so both terms share the same sign. Since Lemma \ref{lem:beta_bounds} established $\beta^* \in (\beta_{\min},\beta_{\max}) \subset (0,1)$ with $\mathrm{CE}'(\beta^*) < 0$, the FOC implies $\Pi'(\beta^*) > 0$, giving $\partial G/\partial\underline{w} > 0$. Together with $\mathrm{SOC} < 0$, equation \eqref{eq:dbeta_dw} yields $d\beta^*/d\underline{w} > 0$: a tighter limited liability constraint forces a higher equilibrium incentive slope.
+
+    \textcolor{olive}{PENDIENTE: la premisa $\mathrm{CE}'(\beta^*)<0$ es falsa en la calibración base ($\mu=\theta^2/k=0.5 > \kappa=\gamma\sigma^2=0.09$, lo que da $\mathrm{CE}_t'(\beta)=(\mu-\kappa)\beta+|\underline y|>0$ para todo $\beta\ge0$, sin condición). Verificado numéricamente: en $W=0.5$, $\mathrm{CE}'(\beta^*)=+0.806$, $\Pi'(\beta^*)=-0.746$. El hecho general correcto (de la FOC, sin asumir signo) es que $\Pi'(\beta^*)$ y $\mathrm{CE}'(\beta^*)$ siempre tienen signos opuestos; aquí eso da $\partial G/\partial\underline w<0$ y por lo tanto $d\beta^*/d\underline w<0$ — signo opuesto al concluido arriba. Esto es consistente con $\beta^*(W)$ creciente en $W$ (Sección \ref{subsec:numericalresults}, confirmado con \texttt{src/model.py}: $d\beta^*/dW\approx+0.243$ en $W=0.5$). Falta rehacer esta prueba en general (casos $\mu\ge\kappa$ vs.\ $\mu<\kappa$, análogo a la Proposición de concavidad de la frontera) y propagar el signo correcto a la Ecuación \eqref{eq:dlambda_dw}, la condición \eqref{eq:lambda_sign_condition}, el Teorema \ref{thm:central}, y la Figura \ref{fig:wealth_dynamics}.}
 
     Differentiating $\lambda = \mathrm{CE}_s/S$ with respect to $\underline{w}$, accounting for both the direct and indirect effects through $\beta^*$, gives
     \[
