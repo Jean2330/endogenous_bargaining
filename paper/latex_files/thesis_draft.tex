@@ -20,7 +20,10 @@
 \usepackage{booktabs, footmisc, lipsum}
 \usepackage{algorithm, algpseudocode}
 \usepackage{longtable}  
-\setlength{\footnotemargin}{0.5em}
+\setlength{\footnotemargin}{1.2em}
+\makeatletter
+\renewcommand{\@makefntext}[1]{\parindent 1em\noindent\hb@xt@1.8em{\hss\@makefnmark}\enskip #1}
+\makeatother
 
 \usepackage{tikz}
 \usetikzlibrary{positioning, calc, shapes, arrows.meta}
@@ -40,17 +43,18 @@
 \addto\captionsspanish{\renewcommand{\listfigurename}{List of figures}}
 \addto\captionsspanish{\renewcommand{\listtablename}{List de tables}}
 
-\newcommand{\listofabbreviations}{\section*{List of Abbreviations}\addcontentsline{toc}{section}{List of Abbreviations}}
+\newcommand{\listofabbreviations}{\section*{List of Abbreviations}}
 
 \usepackage{tocloft}
 
 \renewcommand{\cftfigpresnum}{Figure \ }
 \renewcommand{\cftfigaftersnum}{. }
-\setlength{\cftfignumwidth}{4em}
+\setlength{\cftfignumwidth}{5em}
+\setlength{\cftbeforefigskip}{8pt}
 
 \renewcommand{\cfttabpresnum}{Table \ }
 \renewcommand{\cfttabaftersnum}{. }
-\setlength{\cfttabnumwidth}{4em}
+\setlength{\cfttabnumwidth}{6.5em}
 
 \addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
 
@@ -75,7 +79,7 @@
 \begin{titlepage}
     \centering
     
-    {\large CENTRO DE INVESTIGACION Y DOCENCIA ECONOMICAS, A.C.}\\[1 cm]
+    {\large CENTRO DE INVESTIGACIÓN Y DOCENCIA ECONÓMICAS, A.C.}\\[1 cm]
 
 \begin{figure}[h!]
     \centering
@@ -85,18 +89,29 @@
     {\large ENDOGENOUS BARGAINING POWER IN DYNAMIC PRINCIPAL-AGENT MODELS WITH WEALTH-DEPENDENT LIMITED LIABILITY}\\[1.8 cm]
     {\large TESINA}\\[0.5 cm]
     {\large QUE PARA OBTENER EL GRADO DE}\\[0.5 cm]
-    {\large MAESTRO EN ECONOMIA}\\[1.8 cm]
+    {\large MAESTRO EN ECONOMÍA}\\[1.8 cm]
     {\large PRESENTA}\\[0.5 cm]
-    {\large JEAN LOUIS MARROQUIN TAPIA}\\[1.8 cm]
+    {\large JEAN LOUIS MARROQUÍN TAPIA}\\[1.8 cm]
     {\large DIRECTORA DE LA TESINA: \\[0.5 cm]
-    DRA. SONIA DI GIANNATALE MEGALLI}\\[1.8 cm]  
-    {\large CIUDAD DE MEXICO  \hspace{8 cm} 2026}\\
+    DRA. SONIA DI GIANNATALE MENEGALLI}\\[1.8 cm]  
+    {\large CIUDAD DE MÉXICO  \hspace{8 cm} 2026}\\
     
     \vspace*{\fill}
 \end{titlepage}
 
 \newpage
-
+\begin{spacing}{1.3}
+\vspace*{\fill}
+\begin{center}
+\textit{``There are no happy endings.\\
+Endings are the saddest part,\\
+So just give me a happy middle\\
+And a very happy start.''}\\[0.8cm]
+{\small ---Shel Silverstein, \textit{Every Thing on It}}
+\end{center}
+\vspace*{\fill}
+\end{spacing}
+\newpage
 \begin{spacing}{1.5}
 
 %====================================
@@ -104,18 +119,28 @@
 %====================================
 \vspace{2cm}
 
-Porque en la vida hay que tener gratitud...
+Quiero agradecer a:
+
+Mi asesora, la doctora Sonia Di Giannatale y a mi lector, el doctor Itza Curiel por todo el apoyo, la confianza y por haberme introducido a este campo de estudio. Sin ellos este trabajo no hubiera alcanzado su objetivo.
+
+la doctora Eva Arceo-Gómez, directora del Seminario de Titulación, por su dedicación y compromiso. Sus preguntas y observaciones, me impulsaron a preparar cada presentación con mayor cuidado y profundidad.
+
+A mis profesores, por las enseñanzas y herramientas que contribuyeron a mi formación.
+
+A mis compañeros de generación, por su apoyo, amistad, las risas, las conversaciones dentro y fuera del aula y el apoyo mutuo durante este camino.
+
+A mi familia, sin ustedes nada de esto sería posible.
 
 \newpage
 %====================================
 \begin{center}
-{\bf {\large  Resumen}}
+{\bf {\large  Abstract}}
 \end{center}
 %====================================
 
 \vspace{2 cm}
 
-\lipsum[3]
+In standard dynamic principal-agent models, bargaining power is treated as a primitive (or parameter) that remains constant. This dissertation demonstrates that bargaining power is instead an endogenously determined equilibrium phenomenon under circumstances in which the agent's limited liability constraint on accumulated wealth is binding. Once the limited liability constraint binds, the Pareto frontier becomes nonlinear; there are no longer separate instruments to achieve redistributive objectives other than by adjusting the incentive slope, and changing the incentive slope alters both the aggregate amount of surplus created and how surplus will be distributed. The lack of separability between efficiency and distributional objectives renders the actual bargaining power enjoyed by one party of a contract a strictly increasing function of the total amount of wealth accumulated by that party within the binding regime, but restores the exogenous bargaining weight assigned to each party of the contract once the limited liability constraint is relaxed. The wealth process defined by this system is geometrically ergodic, with a single invariant distribution that assigns approximately 65.9\% of stationary mass to the binding regime at the baseline calibration. The structural drift that determines bargaining power over time is based solely upon model primitives and provides microeconomic foundations for reduced-form specifications such as that presented by \textcite{digiannatale2025}, and defines the mechanism through which wealth accumulation leads to persistence in differences in contractual surplus share ownership among contracting parties.
 
 \newpage
 %====================================
@@ -125,11 +150,11 @@ Porque en la vida hay que tener gratitud...
 \listofabbreviations
 \begin{acronym}[PMSE]
     \acro{CARA}{Constant Absolute Risk Aversion}
+    \acro{FOC}{First-Order Condition}
     \acro{IC}{Incentive Compatibility}
     \acro{IR}{Individual Rationality}
     \acro{LL}{Limited Liability}
     \acro{PMSE}{Perfect Markov Stationary Equilibrium}
-    \acro{FOC}{First-Order Condition}
 \end{acronym}
 
 \newpage
@@ -150,13 +175,11 @@ Porque en la vida hay que tener gratitud...
     \listoftables
 \endgroup
 
+\newpage
 \pagenumbering{arabic}
-
-\newpage 
 %====================================
 \section{Introduction}
 %====================================
-
 In any long-term partnership, the distribution of power is rarely static. \textcite{gompers1995optimal} documents that venture capital contracts allocate control rights in stages, conditioning each new tranche of financing on the performance observed up to that point, so that effective control shifts as the relationship unfolds. \textcite{kaplan2003financial} show that the same contracts separate cash-flow rights from control rights and make both contingent on realized outcomes: when the portfolio firm performs poorly, the investor acquires greater authority; when performance improves, the founder recovers rights over decisions and surplus. These patterns suggest that the distribution of bargaining power is not a fixed primitive of the relationship but an endogenous object that responds to the history of performance and wealth accumulation. Yet dynamic principal-agent models, despite carefully mapping the evolution of incentives and continuation values over time, typically treat bargaining power as a fixed exogenous parameter. This creates a logical tension: if limited liability constraints depend on wealth, and wealth evolves through performance, why should the division of surplus remain constant?
 
 This thesis addresses that tension. We study a dynamic principal-agent model with wealth-dependent limited liability and show that bargaining power need not be imposed from outside the model. When the limited liability constraint binds, the constrained Pareto frontier becomes non-linear, breaking transferability, and the Nash solution's surplus share depends on the agent's accumulated wealth. As wealth evolves, realized bargaining power becomes history-dependent: output shocks transmit into bargaining dynamics at a rate proportional to $\beta_t\sigma$, with the proportionality governed by how sensitively the feasible set responds to wealth accumulation. The central objective of this work is to characterize formally this mechanism and derive its equilibrium implications.
@@ -212,66 +235,53 @@ The gap that this thesis fills is the structural link between these pieces. The 
 %=======================================
 \subsection{Basic Setup}\label{subsec:setup}
 %=======================================
-Time is discrete, indexed by $t = 0,1,2,\dots$. A risk-neutral principal and a risk-averse agent interact repeatedly. Within each period, the timing is as follows: the public state is observed, the parties bargain over a one-period contract, the agent chooses effort after the contract is signed, and output is then realized and the transfer paid. This timing is essential for the moral hazard problem and is discussed formally in Remark \ref{rem:renegotiation}. In each period, the agent supplies effort $a_t \in \mathbb{R}_+$ and output is realized according to
+Time is discrete, indexed by $t = 0,1,2,\dots$. A risk-neutral principal and a risk-averse agent interact repeatedly. Within each period, the timing is as follows: at $t=0$ the public state is observed, the parties bargain over one-period contracts, the agent chooses effort after the contract is signed, and output is then realized and the transfer paid. This timing is essential for the moral hazard problem and is discussed formally in Remark \ref{rem:renegotiation}. In each period, the agent supplies effort $a_t \in \mathbb{R}_+$ and stochastic output is realized according to
 \[
-y_t = \theta a_t + \sigma \varepsilon_t,
-\qquad
-\varepsilon_t \sim \mathcal{N}(0,1),
+y_t = \theta a_t + \sigma \varepsilon_t, \qquad \varepsilon_t \sim \mathcal{N}(0,1),
 \]
-where $\theta > 0$ is productivity and $\sigma > 0$ is output volatility. The agent incurs cost $c(a_t) = \frac{k}{2}a_t^2$ with $k > 0$, and has CARA utility $u(w) = -\exp(-\gamma w)$ with risk aversion $\gamma > 0$. The principal is risk neutral and maximizes expected profit $\Pi = \mathbb{E}[y - w]$. Both parties discount future payoffs at rate $\rho \in (0,1)$.
+where $\varepsilon_t$ is an i.i.d.\ production shock, $\theta > 0$ is productivity, and $\sigma > 0$ is output volatility. The agent incurs cost $c(a_t) = \frac{k}{2}a_t^2$ with $k > 0$, and she has CARA utility $u(w) = -\exp(-\gamma w)$ with risk aversion $\gamma > 0$. The principal is risk neutral and he maximizes expected profit $\Pi = \mathbb{E}[y - w]$. Both parties discount future payoffs at rate $\rho \in (0,1)$.
 
-With CARA preferences and normally distributed output, optimal contracts are linear in output \parencite{holmstrom1987}. We restrict attention to contracts of the form
+\textcite{holmstrom1987} show that with CARA preferences and normally distributed output, optimal contracts are linear in output. We therefore restrict attention to contracts of the form
 \[
-w_t = \alpha_t + \beta_t y_t
+w_t = \alpha_t + \beta_t y_t,
 \]
-where $\alpha_t \in \mathbb{R}$ is the fixed payment and $\beta_t \in [0,1]$ is the performance-based slope. Under this contract, the agent's certainty equivalent is
+where $\alpha_t \in \mathbb{R}$ is the fixed payment and $\beta_t \in [0,1]$ is the performance-based slope. Under this contract, the agent's certainty equivalent, measured in monetary units, is
 \[
-\text{CE}_t = \alpha_t + \beta_t \theta a_t - \frac{\gamma}{2}\beta_t^2 \sigma^2 - \frac{k}{2}a_t^2
+\text{CE}_t = \alpha_t + \beta_t \theta a_t - \frac{\gamma}{2}\beta_t^2 \sigma^2 - \frac{k}{2}a_t^2,
 \]
-and the principal's expected payoff is
+and the principal's expected payoff, also in monetary units, is
 \[
 \Pi_t = (1-\beta_t)\theta a_t - \alpha_t.
 \]
-
-Total surplus is
+Because CARA utility admits a monetary certainty equivalent representation, the agent's payoff and the principal's profit are expressed in the same units and can be added directly. Total surplus is therefore
 \[
 S_t = \text{CE}_t + \Pi_t = \theta a_t - \frac{\gamma}{2}\beta_t^2 \sigma^2 - \frac{k}{2}a_t^2.
 \]
-
 The fixed payment $\alpha_t$ is a pure transfer: it increases the agent's certainty equivalent by one unit and decreases the principal's profit by one unit, leaving total surplus unchanged.
 
 %=======================================
 \subsection{Symmetric information benchmark}\label{subsec:symmetric}
 %=======================================
 
-We first characterize optimal effort and payoffs when the principal observes effort directly, so no incentive constraint is required. The agent chooses effort $a_t$ to maximize the certainty equivalent $\text{CE}_t$, taking $\alpha_t$ and $\beta_t$ as given. The first-order condition yields
-\[
-\beta_t \theta - k a_t = 0 \quad \Rightarrow \quad a_t = \frac{\beta_t \theta}{k}.
-\]
-
-However, when effort is observable, the principal can specify $a_t$ directly in the contract. The efficient effort maximizes total surplus:
+When effort is observable, the principal specifies $a_t$ directly in the contract and chooses it to maximize total surplus under symmetric information:
 \[
 \max_{a_t} S_t(a_t) = \theta a_t - \frac{\gamma}{2}\beta_t^2 \sigma^2 - \frac{k}{2}a_t^2.
 \]
-
-The first-order condition gives
+The first-order condition with respect to $a_t$ is
 \[
-\theta - k a_t = 0 \quad \Rightarrow \quad a_t^{\text{FB}} = \frac{\theta}{k}.
+\theta - k a_t = 0 \quad \implies \quad a_t^{\text{FB}} = \frac{\theta}{k}.
 \]
+This is the first-best effort level. It is determined solely by the ratio of productivity to the cost parameter and is independent of the incentive slope $\beta_t$: since effort is contractible, the principal can implement $a_t^{\text{FB}}$ with any value of $\beta_t$, adjusting $\alpha_t$ to achieve any desired division of surplus.
 
-This is the first-best effort level. Note that it is independent of the incentive slope $\beta_t$. Since effort is contractible, the principal can implement $a_t^{\text{FB}}$ with any slope $\beta_t$, adjusting the fixed payment $\alpha_t$ to split surplus.
-
-The efficient risk-sharing arrangement minimizes the agent's risk premium for a given expected transfer. Since the agent is risk-averse and the principal is risk-neutral, the principal should bear all output risk. This corresponds to $\beta_t = 0$ (a fixed wage), which gives
+The efficient risk-sharing arrangement minimizes the agent's risk premium, given by $\frac{\gamma}{2}\beta_t^2\sigma^2$, for a given expected transfer. Since the agent is risk-averse and the principal is risk-neutral, it follows that the principal should bear all output risk. This is a consequence of the difference in risk attitudes: any residual output risk borne by the agent reduces total surplus without improving incentives under symmetric information. The efficient arrangement therefore sets $\beta_t = 0$, so that the general contract $w_t = \alpha_t + \beta_t y_t$ reduces to a fixed wage:
 \[
 w_t = \alpha_t \quad (\text{no performance pay}).
 \]
-
 With first-best effort $a_t^{\text{FB}} = \theta/k$ and full insurance $\beta_t = 0$, total surplus is
 \[
-S^{\text{FB}} = \theta \cdot \frac{\theta}{k} - \frac{k}{2}\left(\frac{\theta}{k}\right)^2 = \frac{\theta^2}{2k}.
+S^{\text{FB}} = \theta \left(\frac{\theta}{k}\right) - \frac{k}{2}\left(\frac{\theta}{k}\right)^2 = \frac{\theta^2}{2k}.
 \]
-
-The agent's certainty equivalent is $\text{CE}_t = \alpha_t - k(\theta/k)^2/2 = \alpha_t - \theta^2/(2k)$. The principal's expected payoff is $\Pi_t = \theta(\theta/k) - \alpha_t = \theta^2/k - \alpha_t$. The fixed payment $\alpha_t$ can be adjusted to achieve any division of surplus $S^{\text{FB}}$.
+The agent's certainty equivalent is $\text{CE}_t = \alpha_t - \theta^2/(2k)$ and the principal's expected payoff is $\Pi_t = \theta^2/k - \alpha_t$. The fixed payment $\alpha_t$ can be adjusted to achieve any division of $S^{\text{FB}}$ between the parties.
 
 Under symmetric information, the optimal arrangement achieves first-best effort $a_t^{\text{FB}} = \theta/k$, full insurance $\beta_t = 0$, and maximum total surplus $S^{\text{FB}} = \theta^2/(2k)$.
 
@@ -289,7 +299,7 @@ The first-order condition yields
 a_t^*(\beta_t) = \frac{\beta_t \theta}{k}.
 \]
 
-Effort is now endogenous to the incentive slope. To induce higher effort, the principal must increase $\beta_t$, which exposes the agent to more risk. Substituting optimal effort into payoffs gives
+Effort is now endogenous to the incentive slope. To induce higher effort, the principal must increase $\beta_t$, which exposes the agent to more risk. Note also that effort is increasing in $\beta_t$: a steeper performance-based slope induces greater effort, but at the cost of more risk borne by the agent. Substituting optimal effort into payoffs gives
 \[
 \text{CE}_t(\alpha_t, \beta_t) = \alpha_t + \frac{\beta_t^2 \theta^2}{2k} - \frac{\gamma}{2}\beta_t^2 \sigma^2 =: \alpha_t + C(\beta_t)
 \]
@@ -317,144 +327,147 @@ This reflects the standard trade-off between incentive provision and risk sharin
 
 With $\beta_t = \beta^{\text{eff}}$, induced effort is
 \[
-a^{\text{eff}} = \frac{\beta^{\text{eff}} \theta}{k} = \frac{\theta^2/k}{\gamma \sigma^2 + \theta^2/k} \cdot \frac{\theta}{k} = \frac{\theta^2}{\gamma k \sigma^2 + \theta^2} < a^{\text{FB}} = \frac{\theta}{k}.
+a^{\text{eff}} = \frac{\beta^{\text{eff}} \theta}{k} = \frac{\theta^2/k}{\gamma \sigma^2 + \theta^2/k} \left(\frac{\theta}{k}\right) = \frac{\theta^3/k}{\gamma k \sigma^2 + \theta^2} < a^{\text{FB}} = \frac{\theta}{k}.
 \]
 
 Effort is strictly below the first-best level, reflecting the trade-off between incentives and risk sharing.
 
 Total surplus under the efficient contract is
 \[
-S^{\text{eff}} = S(\beta^{\text{eff}}) = \frac{\theta^2}{2k} - \frac{\gamma \sigma^2 (\beta^{\text{eff}})^2}{2}.
+S^{\text{eff}} = S(\beta^{\text{eff}}) = \frac{\theta^2}{2k} \beta^{\text{eff}}.
 \]
 
 The efficiency loss relative to symmetric information is
 \[
-S^{\text{FB}} - S^{\text{eff}} = \frac{\gamma \sigma^2 (\beta^{\text{eff}})^2}{2} > 0.
+S^{\text{FB}} - S^{\text{eff}} = \frac{\gamma \sigma^2 \beta^{\text{eff}}}{2} > 0.
 \]
 
-This loss admits two interpretations. The agent bears risk that the risk-neutral principal could absorb at no cost, and effort falls below the first-best level, reducing productive efficiency. Both effects are direct consequences of the incentive constraint. As risk aversion $\gamma$ or volatility $\sigma^2$ increases, $\beta^{\text{eff}}$ decreases, effort falls further below first-best, and the efficiency loss grows. The optimal slope $\beta^{\text{eff}} \in (0,1)$ is strictly interior, induced effort satisfies $a^{\text{eff}} < a^{\text{FB}}$, and the efficiency loss $S^{\text{FB}} - S^{\text{eff}} > 0$ is positive whenever $\gamma\sigma^2 > 0$.
+This loss admits two interpretations. The agent bears risk that the risk-neutral principal could absorb at no cost, and effort falls below the first-best level, reducing productive efficiency. Both effects are direct consequences of the incentive constraint. As risk aversion $\gamma$ or volatility $\sigma^2$ increases, $\beta^{\text{eff}}$ decreases, effort falls further below first-best, and the efficiency loss grows. The optimal slope $\beta^{\text{eff}} \in (0,1)$ is strictly interior, induced effort satisfies $a^{\text{eff}} < a^{\text{FB}}$, and the efficiency loss $S^{\text{FB}} - S^{\text{eff}} > 0$ is positive whenever $\gamma\sigma^2 > 0$. Figure \ref{fig:surplus_curve} illustrates the surplus function and the efficiency loss.
 
 The fixed payment $\alpha_t$ remains a free variable that can be adjusted to split surplus $S^{\text{eff}}$ between the parties without affecting efficiency.
 
 \begin{figure}[htbp]
 \centering
+\caption{Total surplus $S(\beta_t)$ as a function of the incentive slope under moral hazard. The curve peaks at $\beta^{\text{eff}} \in (0,1)$; the gap to $S^{\text{FB}}$ is the efficiency loss from the risk-incentive trade-off.}
 \begin{tikzpicture}[scale=1.25]
     \draw[->] (-0.3,0) -- (5.5,0) node[right] {Slope $\beta_t$};
     \draw[->] (0,-0.4) -- (0,4.2) node[above] {Total surplus $S(\beta_t)$};
-
     \draw[very thick, black, domain=0:4.8, smooth, variable=\x, samples=80]
-        plot ({\x}, {3.5*\x/4.8 - 3.5*(\x/4.8)^2 + 0.05});
-
-    \draw[dashed, gray] (0,0.05) -- (4.8,0.05);
-
-    \draw[dashed, black] (2.4,0) -- (2.4,{3.5*0.5 - 3.5*0.25 + 0.05});
-    \node[below] at (2.4,-0.1) {$\beta^{\text{eff}}$};
-
-    \draw[dashed, black] (4.8,0) -- (4.8,0.05);
+        plot ({\x}, {6*(\x/4.8) - 3.75*(\x/4.8)^2});
+    \draw[dashed, black] (3.84,0) -- (3.84,2.4);
+    \node[below] at (3.84,-0.1) {$\beta^{\text{eff}}$};
+    \draw[dashed, black] (4.8,0) -- (4.8,2.25);
     \node[below] at (4.8,-0.1) {$1$};
     \node[below] at (0,-0.1) {$0$};
-
-    \draw[dashed, gray] (0,{3.5*0.5 - 3.5*0.25 + 0.05}) -- (2.4,{3.5*0.5 - 3.5*0.25 + 0.05});
-    \node[left] at (0,{3.5*0.5 - 3.5*0.25 + 0.05}) {$S^{\text{eff}}$};
-
+    \draw[dashed, gray] (0,2.4) -- (3.84,2.4);
+    \node[left] at (0,2.4) {$S^{\text{eff}}$};
     \draw[dashed, gray, thick] (0,3.2) -- (5.2,3.2);
     \node[left] at (0,3.2) {$S^{\text{FB}}$};
-
-    \draw[thick, black] (4.9,{3.5*0.5-3.5*0.25+0.05}) -- (4.9,3.2);
-    \draw[thick, black] (4.75,{3.5*0.5-3.5*0.25+0.05}) -- (4.9,{3.5*0.5-3.5*0.25+0.05});
+    \draw[thick, black] (4.9,2.4) -- (4.9,3.2);
+    \draw[thick, black] (4.75,2.4) -- (4.9,2.4);
     \draw[thick, black] (4.75,3.2) -- (4.9,3.2);
-    \node[right, font=\small, align=left] at (5.0, {(3.5*0.5-3.5*0.25+0.05+3.2)/2}) {Efficiency\\loss};
-
-    \filldraw[black] (2.4,{3.5*0.5-3.5*0.25+0.05}) circle (2pt);
-
-    \node[right, font=\small] at (1.0,2.4) {$S(\beta_t)$};
+    \node[right, font=\small, align=left] at (5.0, 2.8) {Efficiency\\loss};
+    \filldraw[black] (3.84,2.4) circle (2pt);
+    \node[right, font=\small] at (0.8,1.9) {$S(\beta_t)$};
 \end{tikzpicture}
-\caption{Total surplus $S(\beta_t)$ as a function of the incentive slope under moral hazard. The curve peaks at $\beta^{\text{eff}} \in (0,1)$; the gap to $S^{\text{FB}}$ is the efficiency loss from the risk-incentive trade-off.}
+\caption*{Source: Own elaboration.}
 \label{fig:surplus_curve}
 \end{figure}
+\vspace{-0.1cm}
 
 %=======================================
 \subsection{Nash bargaining solution}\label{subsec:nash}
 %=======================================
 
-In each period $t$, the principal and agent renegotiate the contract via Nash bargaining. Let $(\overline{\Pi}_t, \overline{\text{CE}}_t)$ denote disagreement payoffs if no agreement is reached. The agent's problem is governed by three standard constraints: incentive compatibility (IC), which ensures optimal effort choice; individual rationality (IR), which guarantees participation; and limited liability (LL), which restricts the set of feasible transfers. The Nash bargaining problem is
+In each period $t$, the principal and agent renegotiate the contract via Nash bargaining. Before agreement is reached, each party receives a disagreement payoff: $\overline{\Pi}$ for the principal and $\overline{\text{CE}}$ for the agent. These are exogenous outside options representing the payoffs available to each party if negotiations break down permanently. Their values are calibrated in Section \ref{subsec:calibration}.
+
+The limited liability constraint requires that the agent's wage never falls below a minimum level that depends on her accumulated wealth $W_t$. We define this minimum level as
 \[
-\max_{(\alpha_t,\,\beta_t)\,\in\,\Gamma(W_t)}
-[\Pi_t - \overline{\Pi}_t]^{1-\delta} [\text{CE}_t - \overline{\text{CE}}_t]^{\delta}
+\underline{w}_t = \overline{w} - \gamma_w W_t,
+\]
+where $\overline{w}$ is a baseline minimum wage and $\gamma_w \geq 0$ governs how the constraint relaxes with wealth. When $\gamma_w = 0$, limited liability is exogenous with a constant floor $\overline{w}$. When $\gamma_w > 0$, wealthier agents face less stringent constraints, consistent with wealth serving as collateral or commitment capacity. To ensure $w_t \geq \underline{w}_t$ holds for all output realizations under the linear contract $w_t = \alpha_t + \beta_t y_t$, we evaluate the constraint at the minimum possible output $\underline{y}$, the worst output realization the agent can produce. This gives $\alpha_t + \beta_t \underline{y} \geq \underline{w}_t$, or equivalently
+\[
+\alpha_t \geq \underline{w}_t - \beta_t \underline{y}.
+\]
+
+The agent's problem is governed by three standard constraints: incentive compatibility (IC), which ensures optimal effort choice; individual rationality (IR), which guarantees participation; and limited liability (LL), derived above. The Nash bargaining problem is
+\[
+\max_{(\alpha_t,\,\beta_t)\,\in\,\Gamma(W_t)} [\Pi_t - \overline{\Pi}]^{1-\delta} [\text{CE}_t - \overline{\text{CE}}]^{\delta},
 \]
 where $\delta \in (0,1)$ is the exogenous Nash bargaining parameter representing the agent's negotiating strength, and the feasible set is
 \[
 \Gamma(W_t) = \left\{(\alpha_t,\beta_t)\;\middle|\;
 \underbrace{a_t^* = \tfrac{\beta_t\theta}{k}}_{\text{incentive compatibility (IC)}},\quad
 \underbrace{\alpha_t \geq \underline{w}_t - \beta_t\,\underline{y}}_{\text{limited liability (LL)}},\quad
-\underbrace{\Pi_t \geq \overline{\Pi}_t,\;\text{CE}_t \geq \overline{\text{CE}}_t}_{\text{individual rationality (IR)}}
-\right\}
+\underbrace{\Pi_t \geq \overline{\Pi},\;\text{CE}_t \geq \overline{\text{CE}}}_{\text{individual rationality (IR)}}
+\right\}.
 \]
-with $\underline{w}_t = \overline{w} - \gamma_w W_t$. The incentive compatibility constraint is already embedded in $\Pi_t$ and $\text{CE}_t$, which are written with optimal effort $a_t^* = \beta_t\theta/k$ substituted in. The individual rationality constraints are implicit in the domain of the Nash product, which is only defined when both parties weakly prefer agreement to disagreement. The substantive constraint is therefore limited liability, whose status (binding or slack) determines the structure of the solution.
+The incentive compatibility constraint is already embedded in $\Pi_t$ and $\text{CE}_t$, which are written with optimal effort $a_t^* = \beta_t\theta/k$ substituted in. The individual rationality constraints are implicit in the domain of the Nash product, which is only defined when both parties weakly prefer agreement to disagreement. The substantive constraint is therefore limited liability, whose status determines the structure of the solution.
 
 \paragraph{Case 1: Limited liability slack (unconstrained transfers).}
 
-When transfers are unconstrained, the first-order condition with respect to $\alpha_t$ gives
-\[
-\frac{1-\delta}{\Pi_t - \overline{\Pi}_t} = \frac{\delta}{\text{CE}_t - \overline{\text{CE}}_t}.
-\]
+When transfers are unconstrained, $\alpha_t$ can be adjusted freely without affecting $\beta_t$ or total surplus. Since $\alpha_t$ enters $\text{CE}_t$ with coefficient $+1$ and $\Pi_t$ with coefficient $-1$, moving $\alpha_t$ by one unit transfers exactly one unit of surplus from the principal to the agent. The Pareto frontier in $(\Pi_t, \text{CE}_t)$ space is therefore a straight line with slope $-1$: any surplus division is achievable by adjusting $\alpha_t$ while keeping $\beta_t = \beta^{\text{eff}}$ fixed.
 
-This implies that the surplus split satisfies
+The first-order condition of the Nash product with respect to $\alpha_t$ gives
 \[
-\frac{\text{CE}_t - \overline{\text{CE}}_t}{S_t} = \delta, \qquad \frac{\Pi_t - \overline{\Pi}_t}{S_t} = 1 - \delta
+\frac{1-\delta}{\Pi_t - \overline{\Pi}} = \frac{\delta}{\text{CE}_t - \overline{\text{CE}}}.
 \]
-where $S_t = (\text{CE}_t - \overline{\text{CE}}_t) + (\Pi_t - \overline{\Pi}_t)$ is net surplus from agreement.
+Cross-multiplying and using $S_t = (\text{CE}_t - \overline{\text{CE}}) + (\Pi_t - \overline{\Pi})$, this implies
+\[
+(1-\delta)(\text{CE}_t - \overline{\text{CE}}) = \delta(\Pi_t - \overline{\Pi}),
+\]
+so that $\text{CE}_t - \overline{\text{CE}} = \delta S_t$ and $\Pi_t - \overline{\Pi} = (1-\delta)S_t$. Thus, the surplus split satisfies
+\[
+\frac{\text{CE}_t - \overline{\text{CE}}}{S_t} = \delta, \qquad \frac{\Pi_t - \overline{\Pi}}{S_t} = 1 - \delta,
+\]
+where each party receives exactly its Nash weight times total surplus.
 
 Since $\alpha_t$ can be freely adjusted to split surplus, the Nash solution chooses $\beta_t = \beta^{\text{eff}}$ to maximize $S_t$, then sets $\alpha_t$ to deliver the agent a share $\delta$ of total surplus. Specifically,
 \[
-\alpha_t^* = \overline{\text{CE}}_t - C(\beta^{\text{eff}}) + \delta S(\beta^{\text{eff}}).
+\alpha_t^* = \overline{\text{CE}} - C(\beta^{\text{eff}}) + \delta S(\beta^{\text{eff}}).
 \]
 
-The outcome is efficient: the Pareto frontier is linear in $(\Pi_t, \text{CE}_t)$ space, and the Nash solution selects the point where the agent receives exactly share $\delta$ of surplus. Realized bargaining power equals the exogenous parameter:
+This result is worth examining because, when limited liability is slack, realized bargaining power coincides exactly with the exogenous Nash parameter:
 \[
-\lambda_t := \frac{\text{CE}_t - \overline{\text{CE}}_t}{S_t} = \delta.
+\lambda_t := \frac{\text{CE}_t - \overline{\text{CE}}}{S_t} = \delta.
 \]
+The agent's share of surplus is pinned down by $\delta$ alone, regardless of wealth, history, or the level of output volatility. Bargaining power is truly exogenous in this regime: the linear frontier means that redistribution is costless, and the Nash solution simply picks the point on that line corresponding to weight $\delta$. This is the property that breaks down when limited liability binds.
 
 \paragraph{Case 2: Limited liability binding (constrained transfers).}
 
-We now impose a limited liability constraint requiring
-\[
-w_t \geq \underline{w}_t \quad \text{for all output realizations},
-\]
-where $\underline{w}_t = \overline{w} - \gamma_w W_t$ depends on the agent's accumulated wealth $W_t$. The parameter $\gamma_w \geq 0$ captures how constraints relax with wealth: when $\gamma_w = 0$, limited liability is exogenous (constant floor $\overline{w}$); when $\gamma_w > 0$, wealthier agents face less stringent constraints, consistent with wealth serving as collateral or commitment capacity.
-
-To ensure limited liability holds for all output realizations under the linear contract $w_t = \alpha_t + \beta_t y_t$, we require $\alpha_t + \beta_t \underline{y} \geq \underline{w}_t$ where $\underline{y}$ is the minimum possible output. Treating output as effectively bounded below, this constraint becomes
-\[
-\alpha_t \geq \underline{w}_t - \beta_t \underline{y}.
-\]
-
-When this constraint binds, we have $\alpha_t = \underline{w}_t - \beta_t \underline{y}$. The fixed payment is no longer free: it is determined by the constraint. Payoffs become
+When the limited liability constraint binds, $\alpha_t = \underline{w}_t - \beta_t \underline{y}$ and the fixed payment is no longer free: it is pinned by the constraint. Payoffs become functions of $\beta_t$ alone:
 \[
 \Pi_t(\beta_t) = D(\beta_t) + \beta_t \underline{y} - \underline{w}_t, \qquad \text{CE}_t(\beta_t) = C(\beta_t) - \beta_t \underline{y} + \underline{w}_t.
 \]
 
-The Nash bargaining problem reduces to
+To understand why the Pareto frontier is now curved, consider moving along it by changing $\beta_t$. Both $\Pi_t(\beta_t)$ and $\text{CE}_t(\beta_t)$ depend on $\beta_t$ through the functions $C(\beta_t)$ and $D(\beta_t)$, which are nonlinear. The slope of the frontier in $(\Pi_t, \text{CE}_t)$ space is
 \[
-\max_{\beta_t} [\Pi_t(\beta_t) - \overline{\Pi}_t]^{1-\delta} [\text{CE}_t(\beta_t) - \overline{\text{CE}}_t]^{\delta}.
+\frac{d\,\text{CE}_t}{d\,\Pi_t} = \frac{\text{CE}_t'(\beta_t)}{\Pi_t'(\beta_t)},
 \]
+and the curvature is determined by the second derivative of $\text{CE}_t$ with respect to $\Pi_t$. Since $C(\beta_t)$ is concave and $D(\beta_t)$ is concave in $\beta_t$, the ratio $\text{CE}_t'(\beta_t)/\Pi_t'(\beta_t)$ is not constant: as $\beta_t$ increases, the marginal gain to one party differs from the marginal loss to the other, because both incentive provision and risk sharing respond nonlinearly to the slope. Formally, one can verify that $d^2\,\text{CE}_t / d\,\Pi_t^2 < 0$, so the frontier is strictly concave toward the origin. The economic content is that redistributing surplus in the binding regime is costly: changing $\beta_t$ to give more to the agent necessarily reduces total surplus, because $\beta_t$ is being asked to perform two tasks simultaneously, providing incentives and transferring resources, and it is not efficient at either task when pulled away from $\beta^{\text{eff}}$.
 
+The Nash bargaining problem therefore reduces to a single-dimensional maximization:
+\[
+\max_{\beta_t} [\Pi_t(\beta_t) - \overline{\Pi}]^{1-\delta} [\text{CE}_t(\beta_t) - \overline{\text{CE}}]^{\delta}.
+\]
 This yields the first-order condition
 \begin{equation}\label{eq:foc_binding}
-(1-\delta) \frac{\Pi_t'(\beta_t^*)}{\Pi_t(\beta_t^*) - \overline{\Pi}_t} + \delta \frac{\text{CE}_t'(\beta_t^*)}{\text{CE}_t(\beta_t^*) - \overline{\text{CE}}_t} = 0,
+(1-\delta) \frac{\Pi_t'(\beta_t^*)}{\Pi_t(\beta_t^*) - \overline{\Pi}} + \delta \frac{\text{CE}_t'(\beta_t^*)}{\text{CE}_t(\beta_t^*) - \overline{\text{CE}}} = 0,
 \end{equation}
-which implicitly defines the equilibrium slope $\beta_t^*$ as a function of wealth $W_t$ (through $\underline{w}_t$), disagreement payoffs $(\overline{\Pi}_t, \overline{\text{CE}}_t)$, and the exogenous parameter $\delta$.
+which implicitly defines the equilibrium slope $\beta_t^*$ as a function of wealth $W_t$ (through $\underline{w}_t$), disagreement payoffs $(\overline{\Pi}, \overline{\text{CE}})$, and the exogenous parameter $\delta$.
 
-Adjusting the surplus split now requires changing $\beta_t$, which directly affects both risk sharing and incentive provision. Total surplus $S(\beta_t)$ varies with $\beta_t$, and the Pareto frontier is curved rather than linear. The agent's realized bargaining power is
+The agent's realized bargaining power is
 \[
-\lambda_t = \frac{\text{CE}_t(\beta_t^*) - \overline{\text{CE}}_t}{S_t(\beta_t^*)}
+\lambda_t = \frac{\text{CE}_t(\beta_t^*) - \overline{\text{CE}}}{S_t(\beta_t^*)},
 \]
-where $S_t(\beta_t^*) = [\text{CE}_t(\beta_t^*) - \overline{\text{CE}}_t] + [\Pi_t(\beta_t^*) - \overline{\Pi}_t]$.
+where $S_t(\beta_t^*) = [\text{CE}_t(\beta_t^*) - \overline{\text{CE}}] + [\Pi_t(\beta_t^*) - \overline{\Pi}]$. Adjusting the surplus split requires changing $\beta_t$, which directly affects both risk sharing and incentive provision, so $S(\beta_t)$ varies with $\beta_t$ and the Pareto frontier is curved rather than linear, as illustrated in Figure \ref{fig:ntu_frontier}.
 
 \begin{figure}[htbp]
 \centering
+\caption{Pareto frontiers in the slack (linear) and binding (curved) regimes. The linear frontier arises because $\alpha_t$ transfers surplus one-for-one between parties. The curved frontier arises because redistribution requires changing $\beta_t$, which affects total surplus nonlinearly. With the same Nash parameter $\delta$, the agent's realized share satisfies $\lambda^{\text{bind}} \neq \delta$ in the binding regime.}
 \begin{tikzpicture}[scale=1.25]
-    \draw[->] (-0.3,0) -- (5.8,0) node[right] {Principal's surplus $\Pi_t - \overline{\Pi}_t$};
-    \draw[->] (0,-0.3) -- (0,5.5) node[above] {Agent's surplus $\text{CE}_t - \overline{\text{CE}}_t$};
+    \draw[->] (-0.3,0) -- (5.8,0) node[right] {Principal's surplus $\Pi_t - \overline{\Pi}$};
+    \draw[->] (0,-0.3) -- (0,5.5) node[above] {Agent's surplus $\text{CE}_t - \overline{\text{CE}}$};
 
     \fill[gray!12] plot[domain=0:90, smooth, samples=60]
         ({3.8*sin(\x) * (1 - 0.38*sin(\x)^1.3)},
@@ -487,20 +500,20 @@ where $S_t(\beta_t^*) = [\text{CE}_t(\beta_t^*) - \overline{\text{CE}}_t] + [\Pi
     \draw[dotted, black!40, thin] (0,0) -- (3.8,3.8);
 
 \end{tikzpicture}
-\caption{Pareto frontiers in the slack (linear) and binding (curved) regimes. With the same Nash parameter $\delta$, the agent's realized share $\lambda^{\text{bind}} \neq \delta$ under binding limited liability because redistribution requires changing $\beta_t$, which alters total surplus.}
+\caption*{\text{Source:} Own elaboration.}
 \label{fig:ntu_frontier}
 \end{figure}
 
-Since $\underline{w}_t = \overline{w} - \gamma_w W_t$ depends on wealth, and $\beta_t^*$ depends on $\underline{w}_t$, realized bargaining power $\lambda_t$ becomes history-dependent through the wealth accumulation process. In general, $\lambda_t \neq \delta$ when the constraint binds. When limited liability does not bind, the Pareto frontier is linear and the Nash solution achieves any surplus split by adjusting $\alpha$ while keeping efficiency at $\beta^{\text{eff}}$, so $\lambda_t = \delta$ always. When limited liability binds, the constraint pins $\alpha$ and the Pareto frontier becomes curved: points corresponding to different wealth levels face different feasible sets, so their realized bargaining power differs even under the same exogenous Nash parameter $\delta$. Moving along the curved frontier requires changing $\beta$, which affects total surplus and generates the non-transferability that makes bargaining outcomes history-dependent.
+Since $\underline{w}_t$ depends on wealth through $W_t$, and $\beta_t^*$ depends on $\underline{w}_t$, realized bargaining power $\lambda_t$ becomes history-dependent through the wealth accumulation process. In general, $\lambda_t \neq \delta$ when the constraint binds. When limited liability does not bind, the Pareto frontier is linear and the Nash solution achieves any surplus split by adjusting $\alpha_t$ while keeping efficiency at $\beta^{\text{eff}}$, so $\lambda_t = \delta$ always. When limited liability binds, the constraint pins $\alpha_t$ and the Pareto frontier becomes curved: points corresponding to different wealth levels face different feasible sets, so their realized bargaining power differs even under the same exogenous Nash parameter $\delta$. Moving along the curved frontier requires changing $\beta_t$, which affects total surplus and generates the non-transferability that makes bargaining outcomes history-dependent.
 
 \begin{remark}[Welfare comparison: constrained planner versus Nash equilibrium]\label{rem:welfare}
-The binding regime generates a third layer of efficiency loss, on top of the two already identified in Section \ref{subsec:moral_hazard}. To see this, consider a constrained planner who respects incentive compatibility and limited liability but is not subject to Nash bargaining: the planner maximizes total surplus $S(\beta)$ subject to $\alpha \geq \underline{w}(W) - \beta\underline{y}$.
+The binding regime generates a third layer of efficiency loss, on top of the two already identified in Section \ref{subsec:symmetric}. To see this, consider a constrained planner who respects incentive compatibility and limited liability but is not subject to Nash bargaining: the planner maximizes total surplus $S(\beta)$ subject to $\alpha \geq \underline{w}(W) - \beta\underline{y}$.
 
 The planner sets $\alpha = \underline{w}(W) - \beta\underline{y}$ at the boundary (since any slacker $\alpha$ wastes surplus), but is free to choose $\beta$ independently to maximize $S(\beta)$. The limited liability constraint binds only on $\alpha$, not on $\beta$. The planner therefore implements $\beta^{\mathrm{eff}}$ regardless of $W$, achieving $S^{\mathrm{eff}} = S(\beta^{\mathrm{eff}})$ in every period.
 
-The Nash equilibrium in the binding regime instead chooses $\beta^*(W) \neq \beta^{\mathrm{eff}}$, because the parties use $\beta$ both to set incentives and to redistribute surplus. The resulting equilibrium surplus is $S(\beta^*(W)) < S(\beta^{\mathrm{eff}})$, since $\beta^{\mathrm{eff}}$ is the unique maximizer of $S(\beta)$. The bargaining distortion is
+The Nash equilibrium in the binding regime instead chooses $\beta^*(W) \neq \beta^{\mathrm{eff}}$, because the parties use $\beta_t$ both to set incentives and to redistribute surplus. The resulting equilibrium surplus is $S(\beta^*(W)) < S(\beta^{\mathrm{eff}})$, since $\beta^{\mathrm{eff}}$ is the unique maximizer of $S(\beta)$. The bargaining distortion is
 \[
-\Delta(W) := S^{\mathrm{eff}} - S(\beta^*(W)) = \frac{(\beta^{\mathrm{eff}} - \beta^*(W))^2}{2} \cdot \left(\frac{\theta^2}{k} + \gamma\sigma^2\right) > 0,
+\Delta(W) := S^{\mathrm{eff}} - S(\beta^*(W)) = \frac{(\beta^{\mathrm{eff}} - \beta^*(W))^2}{2} \left(\frac{\theta^2}{k} + \gamma\sigma^2\right) > 0,
 \]
 where the equality uses the quadratic form of $S(\beta)$ around its maximum. Three features of $\Delta(W)$ are worth noting. First, $\Delta(W) = 0$ in the slack regime, where $\beta^*(W) = \beta^{\mathrm{eff}}$: bargaining introduces no additional distortion when transfers are unconstrained. Second, $\Delta(W)$ is increasing in $|\beta^*(W) - \beta^{\mathrm{eff}}|$, which is itself increasing in how far $W$ is below $\overline{W}$: poorer agents face tighter constraints, larger distortions in $\beta^*$, and greater welfare losses. Third, $\Delta(W)$ is increasing in $\theta^2/k + \gamma\sigma^2$, the curvature of the surplus function: when the risk-incentive trade-off is steep, small deviations of $\beta^*$ from $\beta^{\mathrm{eff}}$ are more costly.
 
@@ -517,7 +530,7 @@ with the second term present only in the binding regime and vanishing as $W \to 
 
 We now embed the contracting problem in a dynamic environment. Time is discrete, indexed by $t=0,1,2,\dots$. In each period, after observing the current public state, the principal and the agent renegotiate a one-period contract through Nash bargaining, taking into account its effect on future continuation values.
 
-The key state variable is the agent's accumulated wealth $W_t$. We assume that wealth is publicly observable. This assumption is essential for the recursive formulation. At the end of each period, output $y_t$ and the agreed contract $(\alpha_t,\beta_t)$ are publicly observed. Since under incentive compatibility effort is pinned down by the contract through
+The key state variable is the agent's accumulated wealth $W_t$. Unlike the formulation of \textcite{spear1987}, where the agent's promised discounted utility serves as the sufficient state variable, here accumulated wealth plays that role because the wealth-dependent limited liability constraint ties feasibility directly to $W_t$. A full justification of this reduction appears later in this subsection. We assume that wealth is publicly observable. This assumption is essential for the recursive formulation. At the end of each period, output $y_t$ and the agreed contract $(\alpha_t,\beta_t)$ are publicly observed. Since under incentive compatibility effort is pinned down by the contract through
 \[
 a_t^*=\frac{\beta_t\theta}{k},
 \]
@@ -531,7 +544,7 @@ Therefore, the next-period limited liability threshold
 \]
 is common knowledge at the start of period $t+1$.
 
-In general, an infinitely repeated contracting problem is not stationary: the optimal contract at date $t$ may depend on the entire past history $h^t = (y_0, \alpha_0, \beta_0, \dots, y_{t-1}, \alpha_{t-1}, \beta_{t-1})$, making a direct recursive characterization unavailable. \textcite{spear1987} resolve this difficulty in the standard repeated moral hazard problem by demonstrating that the agent's promised discounted utility serves as a sufficient state variable: conditioning on it, no additional history is needed to describe the optimal continuation contract. Their argument proceeds by showing that any optimal contract is completely characterized by four stationary functions, a compensation schedule, a continuation value rule, a policy function for effort, and a value function for the principal, satisfying regeneration conditions, so that the infinite-horizon problem reduces to a static variational problem parametrized by the promised utility level.
+In general, an infinitely repeated contracting problem is not stationary \parencite[see][section~2]{spear1987}: the optimal contract at date $t$ may depend on the entire past history $h^t = (y_0, \alpha_0, \beta_0, \dots, y_{t-1}, \alpha_{t-1}, \beta_{t-1})$, making a direct recursive characterization unavailable. \textcite{spear1987} resolve this difficulty in the standard repeated moral hazard problem by demonstrating that the agent's promised discounted utility serves as a sufficient state variable: conditioning on it, no additional history is needed to describe the optimal continuation contract. Their argument proceeds by showing that any optimal contract is completely characterized by four stationary functions, a compensation schedule, a continuation value rule, a policy function for effort, and a value function for the principal, satisfying regeneration conditions, so that the infinite-horizon problem reduces to a static variational problem parametrized by the promised utility level.
 
 We now carry out the analogous reduction in our setting, establishing that accumulated wealth $W_t$ plays the role that promised utility plays in \textcite{spear1987}.
 
@@ -571,7 +584,9 @@ Given a feasible contract $(\alpha,\beta)$, current payoffs are $\Pi(\alpha,\bet
 W' = W+\alpha+\beta y-\frac{k}{2}(a^*(\beta))^2,\qquad y=\theta a^*(\beta)+\sigma \varepsilon,\qquad\varepsilon\sim \mathcal N(0,1).
 \]
 
-Let $V_P(W)$ and $V_A(W)$ denote the principal's and agent's equilibrium continuation values when the current public state is $W$. If agreement is not reached, the relationship breaks down and the parties receive exogenous outside options $\overline u_P$ and $\overline u_A$, respectively.
+Let $V_P(W)$ and $V_A(W)$ denote the principal's and agent's equilibrium continuation values when the current public state is $W$. If agreement is not reached, the relationship breaks down and the parties receive exogenous outside options $\overline{\Pi}$ and $\overline{\text{CE}}$, respectively.
+
+The formulation is recursive because rather than specifying an optimal contract as a sequence indexed by $t$, we look for stationary functions $\alpha^*(\cdot)$ and $\beta^*(\cdot)$ that solve the same problem at every state $W$. This makes the infinite-horizon problem tractable: once the value functions $V_P$ and $V_A$ are known, the optimal contract at any date follows from evaluating those stationary functions at the current state.
 
 \begin{definition}[Recursive Nash bargaining problem]\label{def:recursive_nash}
 Given current public wealth $W$, the recursive Nash bargaining problem is
@@ -579,8 +594,8 @@ Given current public wealth $W$, the recursive Nash bargaining problem is
 (\alpha^*(W),\beta^*(W))
 \in
 \arg\max_{(\alpha,\beta)\in\Gamma(W)}
-\Big[V_P^{c}(W;\alpha,\beta)-\overline u_P\Big]^{1-\delta}
-\Big[V_A^{c}(W;\alpha,\beta)-\overline u_A\Big]^{\delta},
+\Big[V_P^{c}(W;\alpha,\beta)-\overline{\Pi}\Big]^{1-\delta}
+\Big[V_A^{c}(W;\alpha,\beta)-\overline{\text{CE}}\Big]^{\delta},
 \]
 where $\Gamma(W)$ is the set of feasible contracts at state $W$, and
 \begin{align*}
@@ -588,6 +603,8 @@ where $\Gamma(W)$ is the set of feasible contracts at state $W$, and
     V_A^{c}(W;\alpha,\beta)&=\mathrm{CE}(\alpha,\beta)+\rho\,\mathbb E\big[V_A(W')\mid W,\alpha,\beta\big].
 \end{align*}
 \end{definition}
+
+The recursive structure of Definition \ref{def:recursive_nash} is visible in the continuation terms $\rho\,\mathbb{E}[V_P(W')\mid W,\alpha,\beta]$ and $\rho\,\mathbb{E}[V_A(W')\mid W,\alpha,\beta]$: the value functions $V_P$ and $V_A$ appear in the objective today and are evaluated at the next-period state $W'$ that results from today's contract. The same functions that define what the parties bargain over today govern their continuation payoffs tomorrow.
 
 Definition \ref{def:recursive_nash} makes explicit that the contract chosen today affects future bargaining through the law of motion of wealth. The problem is inherently dynamic: current allocations affect not only contemporaneous payoffs but also future feasibility through the evolution of wealth.
 
@@ -600,7 +617,7 @@ This argument does not rule out renegotiation at the start of period $t+1$, befo
 \end{remark}
 
 
-The regeneration conditions \eqref{eq:regen_P}-\eqref{eq:regen_A} can be stated compactly as a pair of coupled Bellman equations. Define the operator $T = (T_P, T_A)$ acting on pairs of bounded continuous functions $(V_P, V_A) \in C(\mathcal{S}) \times C(\mathcal{S})$ by
+The regeneration conditions \eqref{eq:regen_P}-\eqref{eq:regen_A} can be stated compactly as a pair of coupled Bellman equations. Because the equilibrium is stationary, these equations are written in terms of value functions of the state $W$ alone, without an explicit time index; the index $t$ appears only through the law of motion of $W$ when the equations are iterated forward. Let $\mathcal{S} \subseteq \mathbb{R}$ denote the compact equilibrium wealth domain defined formally in Assumption \ref{ass:compact_domain}, and let $C(\mathcal{S})$ denote the Banach space of continuous bounded functions on $\mathcal{S}$ equipped with the supremum norm $\|f\|_\infty = \sup_{W \in \mathcal{S}} |f(W)|$. Define the operator $T = (T_P, T_A)$ acting on pairs $(V_P, V_A) \in C(\mathcal{S}) \times C(\mathcal{S})$ by
 \begin{align}
     T_P V_P(W) &:= \Pi\!\bigl(\alpha^*(W),\beta^*(W)\bigr)
     + \rho\,\mathbb{E}\bigl[V_P(W') \mid W, \alpha^*(W), \beta^*(W)\bigr],
@@ -636,7 +653,7 @@ Fix parameters $(\theta, k, \gamma, \sigma, \rho, \delta, \overline{w}, \gamma_w
 \begin{enumerate}
     \item The feasible correspondence $\Gamma : \mathcal{S} \rightrightarrows [0,1]$ is nonempty, compact-valued, and continuous.
     \item Period payoffs $\Pi(\alpha,\beta)$ and $\mathrm{CE}(\alpha,\beta)$ are continuous and bounded on $\mathcal{S} \times [0,1]$.
-    \item The Nash product $[\Pi(\alpha,\beta) - \overline{u}_P]^{1-\delta}[\mathrm{CE}(\alpha,\beta) - \overline{u}_A]^{\delta}$ is strictly quasiconcave in $(\alpha,\beta)$ on $\Gamma(W)$ for every $W \in \mathcal{S}$.
+    \item The Nash product $[\Pi(\alpha,\beta) - \overline{\Pi}]^{1-\delta}[\mathrm{CE}(\alpha,\beta) - \overline{\text{CE}}]^{\delta}$ is strictly quasiconcave in $(\alpha,\beta)$ on $\Gamma(W)$ for every $W \in \mathcal{S}$.
 \end{enumerate}
 \end{assumption}
 
@@ -648,10 +665,11 @@ Under Assumption \ref{ass:compact_domain}, there exist unique continuous value f
 
 \begin{proof}
 Define Bellman operators $T_P, T_A : C(\mathcal{S}) \to C(\mathcal{S})$ by
-\[
-T_P V_P(W) := \Pi(\alpha^*(W),\beta^*(W)) + \rho\,\mathbb{E}\bigl[V_P(W') \mid W, \alpha^*(W), \beta^*(W)\bigr],
-\]
-where $(\alpha^*(W),\beta^*(W))$ denotes the maximizer of the Nash product in Definition \ref{def:recursive_nash} given the current value functions, and symmetrically for $T_A V_A$. Let $T := (T_P, T_A)$ act on the product space $C(\mathcal{S}) \times C(\mathcal{S})$ equipped with the sup norm $\|(V_P, V_A)\|_\infty := \max(\|V_P\|_\infty, \|V_A\|_\infty)$.
+\begin{align}
+T_P V_P(W) &:= \Pi(\alpha^*(W),\beta^*(W)) + \rho\,\mathbb{E}\bigl[V_P(W') \mid W, \alpha^*(W), \beta^*(W)\bigr], \label{eq:proof_TP} \\
+T_A V_A(W) &:= \mathrm{CE}(\alpha^*(W),\beta^*(W)) + \rho\,\mathbb{E}\bigl[V_A(W') \mid W, \alpha^*(W), \beta^*(W)\bigr], \label{eq:proof_TA}
+\end{align}
+where $(\alpha^*(W),\beta^*(W))$ denotes the maximizer of the Nash product in Definition \ref{def:recursive_nash} given the current value functions. Let $T := (T_P, T_A)$ act on the product space $C(\mathcal{S}) \times C(\mathcal{S})$ equipped with the sup norm $\|(V_P, V_A)\|_\infty := \max(\|V_P\|_\infty, \|V_A\|_\infty)$.
 
 We verify Blackwell's sufficient conditions for $T$ to be a contraction \parencite[Theorem 3.3]{stokey1989}.
 
@@ -686,9 +704,9 @@ Proposition \ref{prop:existence} establishes that the model admits a recursive s
 \subsection{Binding regime and reduced recursive representation}\label{subsec:binding_dynamic}
 %=======================================
 
-When limited liability is slack, $\alpha$ remains a pure transfer and the Nash solution selects the efficient slope $\beta^{\mathrm{eff}}$ and uses $\alpha$ to split continuation surplus according to $\delta$.
+When limited liability is slack, $\alpha$ remains a pure transfer and the Nash solution selects the efficient slope $\beta^{\mathrm{eff}}$ and uses $\alpha$ to split continuation surplus according to $\delta$. This follows from the slack-regime characterization in Proposition \ref{prop:tu_ntu}: when the constraint does not bind, the feasible set $\Gamma(W)$ is unconstrained in $\alpha$, so the Pareto frontier is linear and the Nash solution recovers the standard split.
 
-The mechanism of interest arises when limited liability binds. In that regime, $\alpha = \underline{w}(W)-\beta \underline y$, so the fixed payment is no longer a free transfer and the bargaining problem reduces to a choice over $\beta$ alone. Substituting the binding constraint into Definition \ref{def:recursive_nash}, continuation values become
+The mechanism of interest arises when limited liability binds. In that regime, $\alpha = \underline{w}(W)-\beta \underline y$, so the fixed payment is no longer a free transfer but is pinned by the constraint, so the bargaining problem reduces to a choice over $\beta$ alone. Substituting the binding constraint into Definition \ref{def:recursive_nash}, continuation values become
 \[
 V_P^{b}(W;\beta)=D(\beta)+\beta \underline y-\underline{w}(W)+\rho\,\mathbb E\big[V_P(W')\mid W,\beta\big],
 \]
@@ -699,23 +717,24 @@ V_A^{b}(W;\beta)=C(\beta)-\beta \underline y+\underline{w}(W)+\rho\,\mathbb E\bi
 The state-dependent Nash problem in the binding regime is therefore
 \[
 \beta^*(W)\in\arg\max_{\beta\in[0,1]}
-\Big[V_P^{b}(W;\beta)-\overline u_P\Big]^{1-\delta}
-\Big[V_A^{b}(W;\beta)-\overline u_A\Big]^{\delta},
+\Big[V_P^{b}(W;\beta)-\overline{\Pi}\Big]^{1-\delta}
+\Big[V_A^{b}(W;\beta)-\overline{\text{CE}}\Big]^{\delta},
 \]
 with first-order condition
 \begin{equation}\label{eq:foc_binding_dynamic}
-(1-\delta)\frac{\partial_\beta V_P^{b}(W;\beta^*)}{V_P^{b}(W;\beta^*)-\overline u_P}
+(1-\delta)\frac{\dfrac{\partial V_P^{b}}{\partial\beta}(W;\beta^*)}{V_P^{b}(W;\beta^*)-\overline{\Pi}}
 +
-\delta \frac{\partial_\beta V_A^{b}(W;\beta^*)}{V_A^{b}(W;\beta^*)-\overline u_A}
+\delta\,\frac{\dfrac{\partial V_A^{b}}{\partial\beta}(W;\beta^*)}{V_A^{b}(W;\beta^*)-\overline{\text{CE}}}
 =0.
 \end{equation}
 
 Equation \eqref{eq:foc_binding_dynamic} is the dynamic analogue of the static binding-regime condition \eqref{eq:foc_binding}. When continuation values are linear in current payoffs, as in the static benchmark, \eqref{eq:foc_binding_dynamic} reduces exactly to \eqref{eq:foc_binding}, with $\Pi$ and $\mathrm{CE}$ replacing $V_P^b$ and $V_A^b$. In the general dynamic case, the equilibrium slope must additionally account for how changing $\beta$ shifts next-period wealth and therefore next-period feasibility.
 
-The agent's realized bargaining power in the binding regime is
+The agent's realized bargaining power in the binding regime is defined as the agent's share of total equilibrium surplus:
 \[
-\lambda(W)=\frac{V_A^{b}(W;\beta^*(W))-\overline u_A}{\big[V_P^{b}(W;\beta^*(W))-\overline u_P\big]+\big[V_A^{b}(W;\beta^*(W))-\overline u_A\big]}.
+\lambda(W)=\frac{V_A^{b}(W;\beta^*(W))-\overline{\text{CE}}}{\big[V_P^{b}(W;\beta^*(W))-\overline{\Pi}\big]+\big[V_A^{b}(W;\beta^*(W))-\overline{\text{CE}}\big]}.
 \]
+The formula itself is the standard definition of the agent's surplus share in any Nash bargaining problem. What is specific to this model is that $\lambda(W)$ is not pinned down by the exogenous weight $\delta$ but is determined by the equilibrium contract $\beta^*(W)$, which depends on wealth through the binding limited liability constraint.
 Unlike in the slack regime, $\lambda(W)$ need not coincide with $\delta$, because changing the surplus split now requires changing $\beta$, and this affects total surplus itself.
 
 %=======================================
@@ -724,6 +743,7 @@ Unlike in the slack regime, $\lambda(W)$ need not coincide with $\delta$, becaus
 
 \begin{figure}[htbp]
 \centering
+\caption{Schematic representation of the endogenous bargaining power mechanism.}
 \begin{tikzpicture}[
     node distance=2.2cm and 1.8cm,
     box/.style={rectangle, draw, thick, text width=2.5cm, align=center, minimum height=1.1cm, font=\small},
@@ -742,19 +762,20 @@ Unlike in the slack regime, $\lambda(W)$ need not coincide with $\delta$, becaus
     \draw[arrow, black] (constraint) -- (feasible) node[midway, above, label] {binding};
     \draw[arrow, black] (feasible) -- (beta) node[midway, right, label] {Nash\\FOC};
     \draw[arrow, black] (beta) -- (lambda) node[midway, above, label] {surplus\\split};
-    \draw[arrow, black] (lambda) -- (contract) node[midway, above, label] {$\alpha_t, \beta_t$};
+    \draw[arrow, black] (lambda) 
+    -- (contract) node[midway, above, label] {$\alpha_t, \beta_t$};
     
     \draw[arrow, black, dashed, thick] (contract) -- (wealth) node[midway, left, label] {$W_{t+1} = W_t +$\\$w_t - c(a_t)$};
     
     \node[draw, ellipse, thick, fill=gray!15, minimum width=1.2cm, minimum height=0.8cm, font=\small] at ($(contract) + (0, -1.3)$) (shock) {$\varepsilon_t$};
-    \draw[arrow, dashed] (shock) -- (contract);
+    \draw[arrow, dashed] (shock) -- (contract) node[midway, right, font=\scriptsize] {output shock};
     
     \node[above=0.15cm of wealth, font=\scriptsize, text=black] {State variable};
     \node[above=0.15cm of beta, font=\scriptsize, text=black] {Equilibrium outcome};
     \node[above=0.15cm of lambda, font=\scriptsize, text=black] {Endogenous};
     
 \end{tikzpicture}
-\caption{Schematic representation of the endogenous bargaining power mechanism.}
+\caption*{\text{Source:} Own elaboration.}
 \label{fig:mechanism}
 \end{figure}
 
@@ -767,14 +788,14 @@ When the limited liability floor is wealth-dependent with $\gamma_w > 0$, bindin
 \[
 \ell_{t+1} - \ell_t = \frac{\lambda'(W_t)}{\lambda_t(1-\lambda_t)}\,\beta_t^*\sigma\varepsilon_t + o(|\varepsilon_t|),
 \]
-where $\lambda'(W_t) > 0$ under condition \eqref{eq:lambda_sign_condition}. The wealth process $\{W_t\}$ is geometrically ergodic and admits a unique invariant distribution $\Phi^*$. When $\gamma_w = 0$ or when limited liability is slack, $\lambda_t = \delta$ in every period and the standard framework is recovered exactly.
+where $\lambda'(W_t) > 0$ under condition \eqref{eq:lambda_sign_condition}. The wealth process $\{W_t\}$ is geometrically ergodic and admits a unique invariant distribution $\Phi^*$, that is, a probability measure on the wealth domain to which the distribution of $W_t$ converges regardless of initial conditions. When $\gamma_w = 0$ or when limited liability is slack, $\lambda_t = \delta$ in every period and the standard framework is recovered exactly.
 \end{theorem}
 
 \begin{proof}
 The result follows from Propositions \ref{prop:tu_ntu}, \ref{prop:dynamics}, and \ref{prop:ergodic} in sequence. Proposition \ref{prop:tu_ntu} establishes the two-regime structure and the deviation $\lambda(W) \neq \delta$ in the binding regime. Proposition \ref{prop:dynamics} characterizes the law of motion of $\ell_t$ and the sign of $\lambda'(W_t)$. Proposition \ref{prop:ergodic} establishes geometric ergodicity and uniqueness of $\Phi^*$.
 \end{proof}
 
-The theorem has three components that must each be established separately. The first is that limited liability generates two distinct regimes: one in which the Pareto frontier is linear and surplus can be divided freely through the fixed payment, and one in which the frontier is curved and redistribution requires moving along it. This distinction is what makes realized bargaining power depart from $\delta$ in the first place. The second component is that within the binding regime, the deviation $\lambda(W_t) - \delta$ has a sign and a rate of change determined by the primitives of the model, not by an assumption. The third is that the resulting wealth process converges to a well-defined long-run distribution, which is what gives the mechanism empirical content. The three propositions that follow establish  these components in order.
+The theorem has three components that must each be established separately. The first is that limited liability generates two distinct regimes: one in which the Pareto frontier is linear, because $\alpha$ can be adjusted freely to transfer utility between parties at a one-for-one rate, and surplus can be divided freely through the fixed payment, and one in which the frontier is curved and redistribution requires moving along it. This distinction is what makes realized bargaining power depart from $\delta$ in the first place. The second component is that within the binding regime, the deviation $\lambda(W_t) - \delta$ has a sign and a rate of change determined by the primitives of the model, not by an assumption. The third is that the resulting wealth process converges to a well-defined long-run distribution, which is what gives the mechanism empirical content. The three propositions that follow establish  these components in order.
 
 \begin{proposition}[Transferable and non-transferable regimes]\label{prop:tu_ntu}
 \begin{enumerate}
@@ -782,6 +803,8 @@ The theorem has three components that must each be established separately. The f
 \item If limited liability binds at state $W$, then $\alpha$ is pinned down by the constraint and the equilibrium slope $\beta^*(W)$ is determined by \eqref{eq:foc_binding_dynamic}. In this regime, $\lambda(W)$ depends on wealth through the feasible set and in general $\lambda(W)\neq\delta$.
 \end{enumerate}
 \end{proposition}
+
+Figure \ref{fig:pareto_frontiers} illustrates both regimes: the linear frontier in the slack regime and the curved frontier in the binding regime, together with the corresponding Nash solutions.
 
 \begin{proof}
 In the slack regime, $\alpha$ remains a free transfer and continuation surplus is locally transferable. The Nash solution separates efficiency from distribution: $\beta$ maximizes continuation surplus and $\alpha$ implements the Nash split. In the binding regime, $\alpha$ is no longer free, so distribution and efficiency cannot be separated. The Nash solution uses $\beta$ both to shape incentives and to alter the surplus division, making realized bargaining power state dependent. The implicit function theorem applied to \eqref{eq:foc_binding_dynamic} yields $\partial\beta^*/\partial W\neq 0$, establishing history-dependence.
@@ -800,7 +823,7 @@ Suppose limited liability binds and $\beta^*(W)$ and $\lambda(W)$ are differenti
 \[
 \ell_{t+1}-\ell_t=\frac{\lambda'(W_t)}{\lambda_t(1-\lambda_t)}\,\beta_t^*\sigma \varepsilon_t+o(|\varepsilon_t|).
 \]
-The sensitivity $\lambda'(W_t)$ satisfies $\lambda'(W_t) = -\gamma_w \cdot (d\lambda/d\underline{w})\big|_{W_t}$, where the sign of $d\lambda/d\underline{w}$ is characterized explicitly in Appendix \ref{ProofProp2}. In particular, $\lambda'(W_t) > 0$ whenever the sufficient condition \eqref{eq:lambda_sign_condition} holds, so that bargaining power rises with accumulated wealth in the binding regime. In the slack regime, $\lambda_t=\delta$ and $\ell_t=\log(\delta/(1-\delta))$ is constant.
+The sensitivity $\lambda'(W_t)$ satisfies $\lambda'(W_t) = -\gamma_w  (d\lambda/d\underline{w})\big|_{W_t}$, where the sign of $d\lambda/d\underline{w}$ is characterized explicitly in Appendix \ref{ProofProp2}. In particular, $\lambda'(W_t) > 0$ whenever the sufficient condition \eqref{eq:lambda_sign_condition} holds, so that bargaining power rises with accumulated wealth in the binding regime. In the slack regime, $\lambda_t=\delta$ and $\ell_t=\log(\delta/(1-\delta))$ is constant.
 \end{proposition}
 
 \begin{proof}
@@ -820,11 +843,12 @@ In the binding regime ($W < \overline{W}$), $\alpha^*(W) = \underline{w}(W) - \b
 
 Since the left derivative of $V_P$ at $\overline{W}$ is generically nonzero while the right derivative is zero, $V_P$ has a kink at $\overline{W}$, and therefore $\lambda(W)$ is not differentiable at $\overline{W}$. The first-order expansion of Proposition \ref{prop:dynamics} is valid strictly on the interior of the binding regime, $W_t \in (\underline{W}, \overline{W})$, and strictly on the interior of the slack regime. At $W_t = \overline{W}$ the expansion does not apply.
 
-This is without consequence for the main results. Under the ergodic distribution $\Phi^*$, the boundary $\overline{W}$ is a single point of Lebesgue measure zero. The process $\{W_t\}$ visits $\overline{W}$ with probability zero at any fixed date and the set of times at which $W_t = \overline{W}$ has measure zero almost surely. The dynamics of Proposition \ref{prop:dynamics} therefore characterize the evolution of bargaining power for almost every realization of the process, and the welfare decomposition of Remark \ref{rem:welfare} is unaffected.
+This is without consequence for the main results. Under the ergodic distribution $\Phi^*$, the boundary $\overline{W}$ is a single point of Lebesgue measure zero; since $\Phi^*$ is absolutely continuous with respect to Lebesgue measure, as follows from the Gaussian transition kernel of the wealth process, it assigns zero probability to any single point. The process $\{W_t\}$ visits $\overline{W}$ with probability zero at any fixed date and the set of times at which $W_t = \overline{W}$ has measure zero almost surely. The dynamics of Proposition \ref{prop:dynamics} therefore characterize the evolution of bargaining power for almost every realization of the process, and the welfare decomposition of Remark \ref{rem:welfare} is unaffected.
 \end{remark}
 
 \begin{figure}[htbp]
 \centering
+\caption{Evolution of realized bargaining power with wealth accumulation.}
 \begin{tikzpicture}[scale=1.3]
     \draw[->] (-0.5,0) -- (7.5,0) node[right] {Wealth $W_t$};
     \draw[->] (0,-0.5) -- (0,5) node[above] {Bargaining power $\lambda_t$};
@@ -845,14 +869,14 @@ This is without consequence for the main results. Under the ergodic distribution
     \node[blue, font=\small, align=center] at (6.2,4.5) {Slack regime};
     \node[blue, font=\small, align=center] at (6.2,4.1) {$\lambda_t=\delta$ (constant)};
 \end{tikzpicture}
-\caption{Evolution of realized bargaining power with wealth accumulation.}
+\caption*{\text{Source:} Own elaboration.}
 \label{fig:wealth_dynamics}
 \end{figure}
 
-Proposition \ref{prop:dynamics} establishes the second component of Theorem \ref{thm:central}. Figure \ref{fig:wealth_dynamics} depicts the resulting dynamics. The sensitivity $\lambda'(W_t)$ is positive under condition \eqref{eq:lambda_sign_condition}: wealthier agents face a less stringent limited liability floor, which shifts the curved frontier outward and allows the Nash solution to deliver a surplus share closer to $\delta$. The response of $\ell_t$ to output shocks is proportional to $\beta_t^* \sigma$, the product of performance pay intensity and output volatility. When either is zero, shocks do not transmit into bargaining outcomes regardless of $\gamma_w$. When both are positive, each unit of output surprise moves the log-odds of bargaining power by an amount governed by the curvature of the frontier through $\lambda'(W_t)$. This also provides structural microfoundations for the law of motion introduced by \textcite{digiannatale2025}: the sensitivity they treat as a free parameter is here determined by $\gamma_w$, $\beta_t^*$, and $\sigma$, each admitting a clear interpretation in terms of the primitives of the contracting environment. What remains to be established is that this dynamic process does not diverge but converges to a well-defined long-run distribution, which is the content of the next proposition.
+Proposition \ref{prop:dynamics} establishes the second component of Theorem \ref{thm:central}. Figure \ref{fig:wealth_dynamics} depicts the resulting dynamics. The sensitivity $\lambda'(W_t)$ is positive under condition \eqref{eq:lambda_sign_condition}: wealthier agents face a less stringent limited liability floor, which shifts the curved frontier outward and allows the Nash solution to deliver a surplus share closer to $\delta$. The response of $\ell_t$ to output shocks is proportional to $\beta_t^* \sigma$, the product of performance pay intensity and output volatility, as established directly in the proof of Proposition \ref{prop:dynamics}: the stochastic increment of $W_{t+1} - W_t$ is $\beta_t^* \sigma \varepsilon_t$, and this is what transmits output surprises into changes in bargaining power. When either is zero, shocks do not transmit into bargaining outcomes regardless of $\gamma_w$. When both are positive, each unit of output surprise moves the log-odds of bargaining power by an amount governed by the curvature of the frontier through $\lambda'(W_t)$. This also provides structural microfoundations for the law of motion introduced by \textcite{digiannatale2025}: the sensitivity they treat as a free parameter is here determined by $\gamma_w$, $\beta_t^*$, and $\sigma$, each admitting a clear interpretation in terms of the primitives of the contracting environment. What remains to be established is that this dynamic process does not diverge but converges to a well-defined long-run distribution, which is the content of the next proposition.
 
 \begin{proposition}[Sufficient condition for ergodicity]\label{prop:ergodic}
-Suppose $\gamma_w < 1$ and $\beta^*(W) \in [\beta_{\min}, \beta_{\max}] \subset (0,1)$ on the binding domain (established in Lemma \ref{lem:beta_bounds} of Appendix \ref{ProofProp3}). Then the wealth process $\{W_t\}$ is geometrically ergodic and admits a unique invariant distribution $\Phi^*$ with support $[\underline{W}, \infty)$, where $\underline{W}$ solves the boundary condition for the fully binding regime.
+Suppose $\gamma_w < 1$ and $$\beta^*(W) \in [\beta_{\min}, \beta_{\max}] \subset (0,1)$$ on the binding domain (established in Lemma \ref{lem:beta_bounds} of Appendix \ref{ProofProp3}). Then the wealth process $\{W_t\}$ is geometrically ergodic and admits a unique invariant distribution $\Phi^*$ with support $[\underline{W}, \infty)$, where $\underline{W}$ solves the boundary condition for the fully binding regime.
 \end{proposition}
 
 \begin{proof}
@@ -875,6 +899,7 @@ Figure \ref{fig:ergodic_cs} illustrates these three effects schematically. Each 
  
 \begin{figure}[htbp]
 \centering
+\caption{Comparative statics of the ergodic distribution $\Phi^*$  with respect to $\gamma$, $\sigma$, and $\gamma_w$. Shaded regions mark the binding regime; dashed curves show the shift when the focal parameter increases.}
 \begin{tikzpicture}[scale=1.0]
  
 % Panel 1: effect of gamma
@@ -957,10 +982,10 @@ Figure \ref{fig:ergodic_cs} illustrates these three effects schematically. Each 
 \end{scope}
  
 \end{tikzpicture}
-\caption{Comparative statics of the ergodic distribution $\Phi^*$  with respect to $\gamma$, $\sigma$, and $\gamma_w$. Shaded regions mark the binding regime; dashed curves show the shift when the focal parameter increases.}
+\caption*{\text{Source:} Own elaboration.}
 \label{fig:ergodic_cs}
 \end{figure}
-
+\vspace{-0.2cm}
 \begin{remark}[Comparative statics of the exogenous Nash weight $\delta$]\label{rem:delta_cs}
 The exogenous bargaining parameter $\delta$ does not affect the two-regime structure of the model but has distinct effects within each regime. We characterize these effects via the Implicit Function Theorem applied to the Nash first-order condition.
 
@@ -968,11 +993,11 @@ The exogenous bargaining parameter $\delta$ does not affect the two-regime struc
 \[
 \frac{\partial G}{\partial\delta} = -\frac{\Pi'(\beta^*)}{\Pi_s} + \frac{\mathrm{CE}'(\beta^*)}{\mathrm{CE}_s}.
 \]
-From the Nash FOC, $\Pi'(\beta^*)/\Pi_s > 0$ and $\mathrm{CE}'(\beta^*)/\mathrm{CE}_s < 0$, so $\partial G/\partial\delta < 0$. Since $\mathrm{SOC} < 0$, the IFT gives
+From the Nash FOC, $\Pi'(\beta^*)/\Pi_s > 0$ and $\mathrm{CE}'(\beta^*)/\mathrm{CE}_s < 0$, so $\partial G/\partial\delta < 0$. Since $\mathrm{SOC} < 0$, where $\mathrm{SOC} := \partial G/\partial\beta\big|_{\beta^*}$ denotes the second-order condition of the Nash problem evaluated at the optimum, the IFT gives
 \[
 \frac{d\beta^*}{d\delta} = -\frac{\partial G/\partial\delta}{\mathrm{SOC}} = -\frac{(-)}{(-)} < 0.
 \]
-A higher $\delta$ lowers the equilibrium slope in the binding regime. The economic logic is that a more powerful agent shifts bargaining toward protecting his certainty equivalent rather than bearing additional performance risk, so the equilibrium contract shifts away from incentive pay toward insurance. In the slack regime, by contrast, $\beta^* = \beta^{\mathrm{eff}}$ is independent of $\delta$: when transfers are unconstrained, surplus division and efficiency are separable, and the exogenous bargaining weight affects only $\alpha$, not $\beta$.
+The calculation above gives $d\beta^*/d\delta < 0$: a higher $\delta$ lowers the equilibrium slope in the binding regime. The economic logic is that a more powerful agent shifts bargaining toward protecting his certainty equivalent rather than bearing additional performance risk, so the equilibrium contract shifts away from incentive pay toward insurance. In the slack regime, by contrast, $\beta^* = \beta^{\mathrm{eff}}$ is independent of $\delta$: when transfers are unconstrained, surplus division and efficiency are separable, and the exogenous bargaining weight affects only $\alpha$, not $\beta$.
 
 \textit{Effect on the regime boundary.} The threshold $\overline{W}$ is defined by the condition that the unconstrained Nash solution exactly satisfies limited liability. The unconstrained solution sets $\alpha^* = \overline{\mathrm{CE}} - C(\beta^{\mathrm{eff}}) + \delta S^{\mathrm{eff}}$, which is strictly increasing in $\delta$. A higher $\delta$ therefore requires a larger fixed payment to satisfy the agent's Nash share, which means the limited liability constraint $\alpha^* \geq \underline{w}(\overline{W}) - \beta^{\mathrm{eff}}\underline{y}$ binds for larger values of $W$. Consequently $\overline{W}$ is strictly increasing in $\delta$: agents with stronger exogenous bargaining power require more accumulated wealth before the unconstrained solution becomes feasible.
 
@@ -988,7 +1013,9 @@ The qualitative properties of $\Phi^*$ established here set the terms for the nu
 \section{Numerical Approach}\label{NumApproach}
 %=======================================
  
-Theorem \ref{thm:central} establishes three properties of the equilibrium: a two-regime structure in which limited liability determines whether bargaining power is fixed or endogenous, a law of motion for realized bargaining power within the binding regime, and a unique invariant distribution for the wealth process. The theoretical analysis characterizes these properties qualitatively but does not yield closed-form expressions for the value and policy functions outside the two limiting cases. This section gives quantitative content to each of the three components. The approach proceeds in three stages: identifying the regime boundary $\overline{W}$ and constructing the wealth grid, iterating the Bellman operators to convergence, and simulating the ergodic distribution and individual wealth paths using the converged policies. This numerical exercise is illustrative rather than a calibration exercise: the parameter values are selected to produce economically interpretable magnitudes and to verify that the qualitative predictions of the theory hold quantitatively rather than to match specific empirical moments.
+Theorem \ref{thm:central} establishes three properties of the equilibrium: a two-regime structure in which limited liability determines whether bargaining power is fixed or endogenous, a law of motion for realized bargaining power within the binding regime, and a unique invariant distribution for the wealth process.\footnote{The complete numerical implementation, including all parameter files, value function iteration, simulation routines, and figure scripts, is available at \url{https://github.com/Jean2330/endogenous\_bargaining}.} 
+
+The theoretical analysis characterizes these properties qualitatively but does not yield closed-form expressions for the value and policy functions outside the two limiting cases. This section gives quantitative content to each of the three components. The approach proceeds in three stages: identifying the regime boundary $\overline{W}$ and constructing the wealth grid, iterating the Bellman operators to convergence, and simulating the ergodic distribution and individual wealth paths using the converged policies. This numerical exercise is illustrative rather than a calibration exercise: the parameter values are selected to produce economically interpretable magnitudes and to verify that the qualitative predictions of the theory hold quantitatively rather than to match specific empirical moments.
  
 %=======================================
 \subsection{Computational algorithms}\label{subsec:algorithms}
@@ -1000,7 +1027,9 @@ The regime boundary $\overline{W}$ is the unique wealth level at which the uncon
 \[
 \alpha^{\mathrm{slack}} = \underline{w}(\overline{W}) - \beta^{\mathrm{eff}}\,\underline{y},
 \]
-where $\alpha^{\mathrm{slack}} := \overline{u}_{A} - C(\beta^{\mathrm{eff}}) + \delta S^{\mathrm{eff}}$ is the fixed payment the unconstrained Nash solution would set and $\underline{w}(W) = \overline{w} - \gamma_{w}W$ is the wealth-dependent floor. Because $\alpha^{\mathrm{slack}}$ does not depend on $W$ while $\underline{w}$ is strictly decreasing in $W$, the residual is strictly monotone and the root is unique; we locate it by Brent's method.
+where $\alpha^{\mathrm{slack}} := \overline{\text{CE}} - C(\beta^{\mathrm{eff}}) + \delta S^{\mathrm{eff}}$ is the fixed payment the unconstrained Nash solution would set and $\underline{w}(W) = \overline{w} - \gamma_{w}W$ is the wealth-dependent floor. Because $\alpha^{\mathrm{slack}}$ does not depend on $W$ while $\underline{w}$ is strictly decreasing in $W$, the residual is strictly monotone and the root is unique; we locate it by Brent's method.
+
+The upper bound $W_{\max} = \overline{W} + 6\sigma/\!\sqrt{1-\rho^{2}}$ is chosen so that the ergodic distribution assigns negligible mass above $W_{\max}$. At the baseline calibration this gives $W_{\max} \approx 6.7$, which the simulation of Section \ref{subsec:numericalresults} confirms contains essentially all ergodic mass.
  
 \begin{algorithm}[H]
 \caption{Grid construction and regime identification}
@@ -1008,14 +1037,14 @@ where $\alpha^{\mathrm{slack}} := \overline{u}_{A} - C(\beta^{\mathrm{eff}}) + \
 \begin{algorithmic}[1]
 \Require Parameters $(\theta, k, \gamma, \sigma, \rho, \delta,
          \overline{w}, \gamma_{w}, \underline{y},
-         \overline{u}_{P}, \overline{u}_{A})$, grid size $N$,
+         \overline{\Pi}, \overline{\text{CE}})$, grid size $N$,
          quadrature order $n_{q}$
 \State $\beta^{\mathrm{eff}}
        \leftarrow (\theta^{2}/k)\,/\,(\gamma\sigma^{2}+\theta^{2}/k)$
 \State $S^{\mathrm{eff}} \leftarrow S(\beta^{\mathrm{eff}})$,
        \quad $C^{\mathrm{eff}} \leftarrow C(\beta^{\mathrm{eff}})$
 \State $\alpha^{\mathrm{slack}}
-       \leftarrow \overline{u}_{A} - C^{\mathrm{eff}} + \delta S^{\mathrm{eff}}$
+       \leftarrow \overline{\text{CE}} - C^{\mathrm{eff}} + \delta S^{\mathrm{eff}}$
 \State Define $r(W)
        \leftarrow \alpha^{\mathrm{slack}}
        - [\underline{w}(W) - \beta^{\mathrm{eff}}\,\underline{y}]$
@@ -1035,7 +1064,7 @@ where $\alpha^{\mathrm{slack}} := \overline{u}_{A} - C(\beta^{\mathrm{eff}}) + \
 \end{algorithmic}
 \end{algorithm}
  
-The upper bound $W_{\max} = \overline{W} + 6\sigma/\!\sqrt{1-\rho^{2}}$ is chosen so that the ergodic distribution assigns negligible mass above $W_{\max}$. At the baseline calibration this gives $W_{\max} \approx 6.7$, which the simulation of Section \ref{subsec:numericalresults} confirms contains essentially all ergodic mass.
+
  
 \subsubsection*{Stage 2: Value function iteration}
  
@@ -1044,11 +1073,13 @@ We iterate the Bellman operators $T_{P}$ and $T_{A}$ defined in equations \eqref
 At each grid point, the solution method depends on the regime induced by the constraint. This regime dependence is central: the constraint not only restricts the feasible set but also alters the nature of surplus sharing, transforming the bargaining problem from transferable utility to non-transferable utility. In the slack regime, the solution is analytic: $\beta^{*} = \beta^{\mathrm{eff}}$ and $\alpha^{*}$ is set to deliver the agent a share $\delta$ of continuation surplus, so $\lambda(W) = \delta$ exactly. In the binding regime, we solve the dynamic Nash first-order condition
 \begin{equation}\label{eq:foc_binding_numeric}
 G(\beta;\,W,\,V_{P},\,V_{A}) \;:=\;
-(1-\delta) \,\frac{\partial_{\beta}V_{P}^{b}(W;\beta)}{V_{P}^{b}(W;\beta)-\overline{u}_{P}} \;+\; \delta\, \frac{\partial_{\beta}V_{A}^{b}(W;\beta)}{V_{A}^{b}(W;\beta)-\overline{u}_{A}} \;=\; 0
+(1-\delta)\frac{\dfrac{\partial V_P^{b}}{\partial\beta}(W;\beta^*)}{V_P^{b}(W;\beta^*)-\overline{\Pi}}
++
+\delta\,\frac{\dfrac{\partial V_A^{b}}{\partial\beta}(W;\beta^*)}{V_A^{b}(W;\beta^*)-\overline{\text{CE}}} \; = \; 0
 \end{equation}
-for $\beta^{*}(W)$ using Brent's method on the feasible interval. Derivatives $\partial_\beta V_P^b$ and $\partial_\beta V_A^b$ are computed by central finite differences of order $h = 10^{-5}$ applied to the full quadrature sum, rather than to a spline approximation of the continuation value, to avoid spurious oscillations near the regime boundary. Lemma \ref{lem:beta_bounds} establishes that $G$ changes sign exactly once on the feasible interval, guaranteeing convergence of Brent's method. Expected continuation values $\mathbb{E}[V_{P}(W') \mid W, \beta]$ and $\mathbb{E}[V_{A}(W') \mid W, \beta]$ are evaluated by $n_{q}$-node Gauss-Hermite quadrature, with cubic spline interpolation of the current value function iterates at off-grid wealth levels.
+for $\beta^{*}(W)$ using Brent's method on the feasible interval. Derivatives $\tfrac{\partial}{\partial\beta} V_P^b$ and $\tfrac{\partial}{\partial\beta} V_A^b$ are computed by central finite differences of order $h = 10^{-5}$ applied to the full quadrature sum, rather than to a spline approximation of the continuation value, to avoid spurious oscillations near the regime boundary. Lemma \ref{lem:beta_bounds} establishes that $G$ changes sign exactly once on the feasible interval, guaranteeing convergence of Brent's method. Expected continuation values $\mathbb{E}[V_{P}(W') \mid W, \beta]$ and $\mathbb{E}[V_{A}(W') \mid W, \beta]$ are evaluated by $n_{q}$-node Gauss-Hermite quadrature, with cubic spline interpolation of the current value function iterates at off-grid wealth levels.
  
-\begin{algorithm}[H]
+\begin{algorithm}[htbp]
 \caption{Value function iteration}
 \label{alg:vfi}
 \begin{algorithmic}[1]
@@ -1067,7 +1098,7 @@ for $\beta^{*}(W)$ using Brent's method on the feasible interval. Derivatives $\
             \Comment{Slack regime: analytic solution}
             \State $\beta^{*}(W_{i}) \leftarrow \beta^{\mathrm{eff}}$
             \State $\alpha^{*}(W_{i}) \leftarrow
-                   \overline{u}_{A} - C(\beta^{\mathrm{eff}})
+                   \overline{\text{CE}} - C(\beta^{\mathrm{eff}})
                    + \delta S^{\mathrm{eff}}$
             \State $\lambda(W_{i}) \leftarrow \delta$
         \Else
@@ -1076,7 +1107,7 @@ for $\beta^{*}(W)$ using Brent's method on the feasible interval. Derivatives $\
                    $[\beta_{\ell}, \beta_{h}] \subset (0,1)$
                    where both $V_{P}^{b}$ and $V_{A}^{b}$ exceed
                    disagreement payoffs
-            \State Compute $\partial_\beta V_P^b$, $\partial_\beta V_A^b$
+            \State Compute $\tfrac{\partial}{\partial\beta} V_P^b$, $\tfrac{\partial}{\partial\beta} V_A^b$
                    by central finite differences on quadrature sum
             \State Solve $G(\beta;\,W_{i},\,\hat{V}_{P},\,\hat{V}_{A}) = 0$
                    on $[\beta_{\ell}, \beta_{h}]$ via Brent's method
@@ -1084,9 +1115,9 @@ for $\beta^{*}(W)$ using Brent's method on the feasible interval. Derivatives $\
                    \leftarrow \underline{w}(W_{i})
                    - \beta^{*}(W_{i})\,\underline{y}$
             \State $\lambda(W_{i})
-                   \leftarrow (V_{A}^{b} - \overline{u}_{A})\,/\,
-                   [(V_{P}^{b} - \overline{u}_{P})
-                   + (V_{A}^{b} - \overline{u}_{A})]$
+                   \leftarrow (V_{A}^{b} - \overline{\text{CE}})\,/\,
+                   [(V_{P}^{b} - \overline{\Pi})
+                   + (V_{A}^{b} - \overline{\text{CE}})]$
         \EndIf
         \State Compute $\mathbb{E}[\hat{V}_{P}(W')]$ and
                $\mathbb{E}[\hat{V}_{A}(W')]$ by Gauss-Hermite quadrature
@@ -1164,7 +1195,7 @@ Table \ref{tab:params} reports the baseline parameter values. The discussion bel
 \begingroup
 \small
 \setlength{\LTcapwidth}{\textwidth}
-\begin{longtable}{lllp{7.2cm}}
+\begin{longtable}{lllp{7cm}}
 \caption{Baseline parameter values}
 \label{tab:params} \\
 \toprule
@@ -1202,10 +1233,15 @@ Volatility & $\sigma$ & $0.3$ &
   Output standard deviation. At baseline, $\beta^{\mathrm{eff}} \approx 0.847$ and
   $S^{\mathrm{eff}} \approx 0.212$. Comparative statics vary $\sigma \in \{0.15, 0.30, 0.45, 0.60\}$. \\
 Output lower bound & $\underline{y}$ & $-0.5$ &
-  Effective lower bound on output for the limited liability constraint.
+  The parameter entering the limited liability constraint $\alpha \geq \underline{w}(W) - \beta\underline{y}$.
+  Since output follows $y = \theta a + \sigma\varepsilon$ with $\varepsilon \sim \mathcal{N}(0,1)$,
+  realized output can be negative in the left tail.
+  Setting $\underline{y} < 0$ ensures the constraint has empirical content:
+  a value of zero would make the binding region negligibly small under the normal distribution.
   With mean output $\mu_y \approx 0.42$ at baseline effort,
-  this places the bound approximately 3.1 standard deviations below the mean. \\[6pt]
- 
+  $\underline{y} = -0.5$ lies approximately 3.1 standard deviations below the mean. \\[6pt]
+
+\pagebreak[4]
 \multicolumn{4}{l}{\textit{Bargaining}} \\[2pt]
 Nash weight & $\delta$ & $0.4$ &
   Exogenous bargaining weight on the agent. A value below $0.5$ gives the principal
@@ -1224,12 +1260,13 @@ Wealth elasticity & $\gamma_{w}$ & $0.20$ &
   Comparative statics vary $\gamma_w \in \{0.05, 0.10, 0.20, 0.35\}$. \\[6pt]
  
 \multicolumn{4}{l}{\textit{Outside options}} \\[2pt]
-Disagreement payoffs & $\overline{u}_P, \overline{u}_A$ & $0$ &
+Disagreement payoffs & $\overline{\Pi}, \overline{\text{CE}}$ & $0$ &
   Both disagreement payoffs are set to zero. This ensures that realized
   bargaining power in the slack regime equals the exogenous Nash weight exactly,
   $\lambda = \delta$, providing a clean baseline against which to measure
   the binding-regime deviation. \\[6pt]
- 
+
+\pagebreak[4]
 \multicolumn{4}{l}{\textit{Computational settings}} \\[2pt]
 Wealth depreciation & $\rho_W$ & $0.85$ &
   Depreciation factor in the simulation law of motion $W_{t+1} = \rho_W W_t + \ldots$.
@@ -1267,8 +1304,8 @@ Efficient effort & $a^{\mathrm{eff}}$ & $0.424$ \\
 First-best surplus & $S^{\mathrm{FB}}$ & $0.250$ \\
 Efficient surplus & $S^{\mathrm{eff}}$ & $0.212$ \\
 Moral hazard efficiency loss & $S^{\mathrm{FB}} - S^{\mathrm{eff}}$ & $0.038$ \\
-Agent outside option & $\overline{u}_{A}$ & $0$ \\
-Principal outside option & $\overline{u}_{P}$ & $0$ \\
+Agent disagreement payoff & $\overline{\text{CE}}$ & $0$ \\
+Principal disagreement payoff & $\overline{\Pi}$ & $0$ \\
 Regime boundary & $\overline{W}$ & $0.931$ \\
 Wealth grid & $[W_{\min}, W_{\max}]$ & $[0.05,\;6.70]$ \\
 VFI convergence & Iterations & $\approx 229$ \\
@@ -1280,7 +1317,7 @@ Mean $\lambda$ conditional on binding & $\mathbb{E}[\lambda \mid W < \overline{W
 \end{tabular}
 \end{table}
  
-Two features of the calibration deserve specific comment. First, setting both outside options to zero ($\overline{u}_P = \overline{u}_A = 0$) is not an approximation but a deliberate identification choice. It ensures that the slack-regime identity $\lambda = \delta$ holds exactly rather than approximately, which provides the sharpest possible baseline for measuring the binding-regime deviation. Any positive outside option would shift both value functions uniformly, leaving the deviation $\lambda(W) - \delta$ unchanged in sign and direction, but would introduce a constant that partially obscures the comparison. Second, the parameters $\overline{w}$ and $\gamma_w$ do not have direct empirical counterparts in the existing literature, since wealth-dependent limited liability is the novel ingredient of the model. They are chosen to satisfy two requirements: the feasible set is non-empty across the entire binding domain, and the regime boundary lies at an interior point of the wealth grid where the mechanism is active in the ergodic distribution. Any calibration satisfying $\gamma_w \in (0,1)$ and $\overline{W}$ interior preserves all qualitative results.
+Two features of the calibration deserve specific comment. First, setting both disagreement payoffs to zero ($\overline{\Pi} = \overline{\text{CE}} = 0$) is not an approximation but a deliberate identification choice. It ensures that the slack-regime identity $\lambda = \delta$ holds exactly rather than approximately, which provides the sharpest possible baseline for measuring the binding-regime deviation. Any positive disagreement payoff would shift both value functions uniformly, leaving the deviation $\lambda(W) - \delta$ unchanged in sign and direction, but would introduce a constant that partially obscures the comparison. Second, the parameters $\overline{w}$ and $\gamma_w$ do not have direct empirical counterparts in the existing literature, since wealth-dependent limited liability is the novel ingredient of the model. They are chosen to satisfy two requirements: the feasible set is non-empty across the entire binding domain, and the regime boundary lies at an interior point of the wealth grid where the mechanism is active in the ergodic distribution. Any calibration satisfying $\gamma_w \in (0,1)$ and $\overline{W}$ interior preserves all qualitative results.
  
 %=======================================
 \subsection{Numerical results}\label{subsec:numericalresults}
@@ -1297,8 +1334,9 @@ The right panel shows the welfare distortion $\Delta(W) = S^{\mathrm{eff}} - S(\
  
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{Figuras/fig_policy_functions.png}
 \caption{Policy functions at baseline. Left: $\beta^*(W)$ below $\beta^{\mathrm{eff}}$ in the binding regime. Center: $\lambda(W) > \delta$ in the binding regime, equal to $\delta$ in the slack. Right: welfare distortion $\Delta(W)$. Dotted line at $\overline{W} = 0.931$.}
+\includegraphics[width=\textwidth]{Figuras/fig_policy_functions.png}
+\caption*{\text{Source:} Own elaboration in Python.}
 \label{fig:policy_functions}
 \end{figure}
  
@@ -1306,35 +1344,42 @@ Figure \ref{fig:value_functions} shows the value functions $V_P(W)$ and $V_A(W)$
  
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.75\textwidth]{Figuras/fig_value_functions.png}
 \caption{Value functions $V_P(W)$ and $V_A(W)$. Both are continuous at $\overline{W} = 0.931$ (dotted line) with a slope change at the regime boundary.}
+\includegraphics[width=0.75\textwidth]{Figuras/fig_value_functions.png}
+\caption*{\text{Source:} Own elaboration in Python.}
 \label{fig:value_functions}
 \end{figure}
+\vspace{-0.1cm}
 
 Figure \ref{fig:pareto_frontiers} provides the geometric intuition for the two-regime structure by displaying the Pareto frontier in $(\Pi_s, \mathrm{CE}_s)$ space for both regimes alongside the Nash solution in each. In the slack regime the frontier is linear, and the Nash solution (the point where an iso-Nash curve is tangent to the frontier) delivers the agent exactly the share $\delta$ of total surplus. In the binding regime the frontier is curved, and the Nash solution delivers a share $\lambda^{\mathrm{bind}} \neq \delta$ because redistributing surplus requires moving along the curved frontier rather than adjusting the fixed payment.
- 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.80\textwidth]{Figuras/fig_pareto_frontiers.png}
-\caption{Pareto frontiers. Left: slack regime, linear frontier, $\lambda = \delta$. Right: binding regime at $W = \overline{W}/2$, curved frontier, $\lambda \neq \delta$.}
-\label{fig:pareto_frontiers}
-\end{figure}
-  
+
 Figure \ref{fig:ergodic} displays the simulated ergodic distribution $\hat{\Phi}^*$ constructed from 1{,}000 agents each simulated for 10{,}000 periods with a burn-in of 500. The distribution is unimodal and right-skewed, with its mode slightly below $\overline{W} = 0.931$ (marked by the dashed vertical line). Approximately 65.9 percent of the ergodic mass falls in the binding regime ($W < \overline{W}$), indicating that the endogenous bargaining mechanism is active for a majority of the stationary population at any given date. The right tail extends to $W \approx 3$, reflecting agents who have accumulated substantially and operate in the slack regime. The distribution is consistent with the Foster-Lyapunov condition of Proposition \ref{prop:ergodic}: the drift coefficient $-2\gamma_w(1-\gamma_w) = -0.32 < 0$ at $\gamma_w = 0.20$ ensures mean reversion, producing the concentrated stationary shape visible in the figure.
  
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.70\textwidth]{Figuras/fig_ergodic.png}
+\caption{Pareto frontiers. Left: slack regime, linear frontier, $\lambda = \delta$. Right: binding regime at $W = \overline{W}/2$, curved frontier, $\lambda \neq \delta$. Dashed curves are iso-Nash-product loci $\Pi_s^{1-\delta}\,\mathrm{CE}_s^{\delta} = \text{const}$ at $\delta = 0.4$; they are not egalitarian ($\delta \neq 0.5$) but are tangent to the frontier at the respective Nash solutions.}
+\includegraphics[width=0.7\textwidth]{Figuras/fig_pareto_frontiers.png}
+\caption*{Source: Own elaboration in Python.}
+\label{fig:pareto_frontiers}
+\end{figure}
+\vspace{-0.1cm}
+ 
+\begin{figure}[H]
+\centering
 \caption{Simulated ergodic distribution $\hat{\Phi}^*$. Dashed line at $\overline{W} = 0.931$; shaded region is the binding regime (65.9\% of mass). Ergodic mean $W^* \approx 0.784$.}
+\includegraphics[width=0.70\textwidth]{Figuras/fig_ergodic.png}
+\caption*{Source: Own elaboration in Python.}
 \label{fig:ergodic}
 \end{figure}
+\vspace{-0.1cm}
  
 Figure \ref{fig:single_path} shows a representative simulated path of $W_t$ and $\lambda_t$ over 200 periods. The upper panel shows $W_t$ fluctuating around $\overline{W}$, crossing the boundary in both directions. The lower panel shows the corresponding realized bargaining power: when $W_t < \overline{W}$, $\lambda_t$ lies above $\delta = 0.40$, reaching values near $0.437$ in binding episodes; when $W_t \geq \overline{W}$, $\lambda_t$ drops to $\delta$ exactly. The switching between regimes is immediate and state-dependent. This is the correct interpretation of Proposition \ref{prop:dynamics}: $\lambda_t$ evolves because $W_t$ evolves through the policy function $\lambda(\cdot)$, not because $\lambda$ itself is a separate state variable with its own law of motion. The figure also illustrates the distribution of realized bargaining power in log-odds space $\ell_t = \log(\lambda_t / (1-\lambda_t))$, which fluctuates between the binding-regime value $\ell^{\mathrm{bind}} \approx 0.30$ and the slack-regime constant $\ell^{\mathrm{slack}} = \log(\delta/(1-\delta)) \approx -0.405$.
  
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{Figuras/fig_single_path.png}
 \caption{Simulated path of $W_t$ (upper) and $\lambda_t$ (lower). Dashed lines at $\overline{W} = 0.931$ and $\delta = 0.40$. Episodes with $W_t < \overline{W}$ coincide with $\lambda_t > \delta$.}
+\includegraphics[width=\textwidth]{Figuras/fig_single_path.png}
+\caption*{Source: Own elaboration in python.}
 \label{fig:single_path}
 \end{figure}
   
@@ -1344,26 +1389,31 @@ As risk aversion $\gamma$ rises, the ergodic distribution shifts leftward and co
  
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{Figuras/fig_cs_gamma.png}
 \caption{Ergodic distribution $\hat{\Phi}^*$ for $\gamma \in \{0.5, 1.0, 1.5, 2.0\}$. Higher $\gamma$ shifts mass leftward and moves $\overline{W}$ (dotted lines) rightward.}
+\includegraphics[width=0.8\textwidth]{Figuras/fig_cs_gamma.png}
+\caption*{Source: Own elaboration in Python.}
 \label{fig:cs_gamma}
 \end{figure}
+\vspace{-0.1cm}
  
 As output volatility $\sigma$ rises, the ergodic distribution spreads and its mean falls. Higher volatility reduces $\beta^{\mathrm{eff}}$, which lowers average wealth accumulation, while also directly increasing the variance of wealth innovations $\beta^*(W)\sigma\varepsilon_t$. The threshold $\overline{W}$ falls with $\sigma$ because the unconstrained fixed payment decreases as $\beta^{\mathrm{eff}}$ falls. The net effect is a broader, lower-mean distribution at high volatility, with more mass on both sides of the (lower) threshold.
  
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{Figuras/fig_cs_sigma.png}
 \caption{Ergodic distribution $\hat{\Phi}^*$ for $\sigma \in \{0.15, 0.30, 0.45, 0.60\}$. Higher $\sigma$ spreads the distribution and moves $\overline{W}$ (dotted lines) leftward.}
+\includegraphics[width=0.8\textwidth]{Figuras/fig_cs_sigma.png}
+\caption*{Source: Own elaboration in Python.}
 \label{fig:cs_sigma}
 \end{figure}
+\vspace{-0.1cm}
  
 As the wealth elasticity $\gamma_w$ rises, the ergodic distribution shifts rightward and its right tail lengthens. A higher $\gamma_w$ means the limited liability floor relaxes more slowly with wealth, so agents must accumulate more to exit the binding regime. The threshold $\overline{W}$ rises with $\gamma_w$. Higher $\gamma_w$ also amplifies the sensitivity $\lambda'(W)$ through its direct appearance in the derivative of the limited liability floor (Appendix \ref{ProofProp2}), so agents in the binding regime experience larger period-to-period movements in realized bargaining power for the same output shock. This is the clearest quantitative illustration of the paper's main mechanism: the parameter governing how wealth relaxes the limited liability constraint directly controls both the location of the ergodic distribution and the amplitude of bargaining power fluctuations within the binding regime.
  
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{Figuras/fig_cs_gamma_w.png}
 \caption{Ergodic distribution $\hat{\Phi}^*$ for $\gamma_w \in \{0.05, 0.10, 0.20, 0.35\}$. Higher $\gamma_w$ shifts the distribution rightward and moves $\overline{W}$ (dotted lines) rightward.}
+\includegraphics[width=0.85\textwidth]{Figuras/fig_cs_gamma_w.png}
+\caption*{Source: Own elaboration in Python.}
 \label{fig:cs_gamma_w}
 \end{figure}
   
@@ -1371,45 +1421,92 @@ Figure \ref{fig:comparison_ss} provides a direct numerical comparison with \text
  
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{Figuras/fig_comparison_ss.png}
 \caption{Comparison with \textcite{spear1987}. Left two panels: $V(v_t)$ (blue) and $V_P(W)$ (red) in their respective state spaces. Third: $\beta^*(W)$ below the SS benchmark $\beta^{\mathrm{eff}}$ in the binding regime. Fourth: wage sensitivity to output shocks, normalized by state variable range.}
+\includegraphics[width=\textwidth]{Figuras/fig_comparison_ss.png}
+\caption*{Source: Own elaboration in Python.}
 \label{fig:comparison_ss}
 \end{figure}
  
-Figure \ref{fig:comparison_dg} provides the analogous comparison with \textcite{digiannatale2025}. Three panels are shown. The first compares the mean conditional drift of the bargaining state across models. In the DG framework, the expected change in bargaining power is constant and positive in every period, equal to the bargaining drift coefficient $\varepsilon \cdot (f_{HH} - f_{LH} \cdot y_L/y_H) \approx 0.0005$ at the baseline. In this model, the analogous quantity $\mathbb{E}[\lambda(W_{t+1}) \mid W_t] - \lambda(W_t)$ is computed by quadrature from the converged policy functions and is strongly state-dependent: it is positive for $W_t < W^*$, crosses zero at the ergodic mean $W^* \approx 0.784$, and is negative for $W_t > W^*$. The region labels in the figure identify where the limited liability constraint is binding and where it is slack. This mean-reversion property cannot be generated by any constant-drift specification. The second panel compares performance pay intensity, normalized by the respective output range to isolate incentive intensity from levels: the DG wage differential $w_H(\delta) - w_L(\delta)$ divided by $y_H - y_L$ is nearly constant across the state, while the corresponding quantity $\beta^*(W)(E[y_H \mid W] - \underline{y})/\overline{(y_H - y_L)}$ rises with $W$ in the binding regime and flattens in the slack regime. The third panel shows simulated paths of the bargaining state from three initial conditions in each model: DG paths drift slowly and nearly deterministically upward, while paths in this model fluctuate rapidly around the ergodic mean, crossing the Nash weight $\delta = 0.40$ repeatedly in both directions.
+Figure \ref{fig:comparison_dg} provides the analogous comparison with \textcite{digiannatale2025}. Three panels are shown. The first compares the mean conditional drift of the bargaining state across models. In the DG framework, the expected change in bargaining power is constant and positive in every period, equal to the bargaining drift coefficient $(f_{HH} - f_{LH} [ y_L/y_H])\varepsilon \approx 0.0005$ at the baseline. In this model, the analogous quantity $\mathbb{E}[\lambda(W_{t+1}) \mid W_t] - \lambda(W_t)$ is computed by quadrature from the converged policy functions and is strongly state-dependent: it is positive for $W_t < W^*$, crosses zero at the ergodic mean $W^* \approx 0.784$, and is negative for $W_t > W^*$. The region labels in the figure identify where the limited liability constraint is binding and where it is slack. This mean-reversion property cannot be generated by any constant-drift specification. The second panel compares performance pay intensity, normalized by the respective output range to isolate incentive intensity from levels: the DG wage differential $w_H(\delta) - w_L(\delta)$ divided by $y_H - y_L$ is nearly constant across the state, while the corresponding quantity $\beta^*(W)(E[y_H \mid W] - \underline{y})/\overline{(y_H - y_L)}$ rises with $W$ in the binding regime and flattens in the slack regime. The third panel shows simulated paths of the bargaining state from three initial conditions in each model: DG paths drift slowly and nearly deterministically upward, while paths in this model fluctuate rapidly around the ergodic mean, crossing the Nash weight $\delta = 0.40$ repeatedly in both directions.
  
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{Figuras/fig_comparison_dg.png}
 \caption{Comparison with \textcite{digiannatale2025}. Left: mean drift of the bargaining state, constant in DG and mean-reverting in this model. Center: performance pay intensity normalized by output range. Right: simulated paths from three initial conditions; dashed line at $\delta = 0.40$.}
+\includegraphics[width=\textwidth]{Figuras/fig_comparison_dg.png}
+\caption*{Source: Own elaboration in Python.}
 \label{fig:comparison_dg}
 \end{figure}
 
+The convergence of the value function iteration documented in Table \ref{tab:derived} provides numerical verification that the equilibrium mapping is well-behaved in the long run. In the spirit of \textcite{abreu1990}, one can think of the set of continuation value pairs $(V_P(W), V_A(W))$ as needing to be self-generating under the induced policy functions: the equilibrium continuation values at any state $W$ must be reproducible by the stationary contract $(\alpha^*(W), \beta^*(W))$ together with the continuation values that follow from next period's wealth.  The convergence of value functions to a fixed point is confirmed by numerical results. In about 229 iterations they approach unique pair $(V_P^*, V_A^*)$ that will be stable under the bellman operator applications. Similarly, the ergodic distribution $\hat{\Phi}^*$, which was obtained from simulation data, has this same property of stability. The wealth process initialized at any point on interval $ [W_{\min}, W_{\max}] $ will tend to the same equilibrium distribution as it evolves over time and does not depend on the initial condition of the system; this is consistent with geometric ergodicity proven in proposition \ref{prop:ergodic}.
 
-The convergence of the value function iteration documented in Table \ref{tab:derived} provides numerical verification that the equilibrium mapping is well-behaved in the long run. In the spirit of \textcite{abreu1990}, one can think of the set of continuation value pairs $(V_P(W), V_A(W))$ as needing to be self-generating under the induced policy functions: the equilibrium continuation values at any state $W$ must be reproducible by the stationary contract $(\alpha^*(W), \beta^*(W))$ together with the continuation values that follow from next period's wealth. The fixed-point result of Proposition \ref{prop:existence} guarantees this property analytically, and the numerical results confirm it: the value functions converge in approximately 229 iterations to a unique pair $(V_P^*, V_A^*)$ that is stable under repeated application of the Bellman operator. The ergodic distribution $\hat{\Phi}^*$ constructed from the simulation inherits this stability: the wealth process initialized anywhere in $[W_{\min}, W_{\max}]$ converges to the same stationary distribution regardless of starting point, consistent with the geometric ergodicity established in Proposition \ref{prop:ergodic}.
-
-The simulated ergodic distribution $\hat{\Phi}^*$ gives concrete meaning to the  long-run heterogeneity established in Proposition \ref{prop:ergodic}. Agents with identical primitives but different output histories end up in permanently different positions on the $\lambda(W)$ schedule: those whose histories place them below $\overline{W}$ face a curved frontier and realize a surplus share that deviates from $\delta$, while those above $\overline{W}$ operate as if in the standard transferable-utility framework. The 65.9 percent of ergodic mass that falls in the binding regime is not a transient phenomenon: it reflects the stochastic steady state of the wealth process under the baseline calibration, and it persists for any parameterization that satisfies $\gamma_w \in (0,1)$. The structural drift $\kappa_t = \gamma_w \beta_t^* \sigma$ that governs this distribution is in principle observable: it is a function of the incentive slope, output volatility, and the wealth elasticity of the limited liability floor, all of which have counterparts in panel data on long-term compensation contracts. This suggests a natural empirical extension in which the structural parameters are recovered from data on contract terms, firm performance, and measures of the agent's financial position, using the identification approach of \textcite{digiannatale2025} as a 
-starting point.
+Ergodic mass distribution simulated $\hat{\Phi}^*$ provides a physical interpretation for long-run heterogeneity established in proposition \ref{prop:ergodic}. Agents with identical primitive characteristics but different output history will have different positions on schedule $\lambda(W)$ forever. Those whose output history place them below $\overline{W}$ have curved frontier and realize surplus share that deviates from $\delta$, while those above $\overline{W}$ work as if in standard transferable utility framework. Mass of 65.9\% of ergodic mass fell into binding regime is not just a transient phenomena, it reflects steady state of wealth process under baseline calibration and is therefore perpetually present in parameterization where $\gamma_w \in (0,1)$, structural drift $\kappa_t = \gamma_w \beta_t^* \sigma$ governing the distribution is observable in principle and can be derived from panel data on long-term compensation contracts. This suggests a natural empirical extension in which the structural parameters are recovered from data on contract terms, firm performance, and measures of the agent's financial position, using the identification approach of \textcite{digiannatale2025} as a starting point.
 
 \newpage
  
 %=======================================
 \section{Conclusion}\label{Conclusion}
 %=======================================
- The classical dynamic contracting literature, from \textcite{holmstrom1979} through \textcite{spear1987} and \textcite{thomas1990}, treats bargaining power as an exogenous parameter and asks how incentives and continuation values evolve within that structure. The Nash bargaining literature, from \textcite{nash1950} through the strategic foundations of \textcite{rubinstein1982} and \textcite{binmore1986}, characterizes how surplus is divided given a feasible set of allocations, but takes that feasible set as fixed and independent of the contracting problem. \textcite{demougin2006} show that in a static environment with limited liability and risk-neutral parties, three representations of bargaining power are equivalent on the Pareto frontier. \textcite{inderst2002} and \textcite{dittrich2015} study how bargaining power responds to outside options and market structure. None of these papers asks whether binding limited liability constraints can themselves generate a drift in realized bargaining power as wealth accumulates over time. This paper shows that they can, and characterizes the mechanism precisely.
- 
-The central result is that when the limited liability floor is wealth-dependent, the Pareto frontier in the binding regime is curved rather than linear. The curvature arises because the only available instrument for redistribution is the incentive slope $\beta_t$, and moving $\beta_t$ changes total surplus at the same time as it changes its distribution. The Nash bargaining solution over this non-transferable frontier produces a realized share $\lambda(W_t)$ that deviates from the exogenous Nash weight $\delta$ in a history-dependent way, with the deviation governed entirely by accumulated wealth through the limited liability threshold. The deviation is zero whenever the constraint is slack, so the model nests the standard framework as a special case and delivers it exactly in the long run for agents whose wealth histories are favorable. For agents whose wealth histories are not, bargaining power is persistently compressed, not because of any change in primitives, but because the feasible set is endogenously restricted by the financial position of the agent.
- 
-The relation to \textcite{spear1987} is one of complementarity rather than competition. Spear and Srivastava provide the recursive reduction that makes infinite-horizon contracting tractable; this paper uses that reduction with accumulated wealth as the state variable, justified by the CARA-linear structure that makes certainty equivalents shift additively with the fixed payment. What changes is the object of interest: rather than characterizing how promised utility evolves, the model characterizes how the binding limited liability constraint feeds back into the equilibrium contract, compressing the incentive slope below its efficient level and distorting the surplus distribution in a way that disappears only when the constraint ceases to bind.
- 
-The relation to \textcite{digiannatale2025} is more direct. That paper introduces an explicit law of motion for bargaining power and demonstrates that the drift intensity governs compensation dynamics, risk sharing, and the long-run distribution of contractual outcomes. The drift parameter is treated as a free primitive, which is the natural starting point for a reduced-form analysis. What this paper contributes is a structural account of where that parameter comes from. The drift $\kappa_t = \gamma_w \beta_t^* \sigma$ is not a constant and not exogenous: it is the equilibrium outcome of wealth accumulation interacting with a wealth-dependent limited liability constraint under moral hazard, derived from the Nash first-order condition and the wealth law of motion. Each factor is interpretable in terms of the primitives of the environment, and any one of them being zero shuts the mechanism down entirely. Furthermore, the structural drift is state-dependent, being proportional to $\beta_t^*(W_t)$, which varies across the binding regime. This means the bargaining power process is mean-reverting rather than having constant drift, a property that is a fundamental departure from the DiGiannatale et al.\ specification and is precisely what guarantees the existence of a unique invariant distribution.
- 
-The ergodic distribution $\Phi^*$ is the long-run object of interest, and the model delivers it under a clean sufficient condition. The invariant measure places persistent mass in the binding regime: identical agents with the same primitives but different histories of output shocks exhibit permanently different realized bargaining positions. This is not a transient phenomenon. It reflects the fact that the wealth process has a stochastic steady state that is interior to the binding regime, so most agents spend most of their time in an environment where the non-transferable utility distortion is active and the standard separation of efficiency and distribution does not hold.
- 
-Several directions follow naturally. The identification approach of \textcite{digiannatale2025} provides a path to empirical work: their reduced-form estimate $\hat{\kappa}$ maps directly onto the structural expression $\gamma_w \beta^* \sigma$, so panel data on executive compensation, firm performance, and measures of agent financial position could be used to recover $\gamma_w$ as the residual after controlling for the incentive slope and output volatility. The welfare decomposition suggests a complementary policy application: because the bargaining distortion $\Delta(W)$ is decreasing in wealth and vanishes at $\overline{W}$, any intervention that shifts the ergodic distribution rightward reduces aggregate efficiency loss. This provides a welfare rationale for instruments that build agent wealth, including collateral support schemes or minimum compensation floors, that goes beyond the standard insurance-incentive trade-off and operates through the bargaining channel.
+This thesis demonstrates that limited liability is capable of creating bargaining 
+power, instead of simply limiting bargains. With the level of limited liability determined 
+by the amount of wealth an individual has amassed, the Pareto frontier is no longer a 
+straight line (as it would be without limited liability), and the only possible tool to 
+use to redistribute surplus is the incentive slope, $\beta_t$. Therefore, as the value 
+of $\beta_t$ increases or decreases, both the total amount of surplus created and the 
+allocation of that surplus among agents will increase or decrease. Thus, while the value 
+of $\beta_t$ can be used to make the distribution of surplus more equitable, it also 
+creates an inefficiency. That is, it is impossible to create equity in the allocation of 
+surplus without creating some degree of inefficiency.
 
-More broadly, the results of this thesis suggest a reinterpretation of observed shifts in bargaining outcomes within long-term contractual relationships. The standard reading attributes changes in surplus shares to changes in primitives: shifts in outside options, market conditions, or the underlying distribution of bargaining power. The model developed here offers an alternative: observed changes in realized bargaining power may reflect the endogenous response of the contracting environment to accumulated wealth, operating through the limited liability channel, rather than any change in the fundamentals of the relationship. An agent who captures a growing share of surplus over time need not have become more patient, acquired better outside options, or gained institutional bargaining strength. It may simply be that a history of favorable output realizations has relaxed the limited liability constraint, shifted the feasible set, and moved the Nash solution along a curved frontier toward a more favorable surplus division. Distinguishing between these two interpretations is not merely a theoretical exercise: it has direct implications for how policymakers and contract designers should respond to observed inequality in contractual outcomes.
+Given that it is not possible to separate issues of equity and efficiency when using the 
+incentive slope, the Nash bargaining solution over the non-transferable utility frontier 
+will result in a realized share $\lambda(W)$ that differs from the exogenous Nash weight 
+$\delta$. Importantly, the difference between $\lambda(W)$ and $\delta$ will depend upon 
+an agent's wealth at date $t$, $W_t$, and thus will be history dependent. Furthermore, 
+the dependence of bargaining power on wealth implies that bargaining power is not 
+something that evolves over time due to external events (such as a change in an agent's 
+patience, outside option, or Nash weight). Rather, bargaining power is an endogenous 
+state variable generated by the interplay between an agent's wealth accumulation and the 
+binding limited liability constraint.
 
+It is the existence of a unique invariant distribution $\Phi^*$ that eliminates the 
+possibility that this mechanism can be dismissed as a transitionary phenomenon. The 
+wealth process generates a stochastic steady-state distribution $\Phi^*$ such that there 
+is persistent mass within the binding regime. Specifically, in my base case calibration, 
+65.9\% of the ergodic distribution lies within the binding regime. Furthermore, agents 
+with identical primitives (i.e., same patience, same outside option, etc.) who experience 
+different histories of outputs will find themselves located permanently in different 
+locations along the $\lambda(W)$ schedule. The source of this permanent heterogeneity is 
+the cumulative impact of previous output shocks on each agent's current wealth. It is 
+this wealth that determines each agent's location relative to the limited liability 
+threshold.
+
+Classical dynamic contracting literature \parencite{holmstrom1979, spear1987, thomas1990} 
+treats bargaining power as an exogenous input to the contracting problem, examining how 
+incentives and continuation values evolve within that framework. Traditional Nash bargaining literature \parencite{nash1950, rubinstein1982, binmore1986} examines surplus 
+division given a fixed and feasible set of allocations. \textcite{demougin2006} 
+demonstrate that in a static environment with limited liability and risk-neutral parties, 
+there exist three equivalent representations of bargaining power on the Pareto frontier. 
+Importantly, none of these works examines whether binding limited-liability constraints 
+can transform bargaining power from an exogenous primitive into an endogenous state 
+variable. \textcite{digiannatale2025} examine how the drift in bargaining power evolves 
+over time in a reduced-form setting. This thesis develops structural microfoundations 
+that provide the basis for understanding why and how bargaining power drifts over time 
+due to binding limited-liability constraints.
+
+The structural drift $\kappa_t = \gamma_w \beta_t^* \sigma$ is potentially identifiable 
+from data. It depends solely upon the incentive slope $\beta_t^*$, output volatility 
+$\sigma$, and the wealth elasticity of the limited liability floor $\gamma_w$, each 
+having direct analogues in panel data on long-term compensation contracts. Given the 
+identification method developed by \textcite{digiannatale2025}, their reduced-form 
+estimate $\hat{\kappa}$ maps directly into this structural representation. Controlling 
+for both $\beta_t^*$ and $\sigma$ would allow $\gamma_w$ to be isolated as the residual. 
+From a policy perspective, the fact that $\Delta(W)$ is decreasing in wealth and 
+disappears once $\overline{W}$ is reached provides one reason to consider instruments 
+designed to shift the ergodic distribution to the right. The theorem establishes that a 
+welfare distortion does exist and describes its size; however, whether any particular 
+intervention is desirable depends on factors outside the scope of this study.
+
+More generally, this thesis demonstrates that observed changes in bargaining outcomes  need not be indicative of underlying changes in bargaining fundamentals. In the model,  an agent may receive a greater share of surplus over time despite experiencing no change  in patience, outside options, or exogenous Nash weights. The only reason for this change  is that accumulated wealth reduces the binding limited liability constraint, thereby  expanding the feasible set of allocations and shifting the agent's bargaining position  along the Pareto frontier. The key lesson is that bargaining power need not be treated  as primitive. Under wealth-dependent limited liability, it emerges endogenously as part of the contractual environment itself.
 \newpage
 \addcontentsline{toc}{section}{References}
 \printbibliography
@@ -1422,14 +1519,14 @@ More broadly, the results of this thesis suggest a reinterpretation of observed 
 
     The structural model in Section \ref{Model} derives bargaining power evolution from the interaction of binding limited liability constraints and wealth accumulation. This appendix shows how the mechanism maps to the reduced-form stochastic processes used in computational approaches \parencite{digiannatale2025}.
     
-    In a dynamic setting, threat points $(\overline{\Pi}_t, \overline{\text{CE}}_t)$ represent continuation values if negotiations break down. These depend on expected future interactions and are therefore influenced by current performance. We model this persistence through linear updating rules:
+    In a dynamic setting, the disagreement payoffs $(\overline{\Pi}_t, \overline{\text{CE}}_t)$ represent the principal's profit and the agent's certainty equivalent if negotiations break down at date $t$. In the theoretical model of Section \ref{Model} these are treated as fixed exogenous constants $(\overline{\Pi}, \overline{\text{CE}})$. This appendix considers an extension for the purpose of the mapping exercise only: suppose that disagreement payoffs depend on expected future interactions and are therefore influenced by current performance. To trace the structural implications of that channel, we posit linear updating rules
     \[
-    \overline{\Pi}_{t+1} = \overline{\Pi}_t + \xi_P \cdot [(y_t - w_t) - \mathbb{E}[y_t - w_t \mid a_t^*]]
+    \overline{\Pi}_{t+1} = \overline{\Pi}_t + [(y_t - w_t) - \mathbb{E}[y_t - w_t \mid a_t^*]]\xi_P ,
     \]
     \[
-    \overline{\text{CE}}_{t+1} = \overline{\text{CE}}_t + \xi_A \cdot [w_t - \mathbb{E}[w_t \mid a_t^*]]
+    \overline{\text{CE}}_{t+1} = \overline{\text{CE}}_t + [w_t - \mathbb{E}[w_t \mid a_t^*]]\xi_A ,
     \]
-    where $\xi_P, \xi_A > 0$ capture how realized deviations from expected payoffs propagate into future threat points.
+    where $\xi_P, \xi_A > 0$ capture how realized deviations from expected payoffs propagate into future disagreement payoffs. This updating structure is not a maintained assumption of the model; it is a device for connecting the structural sensitivity $\gamma_w$ to the reduced-form drift $\kappa$ of \textcite{digiannatale2025}.
     
     Under the linear contract $w_t = \alpha_t + \beta_t y_t$ with $y_t = \theta a_t^* + \sigma \varepsilon_t$, realized deviations from expectations are
     \[
@@ -1446,7 +1543,7 @@ More broadly, the results of this thesis suggest a reinterpretation of observed 
     \]
     The implicit function theorem gives
     \[
-    \frac{\partial \beta_t^*}{\partial \overline{\Pi}_t} = -\frac{(1-\delta)[\Pi_t'(\beta_t^*)]^2}{[\Pi_t(\beta_t^*) - \overline{\Pi}_t]^2 \cdot \text{SOC}}, \qquad \frac{\partial \beta_t^*}{\partial \overline{\text{CE}}_t} = -\frac{\delta[\text{CE}_t'(\beta_t^*)]^2}{[\text{CE}_t(\beta_t^*) - \overline{\text{CE}}_t]^2 \cdot \text{SOC}}
+    \frac{\partial \beta_t^*}{\partial \overline{\Pi}_t} = -\frac{(1-\delta)[\Pi_t'(\beta_t^*)]^2}{[\Pi_t(\beta_t^*) - \overline{\Pi}_t]^2\ \text{SOC}}, \qquad \frac{\partial \beta_t^*}{\partial \overline{\text{CE}}_t} = -\frac{\delta[\text{CE}_t'(\beta_t^*)]^2}{[\text{CE}_t(\beta_t^*) - \overline{\text{CE}}_t]^2 \text{SOC}}
     \]
     where $\text{SOC} < 0$ is the second-order condition. Denote the sensitivities of realized bargaining power to threat points by
     \[
@@ -1475,10 +1572,11 @@ More broadly, the results of this thesis suggest a reinterpretation of observed 
     \[
     \gamma_w \sim \mu_P \xi_P.
     \]
-    Similarly, mean reversion $\phi$ corresponds structurally to the rate at which wealth converges toward its ergodic distribution, approximately $\phi \approx \rho[1 - \gamma_w \sigma^2 \beta^{\text{eff}}]$.
+    Similarly, mean reversion $\phi$ corresponds structurally to the rate at which wealth converges toward its ergodic distribution. A first-order approximation of the wealth law of motion around the ergodic mean gives $\phi \approx \rho[1 - \gamma_w \sigma^2 \beta^{\mathrm{eff}}]$, where the factor $\gamma_w\sigma^2\beta^{\mathrm{eff}}$ captures the mean-reverting force of the limited liability channel identified in the Foster-Lyapunov argument of Appendix \ref{ProofProp3}.
 
 \begin{figure}[htbp]
 \centering
+\caption{Structural foundations of reduced-form bargaining dynamics.}
 \begin{tikzpicture}[
     box/.style={rectangle, draw, thick, minimum width=3cm, minimum height=0.9cm, align=center, font=\small},
     mainbox/.style={rectangle, draw, very thick, minimum width=4.5cm, minimum height=1.2cm, align=center, font=\normalsize},
@@ -1524,7 +1622,7 @@ More broadly, the results of this thesis suggest a reinterpretation of observed 
     \draw[->, dashed, thick] (reduced.east) to[out=0, in=240] (equiv.south west);
     
 \end{tikzpicture}
-\caption{Structural foundations of reduced-form bargaining dynamics.}
+\caption*{Source: Own elaboration.}
 \label{fig:reduced_form_mapping}
 \end{figure}
     
@@ -1544,7 +1642,7 @@ More broadly, the results of this thesis suggest a reinterpretation of observed 
     \]
     It remains to characterize $\lambda'(W_t)$ explicitly.
 
-    We work in the static binding regime to compute $d\beta^*/d\underline{w}$ and $d\lambda/d\underline{w}$; the dynamic case inherits the same sign structure by continuity of the continuation values in the state, as established in Proposition \ref{prop:existence}. With $\alpha = \underline{w} - \beta\underline{y}$ binding, payoffs are $\Pi(\beta) = D(\beta) + \beta\underline{y} - \underline{w}$ and $\mathrm{CE}(\beta) = C(\beta) - \beta\underline{y} + \underline{w}$. Write $\Pi_s := \Pi(\beta) - \overline{u}_P > 0$ and $\mathrm{CE}_s := \mathrm{CE}(\beta) - \overline{u}_A > 0$ for the surpluses above disagreement, and $S := \Pi_s + \mathrm{CE}_s$ for total net surplus.
+    We work in the static binding regime to compute $d\beta^*/d\underline{w}$ and $d\lambda/d\underline{w}$; the dynamic case inherits the same sign structure by continuity of the continuation values in the state, as established in Proposition \ref{prop:existence}. With $\alpha = \underline{w} - \beta\underline{y}$ binding, payoffs are $\Pi(\beta) = D(\beta) + \beta\underline{y} - \underline{w}$ and $\mathrm{CE}(\beta) = C(\beta) - \beta\underline{y} + \underline{w}$. Write $\Pi_s := \Pi(\beta) - \overline{\Pi} > 0$ and $\mathrm{CE}_s := \mathrm{CE}(\beta) - \overline{\text{CE}} > 0$ for the surpluses above the respective disagreement payoffs, and $S := \Pi_s + \mathrm{CE}_s$ for total net surplus.
 
     Define $G(\beta,\underline{w}) := (1-\delta)\Pi'(\beta)/\Pi_s + \delta\,\mathrm{CE}'(\beta)/\mathrm{CE}_s$, where $\Pi'(\beta) = D'(\beta) + \underline{y}$ and $\mathrm{CE}'(\beta) = C'(\beta) - \underline{y}$, so that $\beta^*(W)$ satisfies $G(\beta^*,\underline{w}) = 0$. By the Implicit Function Theorem, since $\partial G/\partial\beta = \mathrm{SOC} < 0$ at the Nash optimum,
     \begin{equation}\label{eq:dbeta_dw}
@@ -1562,7 +1660,7 @@ More broadly, the results of this thesis suggest a reinterpretation of observed 
     \]
     Substituting $\Pi'(\beta^*) = -\frac{\delta}{1-\delta}\frac{\Pi_s}{\mathrm{CE}_s}\mathrm{CE}'(\beta^*)$ from the Nash FOC, the numerator of the second term simplifies to $\mathrm{CE}'(\beta^*)[\Pi_s + \frac{\delta}{1-\delta}\mathrm{CE}_s]$. Since $\mathrm{CE}'(\beta^*) < 0$ and the bracket is strictly positive, the second term is negative, giving
     \begin{equation}\label{eq:dlambda_dw}
-    \frac{d\lambda}{d\underline{w}} = \frac{1}{S} - \frac{d\beta^*}{d\underline{w}} \cdot \frac{|\mathrm{CE}'(\beta^*)|}{S^2}\left[\Pi_s + \frac{\delta}{1-\delta}\mathrm{CE}_s\right].
+    \frac{d\lambda}{d\underline{w}} = \frac{1}{S} - \frac{d\beta^*}{d\underline{w}} \ \frac{|\mathrm{CE}'(\beta^*)|}{S^2}\left[\Pi_s + \frac{\delta}{1-\delta}\mathrm{CE}_s\right].
     \end{equation}
     The first term is the direct transfer effect: tightening the constraint shifts one unit of surplus to the agent. The second term is the indirect incentive effect: the forced increase in $\beta^*$ raises the agent's risk exposure, partially offsetting the direct gain.
 
@@ -1570,9 +1668,9 @@ More broadly, the results of this thesis suggest a reinterpretation of observed 
     \begin{equation}\label{eq:lambda_sign_condition}
     \frac{d\beta^*}{d\underline{w}} \cdot |\mathrm{CE}'(\beta^*)| \cdot \left[\Pi_s + \frac{\delta}{1-\delta}\mathrm{CE}_s\right] < 1.
     \end{equation}
-    The left side measures how much the agent's certainty equivalent falls per unit increase in $\underline{w}$ through the forced increase in $\beta^*$, weighted by the agent's relative stake $(1-\delta)^{-1}$. The condition holds generically: it is satisfied whenever the Nash FOC is steep at $\beta^*$ (large $|\mathrm{SOC}|$) or whenever $\beta^*$ is close to $\beta^{\mathrm{eff}}$ so that $|\mathrm{CE}'(\beta^*)|$ is small. The dynamic case inherits the sign by continuity of $V_A^b(W;\beta)$ in $\mathrm{CE}(\beta)$ on $\mathcal{S}$, with the argument unchanged upon replacing $\mathrm{CE}_s$ by $V_A^b - \overline{u}_A$.
+    The left side measures how much the agent's certainty equivalent falls per unit increase in $\underline{w}$ through the forced increase in $\beta^*$, weighted by the agent's relative stake $(1-\delta)^{-1}$. The condition holds generically: it is satisfied whenever the Nash FOC is steep at $\beta^*$ (large $|\mathrm{SOC}|$) or whenever $\beta^*$ is close to $\beta^{\mathrm{eff}}$ so that $|\mathrm{CE}'(\beta^*)|$ is small. The dynamic case inherits the sign by continuity of $V_A^b(W;\beta)$ in $\mathrm{CE}(\beta)$ on $\mathcal{S}$, with the argument unchanged upon replacing $\mathrm{CE}_s$ by $V_A^b - \overline{\text{CE}}$.
 
-    The chain rule then gives $\lambda'(W) = (d\lambda/d\underline{w}) \cdot (-\gamma_w)$. Under condition \eqref{eq:lambda_sign_condition}, $d\lambda/d\underline{w} < 0$, so $\lambda'(W) > 0$: bargaining power is strictly increasing in accumulated wealth in the binding regime, with magnitude proportional to $\gamma_w$. When $\gamma_w = 0$ the mechanism shuts down. In the slack regime $\lambda_t = \delta$ for all $W_t$, so $\lambda'(W_t) = 0$ and $\ell_t$ is constant. \qed
+    The chain rule then gives $\lambda'(W) = (-\gamma_w)(d\lambda/d\underline{w})$. Under condition \eqref{eq:lambda_sign_condition}, $d\lambda/d\underline{w} < 0$, so $\lambda'(W) > 0$: bargaining power is strictly increasing in accumulated wealth in the binding regime, with magnitude proportional to $\gamma_w$. When $\gamma_w = 0$ the mechanism shuts down. In the slack regime $\lambda_t = \delta$ for all $W_t$, so $\lambda'(W_t) = 0$ and $\ell_t$ is constant. \qed
 
     %===========================================
     \section{Appendix C: Proof of Proposition \ref{prop:ergodic}} \label{ProofProp3}
@@ -1585,11 +1683,11 @@ More broadly, the results of this thesis suggest a reinterpretation of observed 
     \end{lemma}
 
     \begin{proof}
-    Define $F(\beta, W) := (1-\delta)\,\partial_\beta V_P^b(W;\beta)\,/\,[V_P^b(W;\beta) - \overline{u}_P] + \delta\,\partial_\beta V_A^b(W;\beta)\,/\,[V_A^b(W;\beta) - \overline{u}_A]$, so that $\beta^*(W)$ satisfies $F(\beta^*(W), W) = 0$.
+    Define $F(\beta, W) := (1-\delta)\,\frac{\partial}{\partial\beta} V_P^b(W;\beta)\,/\,[V_P^b(W;\beta) - \overline{\Pi}] + \delta\,\frac{\partial}{\partial\beta} V_A^b(W;\beta)\,/\,[V_A^b(W;\beta) - \overline{\text{CE}}]$, so that $\beta^*(W)$ satisfies $F(\beta^*(W), W) = 0$.
 
-    At $\beta = 0$: increasing $\beta$ raises induced effort $a^* = \beta\theta/k$ from zero, which strictly increases expected output and hence $V_P^b$. Since $V_P^b(W;0) - \overline{u}_P > 0$ by individual rationality, the first term of $F$ is strictly positive. The second term is finite. Hence $F(0, W) > 0$.
+    At $\beta = 0$: increasing $\beta$ raises induced effort $a^* = \beta\theta/k$ from zero, which strictly increases expected output and hence $V_P^b$. Since $V_P^b(W;0) - \overline{\Pi} > 0$ by individual rationality, the first term of $F$ is strictly positive. The second term is finite. Hence $F(0, W) > 0$.
 
-    At $\beta = 1$: the agent bears full output risk. The risk premium is $(\gamma/2)\sigma^2$, while the marginal benefit of raising $\beta$ toward 1 in terms of effort is $\theta^2/k$. The condition $\beta^{\mathrm{eff}} < 1$, which holds whenever $\gamma\sigma^2 > 0$ and $\theta, k$ are finite, implies that the total surplus $S(\beta)$ is strictly decreasing at $\beta = 1$. It follows that $\partial_\beta V_A^b(W;1) < 0$ and the second term of $F$ dominates, giving $F(1, W) < 0$.
+    At $\beta = 1$: the agent bears full output risk. The risk premium is $(\gamma/2)\sigma^2$, while the marginal benefit of raising $\beta$ toward 1 in terms of effort is $\theta^2/k$. The condition $\beta^{\mathrm{eff}} < 1$, which holds whenever $\gamma\sigma^2 > 0$ and $\theta, k$ are finite, implies that the total surplus $S(\beta)$ is strictly decreasing at $\beta = 1$. It follows that $\frac{\partial}{\partial\beta} V_A^b(W;1) < 0$ and the second term of $F$ dominates, giving $F(1, W) < 0$.
 
     Since $F(\cdot, W)$ is continuous on $[0,1]$ and changes sign, the intermediate value theorem yields at least one solution $\beta^*(W) \in (0,1)$. The second-order condition of the Nash problem ensures the solution is locally unique. Since period payoffs and continuation values are continuous and bounded on $\mathcal{S}$ (Assumption \ref{ass:compact_domain}), $F(\beta, W)$ is uniformly equicontinuous in $(\beta, W)$ on $[0,1] \times \mathcal{W}$. The solution correspondence is therefore upper hemicontinuous with nonempty values in $(0,1)$. On a compact domain, the image of a compact set under an upper hemicontinuous correspondence with closed values is compact, so $\beta^*(W)$ attains values in a closed subset $[\beta_{\min}, \beta_{\max}] \subset (0,1)$.
     \end{proof}
