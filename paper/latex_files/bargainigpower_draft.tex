@@ -325,12 +325,11 @@ Solving for $\beta_t$,
 
 This is exactly $\beta^{\text{eff}}$ as defined in Section \ref{subsec:moral_hazard}. We have therefore derived $\beta^{\text{eff}}$ from the principal's own optimization problem, rather than assuming it.
 
-To confirm this is a maximum and not merely a critical point, differentiate $S'(\beta_t)$ once more,
+The second-order condition confirms this is a maximum: differentiating $S'(\beta_t)$ once more,
 \[
-S''(\beta_t) = \frac{d}{d\beta_t}\left[\frac{\theta^2}{k} - \beta_t\frac{\theta^2}{k} - \gamma\beta_t\sigma^2\right] = -\frac{\theta^2}{k} - \gamma\sigma^2.
+S''(\beta_t) = -\frac{\theta^2}{k} - \gamma\sigma^2 < 0 \quad \text{for all } \beta_t,
 \]
-
-Since $\theta^2/k > 0$ and $\gamma\sigma^2 \geq 0$, we have $S''(\beta_t) < 0$ for all $\beta_t$. The surplus function is strictly concave everywhere, so $\beta_t^* = \beta^{\text{eff}}$ is the unique global maximizer, confirming the problem is well-posed.
+since $\theta^2/k > 0$ and $\gamma\sigma^2 \geq 0$. As $S$ is concave everywhere, $\beta^{\text{eff}}$ is the unique global maximizer.
 
 We showed above that $\text{CE}_t = \overline{\text{CE}}$ holds exactly at the optimum. Substituting the definition of $\text{CE}_t$,
 \[
