@@ -2,3 +2,19 @@
 __pycache__/
 .pytest_cache/
 *.pyc
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.bbl
+*.bbl-SAVE-ERROR
+*.bcf
+*.blg
+*.out
+*.toc
+*.lof
+*.lot
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.run.xml
