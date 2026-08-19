@@ -283,7 +283,7 @@ Since we have just shown $\mu = 1 \neq 0$, it must be that
 \alpha_t + C(\beta_t) - \overline{\text{CE}} = 0 \quad \Longrightarrow \quad \text{CE}_t = \overline{\text{CE}}.
 \]
 
-The participation constraint binds with equality at the optimum. This is not assumed; it is forced by $\mu = 1$.
+Note that the participation constraint binds with equality at the optimum as a direct consequence of $\mu = 1$.
 
 Turning to the first-order condition with respect to $\beta_t$,
 \[
@@ -305,7 +305,7 @@ So the first-order condition reduces to
 S'(\beta_t) = 0,
 \]
 
-which is the identical condition that determined $\beta^{\text{eff}}$ in Section \ref{subsec:moral_hazard}. This equivalence is not a coincidence: because $\mu = 1$ means $\alpha_t$ transfers utility one-to-one without distortion, maximizing the principal's own payoff subject to delivering the agent exactly her reservation value is mathematically identical to maximizing joint surplus and then transferring the residual.
+which is the identical condition that determined $\beta^{\text{eff}}$ in Section \ref{subsec:moral_hazard}. Note that this equivalence follows because $\mu = 1$ means $\alpha_t$ transfers utility one-to-one without distortion, so maximizing the principal's own payoff subject to delivering the agent exactly her reservation value is mathematically identical to maximizing joint surplus and then transferring the residual.
 
 To solve explicitly for $\beta_t$, compute each derivative,
 \[
@@ -470,9 +470,9 @@ M &:= \text{CE}_t''(\beta)\,\Pi_t'(\beta) - \text{CE}_t'(\beta)\,\Pi_t''(\beta) 
 &= (\mu-\kappa)\mu - 2\mu\beta(\mu-\kappa) + (\mu-\kappa)\underline{y} + 2\mu\beta(\mu-\kappa) - 2\mu\underline{y} \\
 &= \mu(\mu-\kappa) - \underline{y}(\mu+\kappa).
 \end{align*}
-The terms in $\beta$ cancel exactly, so $M$ does not depend on $\beta$: it is a constant of the model's primitives. Since $\underline{y} < 0$ by construction (Section \ref{subsec:calibration}), $-\underline{y}(\mu+\kappa) > 0$, so $M > 0$ whenever $\mu \geq \kappa$, and more generally whenever $|\underline{y}|(\mu+\kappa) > \mu(\kappa-\mu)$.\\
+The terms in $\beta$ cancel exactly, so note that $M$ depends only on the model's primitives, and is a constant with respect to $\beta$. Since $\underline{y} < 0$ by construction (Section \ref{subsec:calibration}), $-\underline{y}(\mu+\kappa) > 0$, so $M > 0$ whenever $\mu \geq \kappa$, and more generally whenever $|\underline{y}|(\mu+\kappa) > \mu(\kappa-\mu)$.\\
 Given $M$ is a constant, the sign of $d^2\text{CE}_t/d\Pi_t^2$ is the sign of $M/[\Pi_t'(\beta)]^3$, which equals the sign of $\Pi_t'(\beta)$ whenever $M>0$ (cubing preserves sign). So the frontier is concave, $d^2\text{CE}_t/d\Pi_t^2 < 0$, if and only if $M>0$ and $\Pi_t'(\beta) < 0$ on the equilibrium binding domain.\\
-\textbf{Resolviendo el pendiente:} $\Pi_t'(\beta)$ y $\text{CE}_t'(\beta)$ no hace falta acotarlos numéricamente por separado; ambos umbrales de signo se pueden escribir en términos de los primitivos. Explícitamente, $\Pi_t'(\beta) < 0 \iff \beta > (\mu+\underline{y})/(2\mu)$, y $\text{CE}_t'(\beta) > 0 \iff (\mu-\kappa)\beta > \underline{y}$. Como $\underline{y}<0$, esta última desigualdad se cumple para \emph{todo} $\beta \geq 0$ siempre que $\mu \geq \kappa$ — y en ese mismo caso $M>0$ también se cumple sin condición, ya que ambos sumandos de $M$ son no negativos. Esto da:\\
+\textbf{Resolviendo el pendiente:} $\Pi_t'(\beta)$ y $\text{CE}_t'(\beta)$ no hace falta acotarlos numéricamente por separado; ambos umbrales de signo se pueden escribir en términos de los primitivos. Explícitamente, $\Pi_t'(\beta) < 0 \iff \beta > (\mu+\underline{y})/(2\mu)$, y $\text{CE}_t'(\beta) > 0 \iff (\mu-\kappa)\beta > \underline{y}$. Como $\underline{y}<0$, esta última desigualdad se cumple para \emph{todo} $\beta \geq 0$ siempre que $\mu \geq \kappa$, y en ese mismo caso $M>0$ también se cumple sin condición, ya que ambos sumandos de $M$ son no negativos. Esto da:\\
 \begin{proposition}[Concavity of the binding-regime Pareto frontier]
 If $\theta^2/k \ge \gamma\sigma^2$, the constrained Pareto frontier is strictly concave, $d^2\text{CE}_t/d\Pi_t^2 < 0$, at every $\beta \in (0,1)$, with no further restriction. If $\theta^2/k < \gamma\sigma^2$, strict concavity at the equilibrium $\beta^*(W)$ holds whenever (i) $|\underline{y}|(\mu+\kappa) > \mu(\kappa-\mu)$ and (ii) $\beta_{\max} < |\underline{y}|/(\kappa-\mu)$, where $\beta_{\max}$ is the bound established in Lemma \ref{lem:beta_bounds}.
 \end{proposition}
@@ -559,7 +559,7 @@ S^{\mathrm{FB}} - S(\beta^*(W)) = \underbrace{(S^{\mathrm{FB}} - S^{\mathrm{eff}
 with the second term present only in the binding regime and vanishing as $W \to \overline{W}$. This decomposition clarifies that policies reducing the stringency of the limited liability constraint (raising $\gamma_w$ or increasing $W$) improve welfare not only by relaxing the constraint directly but also by reducing the bargaining distortion $\Delta(W)$.
 \end{remark}
 
-\textcolor{olive}{PENDIENTE (nota general sobre este apéndice): esta es la versión estática (para un $W_t$ dado) de la Lema C.1 de la tesina, no una copia. La tesina la prueba para funciones de continuación dinámicas $V_P^b, V_A^b$ y evalúa $F$ literalmente en $\beta=0,1$; aquí encontramos que esa evaluación literal no funciona, porque en $\beta=0,1$ ya falla la restricción de participación de una de las partes (verificado con \texttt{model.py}: $\text{CE}_s<0$ cerca de $\beta=0$, $\Pi_s<0$ cerca de $\beta=1$, en la calibración base). La prueba de abajo usa en cambio el bracket factible interior, que es lo que tu propio código (\texttt{feasible\_beta\_bracket}) ya hace en la práctica. Falta: (i) el caso $\mu<\kappa$ (aquí solo se hace $\mu\ge\kappa$, que es el caso de la calibración base); (ii) formalizar como Asunción las tres condiciones de regularidad usadas abajo, en vez de solo verificarlas numéricamente; (iii) el Apéndice B de la tesina (dinámica de $\lambda(W_t)$) sigue pendiente de traer aquí — tiene además el error de signo documentado en NOTES.md, no solo el problema de continuación vs.\ estático.}
+\textcolor{olive}{PENDIENTE (nota general sobre este apéndice): esta es la versión estática (para un $W_t$ dado) de la Lema C.1 de la tesina, no una copia. La tesina la prueba para funciones de continuación dinámicas $V_P^b, V_A^b$ y evalúa $F$ literalmente en $\beta=0,1$; aquí encontramos que esa evaluación literal no funciona, porque en $\beta=0,1$ ya falla la restricción de participación de una de las partes (verificado con \texttt{model.py}: $\text{CE}_s<0$ cerca de $\beta=0$, $\Pi_s<0$ cerca de $\beta=1$, en la calibración base). La prueba de abajo usa en cambio el bracket factible interior, que es lo que tu propio código (\texttt{feasible\_beta\_bracket}) ya hace en la práctica. Falta: (i) el caso $\mu<\kappa$ (aquí solo se hace $\mu\ge\kappa$, que es el caso de la calibración base); (ii) formalizar como Asunción las tres condiciones de regularidad usadas abajo, en vez de solo verificarlas numéricamente; (iii) el Apéndice B de la tesina (dinámica de $\lambda(W_t)$) sigue pendiente de traer aquí, y tiene además el error de signo documentado en NOTES.md, no solo el problema de continuación vs.\ estático.}
 
 \begin{appendices}
 \section{Appendix: Boundedness of the equilibrium slope}\label{app:beta_bounds}
