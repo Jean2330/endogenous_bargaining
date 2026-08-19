@@ -29,17 +29,39 @@ Nash share $\delta$ (because $\beta$ is pushed away from $\beta^{\text{eff}}$
 to satisfy their tight LL floor), converging *down* to $\delta$ as wealth
 grows."
 
-**When we port the dynamic section into `bargainigpower_draft.tex`:**
-rederive Appendix B in general (mirror the two-case $\mu \gtrless \kappa$
-structure used for the frontier-concavity proposition), fix the sign in
-eq. (dlambda_dw), condition (lambda_sign_condition), Theorem 3.10's
-statement, and redraw Figure 3.7 (curve should start above $\delta$ and
-descend to it, not rise from below).
-
-Olive notes already sit at the three affected spots in `thesis_draft.tex`
+Olive notes still sit at the three affected spots in `thesis_draft.tex`
 (Theorem `thm:central`, Appendix `ProofProp2`, Figure `fig:wealth_dynamics`)
-— those stay as the advisor-facing flags; this entry is just the durable
-reminder for us.
+as the advisor-facing flags; this entry stays here as the durable reminder
+that the thesis text itself has not been corrected yet, only the ported
+version in `bargainigpower_draft.tex`.
 
 ## Resolved
 (move items here once fixed, with the commit that fixed them)
+
+### Appendix B / $\lambda'(W_t)$ sign, ported into `bargainigpower_draft.tex`
+
+Rederived the $d\beta^*/d\underline w$ and $d\lambda/d\underline w$ argument
+from the FOC alone (Proposition `prop:lambda_dynamics`, new Appendix
+`app:lambda_dynamics`): $\Pi_t'(\beta^*)$ and $\text{CE}_t'(\beta^*)$ always
+have opposite signs, and for $\mu\ge\kappa$, Lemma `beta_bounds` gives
+$\text{CE}_t'(\beta^*)>0$ unconditionally, so $\Pi_t'(\beta^*)<0$. Redoing the
+quotient-rule algebra for $d\lambda/d\underline w$ (the thesis's simplified
+form of the numerator, $\text{CE}_t'(\beta^*)[\Pi_s+\frac{\delta}{1-\delta}\text{CE}_s]$,
+was itself an algebra slip independent of the sign issue; the correct
+simplification is $\Pi_s\,\text{CE}_t'(\beta^*)/(1-\delta)$) gives
+$d\beta^*/d\underline w<0$ and, under a sufficient condition analogous to
+the old one, $d\lambda/d\underline w>0$, hence $\lambda'(W_t)<0$: $\lambda_t>\delta$
+throughout the binding regime, descending to $\delta$ at $\overline W$.
+
+Verified numerically against `model.py` at $W=0.5$ (baseline calibration):
+closed form and finite-difference derivatives of `solve_beta_static` and
+`lambda_realized` agree to 8 significant figures ($d\beta^*/d\underline
+w=-1.2146$, $d\lambda/d\underline w=+0.2457$), and imply $d\beta^*/dW\approx
++0.243$, $d\lambda/dW\approx-0.049$, matching the numbers already reported
+in Section 5 and in the old note above. Fixed in commit that added Appendix
+`app:lambda_dynamics` and redrew Figure `fig:wealth_dynamics` (curve now
+starts above $\delta$ and descends).
+
+`thesis_draft.tex` itself (Theorem `thm:central`, Appendix `ProofProp2`,
+Figure `fig:wealth_dynamics`) still has the old, wrong-signed version; only
+`bargainigpower_draft.tex` has been corrected so far.
