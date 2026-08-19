@@ -559,7 +559,7 @@ S^{\mathrm{FB}} - S(\beta^*(W)) = \underbrace{(S^{\mathrm{FB}} - S^{\mathrm{eff}
 with the second term present only in the binding regime and vanishing as $W \to \overline{W}$. This decomposition clarifies that policies reducing the stringency of the limited liability constraint (raising $\gamma_w$ or increasing $W$) improve welfare not only by relaxing the constraint directly but also by reducing the bargaining distortion $\Delta(W)$.
 \end{remark}
 
-\textcolor{olive}{PENDIENTE (nota general sobre este apéndice): esta es la versión estática (para un $W_t$ dado) de la Lema C.1 de la tesina, no una copia. La tesina la prueba para funciones de continuación dinámicas $V_P^b, V_A^b$ y evalúa $F$ literalmente en $\beta=0,1$; aquí encontramos que esa evaluación literal no funciona, porque en $\beta=0,1$ ya falla la restricción de participación de una de las partes (verificado con \texttt{model.py}: $\text{CE}_s<0$ cerca de $\beta=0$, $\Pi_s<0$ cerca de $\beta=1$, en la calibración base). La prueba de abajo usa en cambio el bracket factible interior, que es lo que tu propio código (\texttt{feasible\_beta\_bracket}) ya hace en la práctica. Falta: (i) formalizar como Asunción las condiciones de regularidad usadas abajo para ambos casos $\mu\gtrless\kappa$, en vez de solo verificarlas numéricamente; (ii) el Apéndice B de la tesina (dinámica de $\lambda(W_t)$) sigue pendiente de traer aquí, y tiene además el error de signo documentado en NOTES.md, no solo el problema de continuación vs.\ estático. El caso $\mu<\kappa$ ya se agregó como segundo caso en la prueba de abajo, con su propio argumento de cruce porque ahí $\text{CE}_t$ es cóncava (no monótona).}
+\textcolor{olive}{PENDIENTE (nota general sobre este apéndice): esta es la versión estática (para un $W_t$ dado) de la Lema C.1 de la tesina, no una copia. La tesina la prueba para funciones de continuación dinámicas $V_P^b, V_A^b$ y evalúa $F$ literalmente en $\beta=0,1$; aquí encontramos que esa evaluación literal no funciona, porque en $\beta=0,1$ ya falla la restricción de participación de una de las partes (verificado con \texttt{model.py}: $\text{CE}_s<0$ cerca de $\beta=0$, $\Pi_s<0$ cerca de $\beta=1$, en la calibración base). La prueba de abajo usa en cambio el bracket factible interior, que es lo que tu propio código (\texttt{feasible\_beta\_bracket}) ya hace en la práctica. Falta: el Apéndice B de la tesina (dinámica de $\lambda(W_t)$) sigue pendiente de traer aquí, y tiene además el error de signo documentado en NOTES.md, no solo el problema de continuación vs.\ estático. El caso $\mu<\kappa$ ya se agregó como segundo caso en la prueba de abajo, con su propio argumento de cruce porque ahí $\text{CE}_t$ es cóncava (no monótona); y las condiciones de regularidad ya están formalizadas como Asunción \ref{ass:beta_bounds_reg}, con (i)-(iii) reescritas en cierre analítico como una cota en $\underline w_t$ (solo la existencia de un bracket factible, que es lo que \texttt{feasible\_beta\_bracket} verifica, sigue siendo una condición numérica en la calibración base).}
 
 \begin{appendices}
 \section{Appendix: Boundedness of the equilibrium slope}\label{app:beta_bounds}
@@ -567,14 +567,22 @@ with the second term present only in the binding regime and vanishing as $W \to 
 \textcolor{blue}{
 Throughout, fix $W_t$ in the binding regime and write $\mu:=\theta^2/k$, $\kappa:=\gamma\sigma^2$, so that $\Pi_t(\beta)=D(\beta)+\beta\underline y-\underline w_t$ and $\text{CE}_t(\beta)=C(\beta)-\beta\underline y+\underline w_t$ as in Case 2 of Section \ref{subsec:nash}. The proof below treats $\mu\ge\kappa$ (the baseline calibration) and $\mu<\kappa$ as two cases. \\
 \textbf{A fact about concave functions.} If $g$ is strictly concave on $[0,1]$ with $g(0)>c$ and $g(\beta_0)=c$ for some $\beta_0\in(0,1]$, then $g'(\beta_0)<0$. (If $g$ were still increasing at $\beta_0$, unimodality of a concave function would force $g\ge g(0)>c$ on $[0,\beta_0]$, contradicting $g(\beta_0)=c$; so the crossing must lie on the decreasing branch.) \\
+\begin{assumption}[Regularity of the binding-regime bracket]\label{ass:beta_bounds_reg}
+At $W_t$ in the binding regime, the limited liability floor $\underline w_t=\overline w-\gamma_w W_t$ satisfies
+\[
+\underline y-\overline\Pi \;<\; \underline w_t \;<\; \min\{-\overline\Pi,\ \overline{\text{CE}}\},
+\]
+and there exists $\beta\in(0,1)$ with $\Pi_t(\beta)>\overline\Pi$ and $\text{CE}_t(\beta)>\overline{\text{CE}}$ simultaneously.
+\end{assumption}
+Since $D(0)=D(1)=0$, we have $\Pi_t(0)=-\underline w_t$, $\text{CE}_t(0)=\underline w_t$, and $\Pi_t(1)=\underline y-\underline w_t$, so the first display of Assumption \ref{ass:beta_bounds_reg} is exactly equivalent to conditions (i)-(iii) below. The existence clause is the nonemptiness of the feasible bracket invoked throughout the proof, and is precisely what \texttt{feasible\_beta\_bracket} in \texttt{model.py} checks. Both hold at the baseline calibration for representative $W_t$ in the binding domain (Table \ref{tab:params}).\\
 \begin{lemma}[Boundedness of the equilibrium slope]\label{lem:beta_bounds}
-At $W_t$, suppose
+Under Assumption \ref{ass:beta_bounds_reg}, at $W_t$
 \begin{enumerate}
     \item[(i)] $\Pi_t(0)=-\underline w_t>\overline\Pi$,
     \item[(ii)] $\text{CE}_t(0)=\underline w_t<\overline{\text{CE}}$,
     \item[(iii)] $\Pi_t(1)<\overline\Pi$,
 \end{enumerate}
-each verified numerically at baseline for representative $W_t$ in the binding domain (Table \ref{tab:params}). Then the Nash-optimal slope $\beta_t^*$ solving \eqref{eq:foc_binding} lies in $(0,1)$.
+hold, together with the existence of $\beta\in(0,1)$ where both surpluses are simultaneously positive. Then the Nash-optimal slope $\beta_t^*$ solving \eqref{eq:foc_binding} lies in $(0,1)$.
 \end{lemma}
 \begin{proof}
 \textbf{Case $\mu\ge\kappa$.} Since $\mu\ge\kappa$, $\text{CE}_t'(\beta)=(\mu-\kappa)\beta+|\underline y|>0$ for every $\beta\ge0$ (Section \ref{subsec:nash}, Case 2 curvature block), so $\text{CE}_t$ is strictly increasing on $[0,1]$. By (ii), $\text{CE}_t(0)<\overline{\text{CE}}$; since $\text{CE}_t$ is increasing and, by the nonemptiness of the feasible set, exceeds $\overline{\text{CE}}$ somewhere in $(0,1]$, it exceeds $\overline{\text{CE}}$ at $\beta=1$ too, so there is a unique $\mathrm{lo}\in(0,1)$ with $\text{CE}_t(\mathrm{lo})=\overline{\text{CE}}$ and $\text{CE}_t(\beta)>\overline{\text{CE}} \iff \beta>\mathrm{lo}$.\\
