@@ -4,7 +4,16 @@
 \usepackage[style=apa, sorting=nyt]{biblatex}
 \addbibresource{repbib.bib}
 
+\usepackage{appendix}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 \newtheorem{remark}{Remark}[section]
+\theoremstyle{plain}
 \newcommand{\partder}[2]{\dfrac{\partial {#1}}{\partial {#2}}}
 \newcommand{\partders}[2]{\dfrac{\partial^2 {#1}}{\partial {#2}^2}}
 \newcommand{\abs}[1]{\left| {#1} \right|}
