@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{graphicx, amsmath, amsfonts, tikz} % Required for inserting images
+\usepackage{graphicx, amsmath, amsfonts, tikz,amsthm} % Required for inserting images
 \usepackage{caption,float}
 \usepackage[style=apa, sorting=nyt]{biblatex}
 \addbibresource{repbib.bib}
@@ -7,11 +7,11 @@
 \usepackage{appendix}
 \newtheorem{proposition}{Proposition}[section]
 \newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 \newtheorem{assumption}{Assumption}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{corollary}{Corollary}[section]
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
 \newtheorem{remark}{Remark}[section]
 \theoremstyle{plain}
 \newcommand{\partder}[2]{\dfrac{\partial {#1}}{\partial {#2}}}
@@ -458,8 +458,7 @@ with
 \[
 \Pi_t'(\beta) = \mu(1-2\beta) + \underline{y}, \qquad \Pi_t''(\beta) = -2\mu.
 \]
-Note that $C''(\beta) = \mu - \kappa$ can be positive or negative depending on parameters, so the frontier's curvature cannot be established simply by claiming $C$ and $D$ are both concave; $C$ is convex whenever $\mu > \kappa$.
-
+Note that $C''(\beta) = \mu - \kappa$ can be positive or negative depending on parameters, so the frontier's curvature cannot be established simply by claiming $C$ and $D$ are both concave; $C$ is convex whenever $\mu > \kappa$.\\
 For a curve parametrized by $\beta$, the standard formula for the second derivative of $\text{CE}_t$ as a function of $\Pi_t$ is
 \[
 \frac{d^2\,\text{CE}_t}{d\,\Pi_t^2} = \frac{\text{CE}_t''(\beta)\,\Pi_t'(\beta) - \text{CE}_t'(\beta)\,\Pi_t''(\beta)}{[\Pi_t'(\beta)]^3}.
@@ -471,19 +470,13 @@ M &:= \text{CE}_t''(\beta)\,\Pi_t'(\beta) - \text{CE}_t'(\beta)\,\Pi_t''(\beta) 
 &= (\mu-\kappa)\mu - 2\mu\beta(\mu-\kappa) + (\mu-\kappa)\underline{y} + 2\mu\beta(\mu-\kappa) - 2\mu\underline{y} \\
 &= \mu(\mu-\kappa) - \underline{y}(\mu+\kappa).
 \end{align*}
-The terms in $\beta$ cancel exactly, so $M$ does not depend on $\beta$: it is a constant of the model's primitives. Since $\underline{y} < 0$ by construction (Section \ref{subsec:calibration}), $-\underline{y}(\mu+\kappa) > 0$, so $M > 0$ whenever $\mu \geq \kappa$, and more generally whenever $|\underline{y}|(\mu+\kappa) > \mu(\kappa-\mu)$.
-
-Given $M$ is a constant, the sign of $d^2\text{CE}_t/d\Pi_t^2$ is the sign of $M/[\Pi_t'(\beta)]^3$, which equals the sign of $\Pi_t'(\beta)$ whenever $M>0$ (cubing preserves sign). So the frontier is concave, $d^2\text{CE}_t/d\Pi_t^2 < 0$, if and only if $M>0$ and $\Pi_t'(\beta) < 0$ on the equilibrium binding domain.
-
-\textbf{Resolviendo el pendiente:} $\Pi_t'(\beta)$ y $\text{CE}_t'(\beta)$ no hace falta acotarlos numéricamente por separado; ambos umbrales de signo se pueden escribir en términos de los primitivos. Explícitamente, $\Pi_t'(\beta) < 0 \iff \beta > (\mu+\underline{y})/(2\mu)$, y $\text{CE}_t'(\beta) > 0 \iff (\mu-\kappa)\beta > \underline{y}$. Como $\underline{y}<0$, esta última desigualdad se cumple para \emph{todo} $\beta \geq 0$ siempre que $\mu \geq \kappa$ — y en ese mismo caso $M>0$ también se cumple sin condición, ya que ambos sumandos de $M$ son no negativos. Esto da:
-
+The terms in $\beta$ cancel exactly, so $M$ does not depend on $\beta$: it is a constant of the model's primitives. Since $\underline{y} < 0$ by construction (Section \ref{subsec:calibration}), $-\underline{y}(\mu+\kappa) > 0$, so $M > 0$ whenever $\mu \geq \kappa$, and more generally whenever $|\underline{y}|(\mu+\kappa) > \mu(\kappa-\mu)$.\\
+Given $M$ is a constant, the sign of $d^2\text{CE}_t/d\Pi_t^2$ is the sign of $M/[\Pi_t'(\beta)]^3$, which equals the sign of $\Pi_t'(\beta)$ whenever $M>0$ (cubing preserves sign). So the frontier is concave, $d^2\text{CE}_t/d\Pi_t^2 < 0$, if and only if $M>0$ and $\Pi_t'(\beta) < 0$ on the equilibrium binding domain.\\
+\textbf{Resolviendo el pendiente:} $\Pi_t'(\beta)$ y $\text{CE}_t'(\beta)$ no hace falta acotarlos numéricamente por separado; ambos umbrales de signo se pueden escribir en términos de los primitivos. Explícitamente, $\Pi_t'(\beta) < 0 \iff \beta > (\mu+\underline{y})/(2\mu)$, y $\text{CE}_t'(\beta) > 0 \iff (\mu-\kappa)\beta > \underline{y}$. Como $\underline{y}<0$, esta última desigualdad se cumple para \emph{todo} $\beta \geq 0$ siempre que $\mu \geq \kappa$ — y en ese mismo caso $M>0$ también se cumple sin condición, ya que ambos sumandos de $M$ son no negativos. Esto da:\\
 \begin{proposition}[Concavity of the binding-regime Pareto frontier]
 If $\theta^2/k \ge \gamma\sigma^2$, the constrained Pareto frontier is strictly concave, $d^2\text{CE}_t/d\Pi_t^2 < 0$, at every $\beta \in (0,1)$, with no further restriction. If $\theta^2/k < \gamma\sigma^2$, strict concavity at the equilibrium $\beta^*(W)$ holds whenever (i) $|\underline{y}|(\mu+\kappa) > \mu(\kappa-\mu)$ and (ii) $\beta_{\max} < |\underline{y}|/(\kappa-\mu)$, where $\beta_{\max}$ is the bound established in Lemma \ref{lem:beta_bounds}.
 \end{proposition}
-
-At the baseline calibration ($\mu=0.5$, $\kappa=0.09$, $\underline{y}=-0.5$), $\mu > \kappa$, so the first, unconditional case applies: the frontier is concave everywhere in the binding regime, not merely at the reported equilibrium range.
-
-\textbf{Nota relacionada:} el mismo hecho $\text{CE}_t'(\beta^*)>0$ (en vez de $<0$) que usamos aquí es el que, al propagarse al Apéndice B de la tesina (Proposición de dinámica de $\lambda(W)$), revierte el signo de $d\beta^*/d\underline{w}$ y por lo tanto de $\lambda'(W)$ respecto a lo que dice el Teorema 3.10 actual — confirmado numéricamente con \texttt{src/model.py}. Ver notas olive en \texttt{thesis\_draft.tex} (Teorema \ref{thm:central}, Apéndice \ref{ProofProp2}, Figura \ref{fig:wealth_dynamics}). Cuando lleguemos a portar la parte dinámica a este documento, hay que corregir ese signo también.
+At the baseline calibration ($\mu=0.5$, $\kappa=0.09$, $\underline{y}=-0.5$), $\mu > \kappa$, so the first, unconditional case applies: the frontier is concave everywhere in the binding regime, not merely at the reported equilibrium range.\\
 }
 
 The economic content, once the sign is pinned down, is that redistributing surplus in the binding regime is costly: changing $\beta_t$ to give more to the agent necessarily reduces total surplus, because $\beta_t$ is being asked to perform two tasks simultaneously, providing incentives and transferring resources, and it is not efficient at either task when pulled away from $\beta^{\text{eff}}$.
@@ -572,10 +565,8 @@ with the second term present only in the binding regime and vanishing as $W \to 
 \section{Appendix: Boundedness of the equilibrium slope}\label{app:beta_bounds}
 
 \textcolor{blue}{
-Throughout, fix $W_t$ in the binding regime and write $\mu:=\theta^2/k$, $\kappa:=\gamma\sigma^2$, so that $\Pi_t(\beta)=D(\beta)+\beta\underline y-\underline w_t$ and $\text{CE}_t(\beta)=C(\beta)-\beta\underline y+\underline w_t$ as in Case 2 of Section \ref{subsec:nash}. We restrict attention to $\mu \ge \kappa$, the regime of the baseline calibration.
-
-\textbf{A fact about concave functions.} If $g$ is strictly concave on $[0,1]$ with $g(0)>c$ and $g(\beta_0)=c$ for some $\beta_0\in(0,1]$, then $g'(\beta_0)<0$. (If $g$ were still increasing at $\beta_0$, unimodality of a concave function would force $g\ge g(0)>c$ on $[0,\beta_0]$, contradicting $g(\beta_0)=c$; so the crossing must lie on the decreasing branch.)
-
+Throughout, fix $W_t$ in the binding regime and write $\mu:=\theta^2/k$, $\kappa:=\gamma\sigma^2$, so that $\Pi_t(\beta)=D(\beta)+\beta\underline y-\underline w_t$ and $\text{CE}_t(\beta)=C(\beta)-\beta\underline y+\underline w_t$ as in Case 2 of Section \ref{subsec:nash}. We restrict attention to $\mu \ge \kappa$, the regime of the baseline calibration. \\
+\textbf{A fact about concave functions.} If $g$ is strictly concave on $[0,1]$ with $g(0)>c$ and $g(\beta_0)=c$ for some $\beta_0\in(0,1]$, then $g'(\beta_0)<0$. (If $g$ were still increasing at $\beta_0$, unimodality of a concave function would force $g\ge g(0)>c$ on $[0,\beta_0]$, contradicting $g(\beta_0)=c$; so the crossing must lie on the decreasing branch.) \\
 \begin{lemma}[Boundedness of the equilibrium slope]\label{lem:beta_bounds}
 Suppose $\mu\ge\kappa$ and, at $W_t$,
 \begin{enumerate}
@@ -585,19 +576,15 @@ Suppose $\mu\ge\kappa$ and, at $W_t$,
 \end{enumerate}
 each verified numerically at baseline for representative $W_t$ in the binding domain (Table \ref{tab:params}). Then the Nash-optimal slope $\beta_t^*$ solving \eqref{eq:foc_binding} lies in $(0,1)$.
 \end{lemma}
-
 \begin{proof}
-Since $\mu\ge\kappa$, $\text{CE}_t'(\beta)=(\mu-\kappa)\beta+|\underline y|>0$ for every $\beta\ge0$ (Section \ref{subsec:nash}, Case 2 curvature block), so $\text{CE}_t$ is strictly increasing on $[0,1]$. By (ii), $\text{CE}_t(0)<\overline{\text{CE}}$; since $\text{CE}_t$ is increasing and, by the nonemptiness of the feasible set, exceeds $\overline{\text{CE}}$ somewhere in $(0,1]$, it exceeds $\overline{\text{CE}}$ at $\beta=1$ too, so there is a unique $\mathrm{lo}\in(0,1)$ with $\text{CE}_t(\mathrm{lo})=\overline{\text{CE}}$ and $\text{CE}_t(\beta)>\overline{\text{CE}} \iff \beta>\mathrm{lo}$.
-
-$\Pi_t$ is strictly concave ($\Pi_t''=-2\mu<0$). By (i) and (iii), $\Pi_t(0)>\overline\Pi>\Pi_t(1)$, so by the fact above there is a $\mathrm{hi}\in(0,1)$ with $\Pi_t(\mathrm{hi})=\overline\Pi$ and $\Pi_t'(\mathrm{hi})<0$; concavity gives $\Pi_t(\beta)>\overline\Pi \iff \beta<\mathrm{hi}$.
-
+Since $\mu\ge\kappa$, $\text{CE}_t'(\beta)=(\mu-\kappa)\beta+|\underline y|>0$ for every $\beta\ge0$ (Section \ref{subsec:nash}, Case 2 curvature block), so $\text{CE}_t$ is strictly increasing on $[0,1]$. By (ii), $\text{CE}_t(0)<\overline{\text{CE}}$; since $\text{CE}_t$ is increasing and, by the nonemptiness of the feasible set, exceeds $\overline{\text{CE}}$ somewhere in $(0,1]$, it exceeds $\overline{\text{CE}}$ at $\beta=1$ too, so there is a unique $\mathrm{lo}\in(0,1)$ with $\text{CE}_t(\mathrm{lo})=\overline{\text{CE}}$ and $\text{CE}_t(\beta)>\overline{\text{CE}} \iff \beta>\mathrm{lo}$.\\
+$\Pi_t$ is strictly concave ($\Pi_t''=-2\mu<0$). By (i) and (iii), $\Pi_t(0)>\overline\Pi>\Pi_t(1)$, so by the fact above there is a $\mathrm{hi}\in(0,1)$ with $\Pi_t(\mathrm{hi})=\overline\Pi$ and $\Pi_t'(\mathrm{hi})<0$; concavity gives $\Pi_t(\beta)>\overline\Pi \iff \beta<\mathrm{hi}$.\\
 Nonemptiness of the feasible set forces $\mathrm{lo}<\mathrm{hi}$, so $(\mathrm{lo},\mathrm{hi})\subset(0,1)$ is exactly where both surpluses are strictly positive. On this interval,
 \[
 G(\beta) := (1-\delta)\,\frac{\Pi_t'(\beta)}{\Pi_t(\beta)-\overline{\Pi}} + \delta\,\frac{\text{CE}_t'(\beta)}{\text{CE}_t(\beta)-\overline{\text{CE}}}
 \]
 is continuous, with $\Pi_t(\beta)-\overline\Pi\to0^+$ and $\Pi_t'(\beta)\to\Pi_t'(\mathrm{hi})<0$ as $\beta\to\mathrm{hi}^-$, so the second component stays finite while the first diverges to $-\infty$: $G(\beta)\to-\infty$. Symmetrically, $\text{CE}_t(\beta)-\overline{\text{CE}}\to0^+$ and $\text{CE}_t'(\beta)\to\text{CE}_t'(\mathrm{lo})>0$ as $\beta\to\mathrm{lo}^+$, so $G(\beta)\to+\infty$. By the Intermediate Value Theorem, $G$ has a root $\beta_t^*\in(\mathrm{lo},\mathrm{hi})\subset(0,1)$. The second-order condition of the Nash problem (concavity of the Nash product at the optimum) ensures this root is the unique maximizer.
 \end{proof}
-
 Writing $\beta_{\min} := \inf_{W_t \text{ binding}} \beta_t^*(W_t)$ and $\beta_{\max} := \sup_{W_t \text{ binding}} \beta_t^*(W_t)$, the lemma gives $0 < \beta_{\min} \le \beta_{\max} < 1$ pointwise at each $W_t$; that the infimum and supremum over the whole binding domain are themselves attained in $(0,1)$ (rather than merely approached) requires the continuity-in-$W$ and compactness argument that will be available once the dynamic environment and its domain assumption are added.
 }
 
