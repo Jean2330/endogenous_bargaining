@@ -7,6 +7,29 @@ instead of leaving loose comments in the LaTeX.
 
 ## Open
 
+### `bargainigpower_draft.tex` uses $\overline{W}$ and the wealth process without the dynamic environment that formally grounds them
+
+`subsec:nash` now defines $\overline{W}$ at the static level, as the wealth
+where the Case-1 (slack) fixed payment $\alpha_t^*$ exactly satisfies limited
+liability: $\overline{W} = (\overline{w}-\alpha_t^*-\beta^{\text{eff}}\underline{y})/\gamma_w$.
+That's enough to make every later use of $\overline{W}$ in this file legible
+(Remark `rem:welfare`, Appendix `app:beta_bounds`, Appendix
+`app:lambda_dynamics`).
+
+What's still missing, and only exists in `thesis_draft.tex`: the actual
+recursive/dynamic setup, the wealth law of motion $W_{t+1}=W_t+\dots+\beta_t^*\sigma\varepsilon_t$,
+continuation value functions $V_P,V_A$, the state space $\mathcal S=[\underline W,W_{\max}]$,
+and the ergodic-distribution results. Appendix `app:lambda_dynamics` already
+leans on $W_{t+1}-W_t=\beta_t^*\sigma\varepsilon_t$ and treats $\lambda_t=\lambda(W_t)$
+as an established object, and the boundedness appendix (line ~606) explicitly
+flags that its sup/inf-over-$W$ claim needs "the continuity-in-$W$ and
+compactness argument that will be available once the dynamic environment...
+[is] added." None of that environment has been ported into
+`bargainigpower_draft.tex` yet (see `thesis_draft.tex` around
+`Definition \ref{def:recursive_nash}`, the budget-constraint law of motion,
+and Proposition `prop:ergodic`). Until it's ported, the dynamic appendices
+rest on borrowed intuition rather than a definition stated in this file.
+
 ### `lambda'(W)` sign is backwards in the dynamic section (thesis_draft.tex)
 
 Appendix B (`ProofProp2`) assumes $\mathrm{CE}_t'(\beta^*) < 0$ to sign

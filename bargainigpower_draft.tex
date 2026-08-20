@@ -429,6 +429,12 @@ This result is worth examining because, when limited liability is slack, realize
 \]
 The agent's share of surplus is pinned down by $\delta$ alone, regardless of wealth, history, or the level of output volatility. Bargaining power is truly exogenous in this regime: the linear frontier means that redistribution is costless, and the Nash solution simply picks the point on that line corresponding to weight $\delta$. This is the property that breaks down when limited liability binds.
 
+This case is self-consistent only as long as $\alpha_t^*$ itself satisfies limited liability, $\alpha_t^* \geq \underline{w}_t - \beta^{\text{eff}}\underline{y}$. Since $\alpha_t^*$ is a constant, fixed by $\beta^{\text{eff}}$ and the outside options, while $\underline{w}_t = \overline{w} - \gamma_w W_t$ falls as $W_t$ rises, this inequality holds for high wealth and fails for low wealth: it defines a wealth threshold $\overline{W}$, the level at which it holds with equality,
+\[
+\overline{w} - \gamma_w \overline{W} = \alpha_t^* + \beta^{\text{eff}}\underline{y} \quad \Longleftrightarrow \quad \overline{W} = \frac{\overline{w} - \alpha_t^* - \beta^{\text{eff}}\underline{y}}{\gamma_w} \qquad (\gamma_w > 0).
+\]
+For $W_t \geq \overline{W}$, Case 1 applies exactly as derived above. For $W_t < \overline{W}$, the unconstrained $\alpha_t^*$ would violate limited liability, so the constraint instead pins $\alpha_t$ at its floor and $\beta_t$ must depart from $\beta^{\text{eff}}$ to satisfy the Nash first-order condition, the case developed next. (When $\gamma_w = 0$, $\underline{w}_t = \overline{w}$ is constant across $W_t$, so there is no threshold: the same case holds at every wealth level.)
+
 \paragraph{Case 2: Limited liability binding (constrained transfers).}
 
 When the limited liability constraint binds, $\alpha_t = \underline{w}_t - \beta_t \underline{y}$ and the fixed payment is no longer free: it is pinned by the constraint. Payoffs become functions of $\beta_t$ alone:
@@ -542,7 +548,7 @@ where $S_t(\beta_t^*) = [\text{CE}_t(\beta_t^*) - \overline{\text{CE}}] + [\Pi_t
 Since $\underline{w}_t$ depends on wealth through $W_t$, and $\beta_t^*$ depends on $\underline{w}_t$, realized bargaining power $\lambda_t$ becomes history-dependent through the wealth accumulation process. In general, $\lambda_t \neq \delta$ when the constraint binds. When limited liability does not bind, the Pareto frontier is linear and the Nash solution achieves any surplus split by adjusting $\alpha_t$ while keeping efficiency at $\beta^{\text{eff}}$, so $\lambda_t = \delta$ always. When limited liability binds, the constraint pins $\alpha_t$ and the Pareto frontier becomes curved: points corresponding to different wealth levels face different feasible sets, so their realized bargaining power differs even under the same exogenous Nash parameter $\delta$. Moving along the curved frontier requires changing $\beta_t$, which affects total surplus and generates the non-transferability that makes bargaining outcomes history-dependent.
 
 \begin{remark}[Welfare comparison: constrained planner versus Nash equilibrium]\label{rem:welfare}
-The binding regime generates a third layer of efficiency loss, on top of the two already identified in Section \ref{subsec:symmetric}. To see this, consider a constrained planner who respects incentive compatibility and limited liability but is not subject to Nash bargaining: the planner maximizes total surplus $S(\beta)$ subject to $\alpha \geq \underline{w}(W) - \beta\underline{y}$.
+The binding regime generates a third layer of efficiency loss, on top of the two already identified in Section \ref{subsec:moral_hazard}. To see this, consider a constrained planner who respects incentive compatibility and limited liability but is not subject to Nash bargaining: the planner maximizes total surplus $S(\beta)$ subject to $\alpha \geq \underline{w}(W) - \beta\underline{y}$.
 
 The planner sets $\alpha = \underline{w}(W) - \beta\underline{y}$ at the boundary (since any slacker $\alpha$ wastes surplus), but is free to choose $\beta$ independently to maximize $S(\beta)$. The limited liability constraint binds only on $\alpha$, not on $\beta$. The planner therefore implements $\beta^{\mathrm{eff}}$ regardless of $W$, achieving $S^{\mathrm{eff}} = S(\beta^{\mathrm{eff}})$ in every period.
 
