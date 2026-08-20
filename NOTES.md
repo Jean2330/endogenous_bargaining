@@ -7,6 +7,39 @@ instead of leaving loose comments in the LaTeX.
 
 ## Open
 
+### Baseline-calibration numeric checks pulled out of `bargainigpower_draft.tex`, to reinstate once the calibration section is ported
+
+`subsec:nash` and its two appendices had several sentences citing specific
+baseline-calibration numbers ($\mu=0.5$, $\kappa=0.09$, $\underline{y}=-0.5$)
+or pointing at `Table \ref{tab:params}` / `Section \ref{subsec:numericalresults}`,
+neither of which exists yet in this file (they live only in
+`thesis_draft.tex`, `subsec:calibration`). Removed them from the main text
+so it doesn't reference sections that aren't there; the underlying checks
+are all still true and should go back in once the calibration table and
+numerical-results section are ported. Keeping the numbers here so nothing
+is lost:
+
+- **Concavity Proposition** (after the Pareto-frontier-curvature block in
+  `subsec:nash`): at baseline calibration, $\mu=0.5>\kappa=0.09$, so the
+  *unconditional* case of the Proposition applies — the constrained frontier
+  is concave everywhere in the binding regime, not merely at the reported
+  equilibrium range.
+- **Assumption `ass:beta_bounds_reg`** (Appendix `app:beta_bounds`): both its
+  inequality display and the existence/nonemptiness clause (what
+  `feasible_beta_bracket` in `model.py` checks) hold at baseline calibration
+  for representative $W_t$ in the binding domain.
+- **Proposition `prop:lambda_dynamics`** (Appendix `app:lambda_dynamics`):
+  at baseline calibration, $W_t=0.5$: $\beta_t^*=0.7464$,
+  $\Pi_t'(\beta_t^*)=-0.7464$, $\text{CE}_t'(\beta_t^*)=+0.8060$,
+  $d\beta_t^*/d\underline w_t=-1.2146$, $d\lambda_t/d\underline w_t=+0.2457$,
+  so condition \eqref{eq:lambda_sign_condition} holds. Verified against a
+  finite-difference derivative of `solve_beta_static` and `lambda_realized`
+  in `model.py`, matching the closed form to 8 significant figures. Chain
+  rule gives $d\beta_t^*/dW_t\approx+0.243$, $d\lambda_t/dW_t\approx-0.049$,
+  consistent with $\lambda(W)$ falling from $\approx0.4446$ at low $W$ to
+  $\delta=0.40$ at $\overline W$ (the numerical-results section this
+  ultimately belongs next to hasn't been ported either).
+
 ### `bargainigpower_draft.tex` uses $\overline{W}$ and the wealth process without the dynamic environment that formally grounds them
 
 `subsec:nash` now defines $\overline{W}$ at the static level, as the wealth

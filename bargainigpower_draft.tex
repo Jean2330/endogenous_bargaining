@@ -482,7 +482,6 @@ Given $M$ is a constant, the sign of $d^2\text{CE}_t/d\Pi_t^2$ is the sign of $M
 \begin{proposition}[Concavity of the binding-regime Pareto frontier]
 If $\theta^2/k \ge \gamma\sigma^2$, the constrained Pareto frontier is strictly concave, $d^2\text{CE}_t/d\Pi_t^2 < 0$, at every $\beta \in (0,1)$, with no further restriction. If $\theta^2/k < \gamma\sigma^2$, strict concavity at the equilibrium $\beta^*(W)$ holds whenever (i) $|\underline{y}|(\mu+\kappa) > \mu(\kappa-\mu)$ and (ii) $\beta_{\max} < |\underline{y}|/(\kappa-\mu)$, where $\beta_{\max}$ is the bound established in Lemma \ref{lem:beta_bounds}.
 \end{proposition}
-At the baseline calibration ($\mu=0.5$, $\kappa=0.09$, $\underline{y}=-0.5$), $\mu > \kappa$, so the first, unconditional case applies: the frontier is concave everywhere in the binding regime, not merely at the reported equilibrium range.\\
 }
 
 The economic content, once the sign is pinned down, is that redistributing surplus in the binding regime is costly: changing $\beta_t$ to give more to the agent necessarily reduces total surplus, because $\beta_t$ is being asked to perform two tasks simultaneously, providing incentives and transferring resources, and it is not efficient at either task when pulled away from $\beta^{\text{eff}}$.
@@ -571,7 +570,7 @@ with the second term present only in the binding regime and vanishing as $W \to 
 \section{Appendix: Boundedness of the equilibrium slope}\label{app:beta_bounds}
 
 \textcolor{blue}{
-Throughout, fix $W_t$ in the binding regime and write $\mu:=\theta^2/k$, $\kappa:=\gamma\sigma^2$, so that $\Pi_t(\beta)=D(\beta)+\beta\underline y-\underline w_t$ and $\text{CE}_t(\beta)=C(\beta)-\beta\underline y+\underline w_t$ as in Case 2 of Section \ref{subsec:nash}. The proof below treats $\mu\ge\kappa$ (the baseline calibration) and $\mu<\kappa$ as two cases. \\
+Throughout, fix $W_t$ in the binding regime and write $\mu:=\theta^2/k$, $\kappa:=\gamma\sigma^2$, so that $\Pi_t(\beta)=D(\beta)+\beta\underline y-\underline w_t$ and $\text{CE}_t(\beta)=C(\beta)-\beta\underline y+\underline w_t$ as in Case 2 of Section \ref{subsec:nash}. The proof below treats $\mu\ge\kappa$ and $\mu<\kappa$ as two cases. \\
 \textbf{A fact about concave functions.} If $g$ is strictly concave on $[0,1]$ with $g(0)>c$ and $g(\beta_0)=c$ for some $\beta_0\in(0,1]$, then $g'(\beta_0)<0$. (If $g$ were still increasing at $\beta_0$, unimodality of a concave function would force $g\ge g(0)>c$ on $[0,\beta_0]$, contradicting $g(\beta_0)=c$; so the crossing must lie on the decreasing branch.) \\
 \begin{assumption}[Regularity of the binding-regime bracket]\label{ass:beta_bounds_reg}
 At $W_t$ in the binding regime, the limited liability floor $\underline w_t=\overline w-\gamma_w W_t$ satisfies
@@ -580,7 +579,7 @@ At $W_t$ in the binding regime, the limited liability floor $\underline w_t=\ove
 \]
 and there exists $\beta\in(0,1)$ with $\Pi_t(\beta)>\overline\Pi$ and $\text{CE}_t(\beta)>\overline{\text{CE}}$ simultaneously.
 \end{assumption}
-Since $D(0)=D(1)=0$, we have $\Pi_t(0)=-\underline w_t$, $\text{CE}_t(0)=\underline w_t$, and $\Pi_t(1)=\underline y-\underline w_t$, so the first display of Assumption \ref{ass:beta_bounds_reg} is exactly equivalent to conditions (i)-(iii) below. The existence clause is the nonemptiness of the feasible bracket invoked throughout the proof, and is precisely what \texttt{feasible\_beta\_bracket} in \texttt{model.py} checks. Both hold at the baseline calibration for representative $W_t$ in the binding domain (Table \ref{tab:params}).\\
+Since $D(0)=D(1)=0$, we have $\Pi_t(0)=-\underline w_t$, $\text{CE}_t(0)=\underline w_t$, and $\Pi_t(1)=\underline y-\underline w_t$, so the first display of Assumption \ref{ass:beta_bounds_reg} is exactly equivalent to conditions (i)-(iii) below. The existence clause is the nonemptiness of the feasible bracket invoked throughout the proof, and is precisely what \texttt{feasible\_beta\_bracket} in \texttt{model.py} checks.\\
 \begin{lemma}[Boundedness of the equilibrium slope]\label{lem:beta_bounds}
 Under Assumption \ref{ass:beta_bounds_reg}, at $W_t$
 \begin{enumerate}
@@ -638,7 +637,6 @@ Since $\lambda_t=\lambda(W_t)$ and the stochastic component of $W_{t+1}-W_t$ is 
 \ell_{t+1}-\ell_t=\frac{\lambda'(W_t)}{\lambda_t(1-\lambda_t)}\,\beta_t^*\sigma\varepsilon_t+o(|\varepsilon_t|),
 \]
 so with $\lambda'(W_t)<0$ established above, a positive output shock ($\varepsilon_t>0$) strictly lowers $\ell_t$, and hence $\lambda_t$, in the binding regime.\\
-Numerically, at the baseline calibration and $W_t=0.5$: $\beta_t^*=0.7464$, $\Pi_t'(\beta_t^*)=-0.7464$, $\text{CE}_t'(\beta_t^*)=+0.8060$, $d\beta_t^*/d\underline w_t=-1.2146$, and $d\lambda_t/d\underline w_t=+0.2457$, so condition \eqref{eq:lambda_sign_condition} holds (verified against a finite-difference derivative of \texttt{solve\_beta\_static} and \texttt{lambda\_realized} in \texttt{model.py}, which matches the closed-form expression above to eight significant figures). By the chain rule this gives $d\beta_t^*/dW_t\approx+0.243$ and $d\lambda_t/dW_t\approx-0.049$, consistent with Section \ref{subsec:numericalresults}'s numerical result that $\lambda(W)$ falls from $\approx0.4446$ at low $W$ to $\delta=0.40$ at $\overline W$.\\
 When $\mu<\kappa$, the same argument applies verbatim wherever $\text{CE}_t'(\beta_t^*)>0$, which by Lemma \ref{lem:beta_bounds} (case $\mu<\kappa$) holds whenever $\beta_t^*<\widehat\beta=|\underline y|/(\kappa-\mu)$; the opposite conclusion, $\lambda'(W_t)>0$, holds on the complementary range $\beta_t^*>\widehat\beta$, since there $\text{CE}_t'(\beta_t^*)<0$ flips the sign of every step above.
 }
 
