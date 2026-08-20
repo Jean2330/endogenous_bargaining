@@ -94,6 +94,30 @@ version in `bargainigpower_draft.tex`.
 ## Resolved
 (move items here once fixed, with the commit that fixed them)
 
+### Appendix A (`app:beta_bounds`) is the static analogue of the thesis's Lemma C.1, not a copy of it
+
+The thesis proves boundedness of the equilibrium slope (Lemma C.1) for the
+dynamic continuation values $V_P^b, V_A^b$, and evaluates the crossing
+function $F$ literally at $\beta=0,1$. That literal evaluation doesn't work
+here: at $\beta=0,1$ one party's participation constraint already fails
+(confirmed with `model.py`: $\text{CE}_s<0$ near $\beta=0$, $\Pi_s<0$ near
+$\beta=1$, at the baseline calibration). The proof in `app:beta_bounds`
+instead uses the interior feasible bracket, exactly what
+`feasible_beta_bracket` in `model.py` already computes in practice, and adds
+$\mu<\kappa$ as a second case with its own crossing argument, since
+$\text{CE}_t$ is concave (not monotonic) there instead of monotone
+increasing. The regularity conditions are formalized as Assumption
+`ass:beta_bounds_reg`, with conditions (i)-(iii) rewritten in closed form as
+a bound on $\underline w_t$; only the existence of a feasible bracket (what
+`feasible_beta_bracket` checks) remains a numeric condition at the baseline
+calibration.
+
+This result is static, for a single fixed $W_t$ — it doesn't need the
+wealth process. Appendix B (`app:lambda_dynamics`, entry below) is the piece
+that actually reasons about $\lambda(W_t)$ across $W_t$, and is still
+missing the ported dynamic environment (see the open entry above on
+$\overline{W}$ and the wealth process).
+
 ### Appendix B / $\lambda'(W_t)$ sign, ported into `bargainigpower_draft.tex`
 
 Rederived the $d\beta^*/d\underline w$ and $d\lambda/d\underline w$ argument
