@@ -18,3 +18,7 @@ __pycache__/
 *.fdb_latexmk
 *.fls
 *.run.xml
+
+# Local outputs
+.Rhistory
+bargainigpower_draft.pdf
