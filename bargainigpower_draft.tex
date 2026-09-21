@@ -271,7 +271,7 @@ Setting this equal to zero,
 -1 + \mu = 0 \quad \implies \quad \mu = 1.
 \]
 
-The fixed payment $\alpha_t$ enters the principal's payoff with coefficient $-1$ and the constraint with coefficient $+1$, since $\alpha_t$ is a pure one-to-one transfer between the two parties. Relaxing the agent's participation constraint by one unit allows the principal to reduce $\alpha_t$ by exactly one unit, raising his own payoff by exactly one unit. There is no friction in this transfer, so the shadow value of relaxing the constraint is exactly one, not merely positive.
+The fixed payment $\alpha_t$ enters the principal's payoff with coefficient $-1$ and the constraint with coefficient $+1$, since $\alpha_t$ is a pure one-to-one transfer between the two parties. Relaxing the agent's participation constraint by one unit allows the principal to reduce $\alpha_t$ by exactly one unit, raising his own payoff by exactly one unit. There is no friction in this transfer, so the shadow value of relaxing the constraint is exactly one.
 
 The Karush-Kuhn-Tucker conditions require
 \[
@@ -280,7 +280,7 @@ The Karush-Kuhn-Tucker conditions require
 
 Since we have just shown $\mu = 1 \neq 0$, it must be that
 \[
-\alpha_t + C(\beta_t) - \overline{\text{CE}} = 0 \quad \Longrightarrow \quad \text{CE}_t = \overline{\text{CE}}.
+\alpha_t + C(\beta_t) - \overline{\text{CE}} = 0 \quad \implies \quad \text{CE}_t = \overline{\text{CE}}.
 \]
 
 Note that the participation constraint binds with equality at the optimum as a direct consequence of $\mu = 1$.
@@ -547,7 +547,7 @@ Since $\underline{w}_t$ depends on wealth through $W_t$, and $\beta_t^*$ depends
 \begin{remark}[Welfare comparison: constrained planner versus Nash equilibrium]\label{rem:welfare}
 The binding regime generates a third layer of efficiency loss, on top of the two already identified in Section \ref{subsec:moral_hazard}. To see this, consider a constrained planner who respects incentive compatibility and limited liability but is not subject to Nash bargaining: the planner maximizes total surplus $S(\beta)$ subject to $\alpha \geq \underline{w}(W) - \beta\underline{y}$.
 
-The planner sets $\alpha = \underline{w}(W) - \beta\underline{y}$ at the boundary (since any slacker $\alpha$ wastes surplus), but is free to choose $\beta$ independently to maximize $S(\beta)$. The limited liability constraint binds only on $\alpha$, not on $\beta$. The planner therefore implements $\beta^{\mathrm{eff}}$ regardless of $W$, achieving $S^{\mathrm{eff}} = S(\beta^{\mathrm{eff}})$ in every period.
+The planner sets $\alpha = \underline{w}(W) - \beta\underline{y}$ at the boundary (since any slacker $\alpha$ wastes surplus), but is free to choose $\beta$ independently to maximize $S(\beta)$. The limited liability constraint binds on $\alpha$ alone. The planner therefore implements $\beta^{\mathrm{eff}}$ regardless of $W$, achieving $S^{\mathrm{eff}} = S(\beta^{\mathrm{eff}})$ in every period.
 
 The Nash equilibrium in the binding regime instead chooses $\beta^*(W) \neq \beta^{\mathrm{eff}}$, because the parties use $\beta_t$ both to set incentives and to redistribute surplus. The resulting equilibrium surplus is $S(\beta^*(W)) < S(\beta^{\mathrm{eff}})$, since $\beta^{\mathrm{eff}}$ is the unique maximizer of $S(\beta)$. The bargaining distortion is
 \[
@@ -561,8 +561,6 @@ S^{\mathrm{FB}} - S(\beta^*(W)) = \underbrace{(S^{\mathrm{FB}} - S^{\mathrm{eff}
 \]
 with the second term present only in the binding regime and vanishing as $W \to \overline{W}$. This decomposition clarifies that policies reducing the stringency of the limited liability constraint (raising $\gamma_w$ or increasing $W$) improve welfare not only by relaxing the constraint directly but also by reducing the bargaining distortion $\Delta(W)$.
 \end{remark}
-
-\textcolor{olive}{Nota: esta es la versión estática (para un $W_t$ dado) de la Lema C.1 de la tesina, con una prueba corregida de manera independiente, no una copia; ver NOTES.md para el detalle completo.}
 
 \begin{appendices}
 \section{Appendix: Boundedness of the equilibrium slope}\label{app:beta_bounds}
@@ -600,7 +598,7 @@ By (ii), $\text{CE}_t(0)<\overline{\text{CE}}$, and $\text{CE}_t$ is strictly in
 Past its peak, $\text{CE}_t$ is strictly decreasing on $[\tilde\beta,1]$ whenever $\tilde\beta<1$. If $\tilde\beta\ge1$, or if $\tilde\beta<1$ and $\text{CE}_t(1)\ge\overline{\text{CE}}$, set $\widehat\beta_{\mathrm{CE}}^{+}:=1$: $\text{CE}_t$ never returns to $\overline{\text{CE}}$ within $[0,1]$. Otherwise $\tilde\beta<1$ and $\text{CE}_t(1)<\overline{\text{CE}}$, and by the Intermediate Value Theorem there is a unique $\widehat\beta_{\mathrm{CE}}^{+}\in(\tilde\beta,1)$ with $\text{CE}_t(\widehat\beta_{\mathrm{CE}}^{+})=\overline{\text{CE}}$; since $\widehat\beta_{\mathrm{CE}}^{+}>\tilde\beta$, $\text{CE}_t'(\widehat\beta_{\mathrm{CE}}^{+})<0$. Either way, $\text{CE}_t(\beta)>\overline{\text{CE}} \iff \beta\in(\widehat\beta_{\mathrm{CE}}^{-},\widehat\beta_{\mathrm{CE}}^{+})$ on $[0,1]$.\\
 Let $\widehat\beta^{*}:=\min(\widehat\beta_\Pi,\widehat\beta_{\mathrm{CE}}^{+})$. Nonemptiness of the feasible set forces $\widehat\beta_{\mathrm{CE}}^{-}<\widehat\beta^{*}$, so $(\widehat\beta_{\mathrm{CE}}^{-},\widehat\beta^{*})\subset(0,1)$ is exactly where both surpluses are strictly positive, and $G$ is defined and continuous on it as above. As $\beta\to(\widehat\beta_{\mathrm{CE}}^{-})^+$, $\text{CE}_t(\beta)-\overline{\text{CE}}\to0^+$ with $\text{CE}_t'(\beta)\to\text{CE}_t'(\widehat\beta_{\mathrm{CE}}^{-})>0$, so $G(\beta)\to+\infty$ exactly as in the case $\mu\ge\kappa$. If $\widehat\beta^{*}=\widehat\beta_\Pi$, the same argument as above gives $G(\beta)\to-\infty$ as $\beta\to(\widehat\beta^{*})^-$; if instead $\widehat\beta^{*}=\widehat\beta_{\mathrm{CE}}^{+}<\widehat\beta_\Pi$, then as $\beta\to(\widehat\beta_{\mathrm{CE}}^{+})^-$, $\text{CE}_t(\beta)-\overline{\text{CE}}\to0^+$ with $\text{CE}_t'(\beta)\to\text{CE}_t'(\widehat\beta_{\mathrm{CE}}^{+})<0$, so the second term of $G$ diverges to $-\infty$ while the first stays finite (since $\Pi_t(\widehat\beta_{\mathrm{CE}}^{+})>\overline\Pi$, as $\widehat\beta_{\mathrm{CE}}^{+}<\widehat\beta_\Pi$), so again $G(\beta)\to-\infty$. By the Intermediate Value Theorem, $G$ has a root in $(\widehat\beta_{\mathrm{CE}}^{-},\widehat\beta^{*})\subset(0,1)$. As in the case $\mu\ge\kappa$, $N(\beta):=[\Pi_t(\beta)-\overline\Pi]^{1-\delta}[\text{CE}_t(\beta)-\overline{\text{CE}}]^{\delta}$ extends continuously to $[\widehat\beta_{\mathrm{CE}}^{-},\widehat\beta^{*}]$ with $N(\widehat\beta_{\mathrm{CE}}^{-})=N(\widehat\beta^{*})=0$ and $N>0$ somewhere inside, so by the Extreme Value Theorem its maximum is attained at an interior point, which is a root of $G$; this identifies $\beta_t^*\in(\widehat\beta_{\mathrm{CE}}^{-},\widehat\beta^{*})\subset(0,1)$. Unlike the case $\mu\ge\kappa$, Proposition~\ref{prop:frontier_concavity} does not give unconditional concavity here, so this argument deliberately does not claim uniqueness of the maximizer: it establishes only that $\beta_t^*$, whichever root of \eqref{eq:foc_binding} the Nash bargaining problem selects, is interior.
 \end{proof}
-Writing $\beta_{\min} := \inf_{W_t \text{ binding}} \beta_t^*(W_t)$ and $\beta_{\max} := \sup_{W_t \text{ binding}} \beta_t^*(W_t)$, the lemma gives $0 < \beta_{\min} \le \beta_{\max} < 1$ pointwise at each $W_t$; that the infimum and supremum over the whole binding domain are themselves attained in $(0,1)$ (rather than merely approached) requires the continuity-in-$W$ and compactness argument that will be available once the dynamic environment and its domain assumption are added.
+Writing $\beta_{\min} := \inf_{W_t \text{ binding}} \beta_t^*(W_t)$ and $\beta_{\max} := \sup_{W_t \text{ binding}} \beta_t^*(W_t)$, the lemma gives $0 < \beta_{\min} \le \beta_{\max} < 1$ pointwise at each $W_t$; that the infimum and supremum over the whole binding domain are themselves attained in $(0,1)$ requires the continuity-in-$W$ and compactness argument that will be available once the dynamic environment and its domain assumption are added.
 }
 
 \section{Appendix: Direction of $\lambda'(W_t)$ in the binding regime}\label{app:lambda_dynamics}
@@ -638,7 +636,7 @@ so with $\lambda'(W_t)<0$ established above, a positive output shock ($\varepsil
 When $\mu<\kappa$, the same argument applies verbatim wherever $\text{CE}_t'(\beta_t^*)>0$, which by Lemma \ref{lem:beta_bounds} (case $\mu<\kappa$) holds whenever $\beta_t^*<\tilde\beta=|\underline y|/(\kappa-\mu)$; the opposite conclusion, $\lambda'(W_t)>0$, holds on the complementary range $\beta_t^*>\tilde\beta$, since there $\text{CE}_t'(\beta_t^*)<0$ flips the sign of every step above.
 }
 
-\textcolor{olive}{PENDIENTE: figura nueva, dirección corregida respecto a la versión de la tesina (donde $\lambda$ subía desde abajo de $\delta$): aquí $\lambda_t$ empieza por ARRIBA de $\delta$ en $W$ bajo y desciende hasta cruzar $\delta$ en $\overline W$, porque el agente restringido en riqueza captura más que $\delta$, no menos. Ver Proposición \ref{prop:lambda_dynamics} y la entrada resuelta en NOTES.md.}
+\textcolor{olive}{PENDIENTE: figura nueva, dirección corregida respecto a la versión de la tesina (donde $\lambda$ subía desde abajo de $\delta$): aquí $\lambda_t$ empieza por ARRIBA de $\delta$ en $W$ bajo y desciende hasta cruzar $\delta$ en $\overline W$, porque el agente restringido en riqueza captura una fracción mayor que $\delta$. Ver Proposición \ref{prop:lambda_dynamics}.}
 
 \begin{figure}[htbp]
 \centering
