@@ -21,9 +21,9 @@ is lost:
 
 - **Concavity Proposition** (after the Pareto-frontier-curvature block in
   `subsec:nash`): at baseline calibration, $\mu=0.5>\kappa=0.09$, so the
-  *unconditional* case of the Proposition applies — the constrained frontier
-  is concave everywhere in the binding regime, not merely at the reported
-  equilibrium range.
+  case $\nu\ge\kappa$ of the Proposition applies — the constrained frontier
+  is concave on its Pareto-relevant segment ($\Pi_t'<0$), which contains the
+  equilibrium slope.
 - **Assumption `ass:beta_bounds_reg`** (Appendix `app:beta_bounds`): both its
   inequality display and the existence/nonemptiness clause (what
   `feasible_beta_bracket` in `model.py` checks) hold at baseline calibration

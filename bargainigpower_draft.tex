@@ -110,9 +110,6 @@ We now assume the principal observes only output $y_t$, not effort $a_t$. The ag
 a_t \in \arg\max_{a} \left[\alpha_t + \beta_t \theta a - \frac{\gamma}{2}\beta_t^2 \sigma^2 - \frac{k}{2}a^2\right].
 \]
 
-\textcolor{olive}{Aclarar por qué aquí no hace falta el first order approach ni sus condiciones de validez, a diferencia de la literatura general de moral hazard}
-
-\textcolor{blue}{
 In general moral hazard problems, replacing the agent's incentive compatibility constraint, $a \in \arg\max_a \mathbb{E}[v(w,a)]$, with the first-order condition of that problem is called the first-order approach, and it is only valid under
 additional regularity conditions on the family of conditional output distributions $F(y\mid a)$, since the agent's objective need not be concave in $a$ in general \parencite{mirrlees1999}. \textcite{rogerson1985} gives sufficient conditions, the monotone likelihood ratio condition together with the convexity of the distribution function condition (MLRC and CDFC), and \textcite{jewitt1988} provides an alternative, less restrictive set of conditions. \\
 Under the CARA-normal-quadratic specification (the same structure used by \textcite{holmstrom1987}), output enters only through a linear shift in the mean of a normal distribution, $y = \theta a + \sigma\varepsilon$, and the cost of effort is quadratic. For any fixed contract $(\alpha,\beta)$, the agent's certainty equivalent
@@ -120,7 +117,6 @@ Under the CARA-normal-quadratic specification (the same structure used by \textc
 \alpha + \beta\theta a - \frac{\gamma}{2}\beta^2\sigma^2 - \frac{k}{2}a^2
 \]
 is a strictly concave, twice differentiable function of $a$ alone, since its second derivative is $-k < 0$ for all $a$. The first-order condition $a_t^*(\beta_t) = \beta_t\theta/k$ is therefore both necessary and globally sufficient for the agent's problem, with no need to impose MLRC, CDFC, or any other condition on a family of output distributions. Incentive compatibility reduces to this single substitution throughout the paper. We flag this explicitly because it is the point in the model where the general moral hazard literature usually requires the most care, and it is worth being clear about exactly why that care is unnecessary here.
-}
 
 The first-order condition yields
 \[
@@ -142,12 +138,6 @@ Total surplus under moral hazard is
 S(\beta_t) = C(\beta_t) + D(\beta_t) = \frac{\beta_t \theta^2}{k} - \frac{\beta_t^2 \theta^2}{2k} - \frac{\gamma}{2}\beta_t^2 \sigma^2.
 \]
 
-\textcolor{olive}{Pensar en reescribir esta expresión para sacar un resultado interpretativo sobre las raíces}\\
-\textcolor{red}{\[
-S(\beta_t)  = \frac{\beta_t \theta^2}{k} - \frac{\beta_t^2 \theta^2}{2k} - \frac{\gamma}{2}\beta_t^2 \sigma^2.
-\]}
-
-\textcolor{blue}{
 \begin{align*}
     S(\beta_t) &= \frac{ \theta^2}{k} \beta_t -\left[ \frac{ \theta^2}{2k} + \frac{\gamma}{2} \sigma^2\right]\beta_t^2\\
     &=\left(\frac{\theta^2}{k} -\left[\dfrac{\theta^2}{2k}+\dfrac{\gamma}{2}\sigma^2 \right]\beta_t \right)\beta_t
@@ -156,7 +146,6 @@ This factorization shows that $S(\beta_t)$ has two roots in $\beta_t$, namely $\
 \[
     \beta_t=\dfrac{2\theta^2/k}{\gamma\sigma^2+\theta^2/k}.
 \]
-}
 
 The efficient slope maximizes $S(\beta_t)$. The first-order condition is
 \[
@@ -169,7 +158,6 @@ yielding
 
 This reflects the standard trade-off between incentive provision and risk sharing. Note that $\beta^{\text{eff}} < 1$: some insurance is sacrificed to provide incentives.
 
-\textcolor{blue}{
 Now that we know $\beta^{\text{eff}}\in (0,1)$, we can infer things about the second root of $S(\beta_t)$: it equals $2\beta^{\text{eff}}$, which may lie above, at, or below $1$ depending on parameters. The economically interesting case is $2\beta^{\text{eff}}<1$, since it means that some values of $\beta_t$ lead to a negative surplus; this happens if
 \begin{align*}
     \dfrac{2\theta^2/k}{\gamma\sigma^2+\theta^2/k}&<1\\
@@ -178,7 +166,6 @@ Now that we know $\beta^{\text{eff}}\in (0,1)$, we can infer things about the se
     \dfrac{\theta^2}{2k}&<\dfrac{\gamma\sigma^2}{2}
 \end{align*}
 Note that the left side of this inequality is the total surplus in the symmetric information benchmark, and the right side corresponds to the risk premium when $\beta_t=1$. In other words, the condition states that the first-best surplus, the total size of the pie in the frictionless benchmark, is smaller than the risk premium the agent would bear under full residual claimancy. Put differently, even at its best the relationship does not generate enough value to cover the cost of exposing the agent to all of the production risk.
-}
 
 With $\beta_t = \beta^{\text{eff}}$, induced effort is
 \[
@@ -216,12 +203,12 @@ The fixed payment $\alpha_t$ remains a free variable that can be adjusted to spl
     \node[below] at (0,-0.1) {$0$};
     \draw[dashed, gray] (0,2.4) -- (3.84,2.4);
     \node[left] at (0,2.4) {$S^{\text{eff}}$};
-    \draw[dashed, gray, thick] (0,3.2) -- (5.2,3.2);
-    \node[left] at (0,3.2) {$S^{\text{FB}}$};
-    \draw[thick, black] (4.9,2.4) -- (4.9,3.2);
+    \draw[dashed, gray, thick] (0,3.0) -- (5.2,3.0);
+    \node[left] at (0,3.0) {$S^{\text{FB}}$};
+    \draw[thick, black] (4.9,2.4) -- (4.9,3.0);
     \draw[thick, black] (4.75,2.4) -- (4.9,2.4);
-    \draw[thick, black] (4.75,3.2) -- (4.9,3.2);
-    \node[right, font=\small, align=left] at (5.0, 2.8) {Efficiency\\loss};
+    \draw[thick, black] (4.75,3.0) -- (4.9,3.0);
+    \node[right, font=\small, align=left] at (5.0, 2.7) {Efficiency\\loss};
     \filldraw[black] (3.84,2.4) circle (2pt);
     \node[right, font=\small] at (0.8,1.9) {$S(\beta_t)$};
 \end{tikzpicture}
@@ -252,13 +239,6 @@ C(\beta_t) = \frac{\beta_t^2\theta^2}{2k} - \frac{\gamma}{2}\beta_t^2\sigma^2, \
 
 Let $\mu \geq 0$ denote the multiplier on the participation constraint. The Lagrangian is
 
-\textcolor{olive}{Poner el Lagrangiano en términos del Teorema 18.3 de \textcite{simon1994mathematics}}
-\textcolor{red}{
-\[
-\mathcal{L}(\alpha_t,\beta_t,\mu) = D(\beta_t) - \alpha_t + \mu\big[\alpha_t + C(\beta_t) - \overline{\text{CE}}\big].
-\]
-}
-\textcolor{blue}{
 \begin{align*}
     \Lag(\alpha_t,\beta_t,\mu)&=D(\beta_t)-\alpha_t- \mu\left[ -\text{CE}_t(\alpha_t,\beta_t)+\overline{\text{CE}}\right]\\
     &=D(\beta_t)-\alpha_t + \mu\left[\text{CE}_t(\alpha_t,\beta_t) - \overline{\text{CE}}\right]
@@ -268,7 +248,6 @@ Differentiating with respect to $\alpha_t$ term by term,
     \partder{\Lag}{\alpha_t}&= \partder{}{\alpha_t}\left[ \dfrac{\theta^2}{k}(1-\beta_t)\beta_t - \alpha_t + \mu\left( \alpha_t + \left(\frac{ \theta^2}{2k} - \frac{\gamma \sigma^2}{2} \right)\beta^2_t - \overline{\text{CE}}\right) \right]\\
     &=-1+\mu
 \end{align*}
-}
 
 Setting this equal to zero,
 \[
@@ -414,24 +393,25 @@ The first-order condition of the Nash product with respect to $\alpha_t$ gives
 \[
 \frac{1-\delta}{\Pi_t - \overline{\Pi}} = \frac{\delta}{\text{CE}_t - \overline{\text{CE}}}.
 \]
-Cross-multiplying and using $S_t = (\text{CE}_t - \overline{\text{CE}}) + (\Pi_t - \overline{\Pi})$, this implies
+Cross-multiplying and writing $\Sigma_t := (\text{CE}_t - \overline{\text{CE}}) + (\Pi_t - \overline{\Pi}) = S_t - \overline{\text{CE}} - \overline{\Pi}$ for the surplus net of both outside options, this implies
 \[
 (1-\delta)(\text{CE}_t - \overline{\text{CE}}) = \delta(\Pi_t - \overline{\Pi}),
 \]
-so that $\text{CE}_t - \overline{\text{CE}} = \delta S_t$ and $\Pi_t - \overline{\Pi} = (1-\delta)S_t$. Thus, the surplus split satisfies
+so that $\text{CE}_t - \overline{\text{CE}} = \delta \Sigma_t$ and $\Pi_t - \overline{\Pi} = (1-\delta)\Sigma_t$. Thus, the surplus split satisfies
 \[
-\frac{\text{CE}_t - \overline{\text{CE}}}{S_t} = \delta, \qquad \frac{\Pi_t - \overline{\Pi}}{S_t} = 1 - \delta,
+\frac{\text{CE}_t - \overline{\text{CE}}}{\Sigma_t} = \delta, \qquad \frac{\Pi_t - \overline{\Pi}}{\Sigma_t} = 1 - \delta,
 \]
-where each party receives exactly its Nash weight times total surplus.
+where each party receives exactly its Nash weight times the surplus net of outside options.
 
-Since $\alpha_t$ can be freely adjusted to split surplus, the Nash solution chooses $\beta_t = \beta^{\text{eff}}$ to maximize $S_t$, then sets $\alpha_t$ to deliver the agent a share $\delta$ of total surplus. Specifically,
+Since $\alpha_t$ can be freely adjusted to split surplus, the Nash solution chooses $\beta_t = \beta^{\text{eff}}$ to maximize $S_t$ (and hence $\Sigma_t$, which differs from $S_t$ by a constant), then sets $\alpha_t$ to deliver the agent a share $\delta$ of the net surplus. Specifically,
 \[
-\alpha_t^* = \overline{\text{CE}} - C(\beta^{\text{eff}}) + \delta S(\beta^{\text{eff}}).
+\alpha_t^* = \overline{\text{CE}} - C(\beta^{\text{eff}}) + \delta\left[S^{\text{eff}} - \overline{\text{CE}} - \overline{\Pi}\right].
 \]
+This requires $S^{\text{eff}} > \overline{\text{CE}} + \overline{\Pi}$, the implementability condition of Section \ref{subsec:variante_B} (strict here, since the Nash product vanishes otherwise). As $\delta \to 0$, $\alpha_t^* \to \overline{\text{CE}} - C(\beta^{\text{eff}}) = \alpha_t^{\text{PD}}$ and $\Pi_t \to \overline{\Pi} + \Sigma_t = S^{\text{eff}} - \overline{\text{CE}} = \Pi_t^{\text{PD}}$, which is the sense in which the principal-as-designer benchmark is the limit $\delta \to 0$ of the Nash solution.
 
 This result is worth examining because, when limited liability is slack, realized bargaining power coincides exactly with the exogenous Nash parameter:
 \[
-\lambda_t := \frac{\text{CE}_t - \overline{\text{CE}}}{S_t} = \delta.
+\lambda_t := \frac{\text{CE}_t - \overline{\text{CE}}}{\Sigma_t} = \delta.
 \]
 The agent's share of surplus is pinned down by $\delta$ alone, regardless of wealth, history, or the level of output volatility. Bargaining power is truly exogenous in this regime: the linear frontier means that redistribution is costless, and the Nash solution simply picks the point on that line corresponding to weight $\delta$. This is the property that breaks down when limited liability binds: Case 2 below shows that once transfers are constrained, $\beta_t$ becomes the only instrument left to redistribute surplus, the frontier curves, and $\lambda_t$ departs from $\delta$ in a way that depends on wealth $W_t$, the paper's central object of interest from here on.
 
@@ -454,9 +434,6 @@ To understand why the Pareto frontier is now curved, consider moving along it by
 \]
 and the curvature is determined by the second derivative of $\text{CE}_t$ with respect to $\Pi_t$.
 
-\textcolor{red}{Since $C(\beta_t)$ is concave and $D(\beta_t)$ is concave in $\beta_t$, the ratio $\text{CE}_t'(\beta_t)/\Pi_t'(\beta_t)$ is not constant: as $\beta_t$ increases, the marginal gain to one party differs from the marginal loss to the other, because both incentive provision and risk sharing respond nonlinearly to the slope. Formally, one can verify that $d^2\,\text{CE}_t / d\,\Pi_t^2 < 0$, so the frontier is strictly concave toward the origin.}
-
-\textcolor{blue}{
 Write $\nu := \theta^2/k$ and $\kappa := \gamma\sigma^2$ for brevity. In the binding regime,
 \[
 \text{CE}_t(\beta) = C(\beta) - \beta\underline{y} + \underline{w}_t, \qquad \Pi_t(\beta) = D(\beta) + \beta\underline{y} - \underline{w}_t,
@@ -481,12 +458,11 @@ M &:= \text{CE}_t''(\beta)\,\Pi_t'(\beta) - \text{CE}_t'(\beta)\,\Pi_t''(\beta) 
 &= \nu(\nu-\kappa) - \underline{y}(\nu+\kappa).
 \end{align*}
 The terms in $\beta$ cancel exactly, so note that $M$ depends only on the model's primitives, and is a constant with respect to $\beta$. Since $\underline{y} < 0$ (as discussed above), $-\underline{y}(\nu+\kappa) > 0$, so $M > 0$ whenever $\nu \geq \kappa$, and more generally whenever $|\underline{y}|(\nu+\kappa) > \nu(\kappa-\nu)$.\\
-Given $M$ is a constant, the sign of $d^2\text{CE}_t/d\Pi_t^2$ is the sign of $M/[\Pi_t'(\beta)]^3$, which equals the sign of $\Pi_t'(\beta)$ whenever $M>0$ (cubing preserves sign). So the frontier is concave, $d^2\text{CE}_t/d\Pi_t^2 < 0$, if and only if $M>0$ and $\Pi_t'(\beta) < 0$ on the equilibrium binding domain.\\
-Neither $\Pi_t'(\beta)$ nor $\text{CE}_t'(\beta)$ needs to be signed numerically: both sign thresholds can be written in terms of the primitives. Explicitly, $\Pi_t'(\beta) < 0 \iff \beta > (\nu+\underline{y})/(2\nu)$, and $\text{CE}_t'(\beta) > 0 \iff (\nu-\kappa)\beta > \underline{y}$. Since $\underline{y}<0$, the latter inequality holds for every $\beta \geq 0$ whenever $\nu \geq \kappa$, and in that same case $M>0$ holds unconditionally as well, since both summands of $M$ are nonnegative. This gives:\\
+Given $M$ is a constant, the sign of $d^2\text{CE}_t/d\Pi_t^2$ is the sign of $M/[\Pi_t'(\beta)]^3$, which equals the product of the signs of $M$ and $\Pi_t'(\beta)$ (cubing preserves sign). So the frontier is strictly concave, $d^2\text{CE}_t/d\Pi_t^2 < 0$, exactly where $M$ and $\Pi_t'(\beta)$ have opposite signs; when $M>0$, this means exactly where $\Pi_t'(\beta) < 0$.\\
+Neither $\Pi_t'(\beta)$ nor $\text{CE}_t'(\beta)$ needs to be signed numerically: both sign thresholds can be written in terms of the primitives. Explicitly, $\Pi_t'(\beta) < 0 \iff \beta > (\nu+\underline{y})/(2\nu)$, and $\text{CE}_t'(\beta) > 0 \iff (\nu-\kappa)\beta > \underline{y}$. Since $\underline{y}<0$, the latter inequality holds for every $\beta \geq 0$ whenever $\nu \geq \kappa$, and in that same case $M>0$ holds unconditionally as well, since both summands of $M$ are nonnegative. The segment with $\Pi_t'(\beta)<0$ is also the Pareto-relevant part of the curve when $\nu\ge\kappa$: where $\Pi_t'(\beta)>0$, both payoffs rise with $\beta$, so the point is dominated by one with a larger slope. Finally, the first-order condition \eqref{eq:foc_binding} requires $\Pi_t'(\beta_t^*)$ and $\text{CE}_t'(\beta_t^*)$ to have opposite signs, because both surpluses $\Pi_t-\overline\Pi$ and $\text{CE}_t-\overline{\text{CE}}$ are positive there; so $\text{CE}_t'(\beta_t^*)>0$ implies $\Pi_t'(\beta_t^*)<0$. This gives:\\
 \begin{proposition}[Concavity of the binding-regime Pareto frontier]\label{prop:frontier_concavity}
-If $\theta^2/k \ge \gamma\sigma^2$, the constrained Pareto frontier is strictly concave, $d^2\text{CE}_t/d\Pi_t^2 < 0$, at every $\beta \in (0,1)$, with no further restriction. If $\theta^2/k < \gamma\sigma^2$, strict concavity at the equilibrium $\beta^*(W)$ holds whenever (i) $|\underline{y}|(\nu+\kappa) > \nu(\kappa-\nu)$ and (ii) $\beta_{\max} < |\underline{y}|/(\kappa-\nu)$, where $\beta_{\max}$ is the bound established in Lemma \ref{lem:beta_bounds}.
+If $\theta^2/k \ge \gamma\sigma^2$, the constrained Pareto frontier is strictly concave, $d^2\text{CE}_t/d\Pi_t^2 < 0$, at every $\beta \in (0,1)$ with $\Pi_t'(\beta)<0$, that is, for $\beta > (\nu+\underline{y})/(2\nu)$; this segment contains the equilibrium slope $\beta^*(W)$, with no further restriction. If $\theta^2/k < \gamma\sigma^2$, strict concavity at the equilibrium slope $\beta^*(W)$ holds whenever (i) $|\underline{y}|(\nu+\kappa) > \nu(\kappa-\nu)$ and (ii) $\beta^*(W) < |\underline{y}|/(\kappa-\nu)$.
 \end{proposition}
-}
 
 Economically, this means that redistributing surplus in the binding regime is costly: changing $\beta_t$ to give more to the agent necessarily reduces total surplus, because $\beta_t$ is being asked to perform two tasks simultaneously, providing incentives and transferring resources, and it is not efficient at either task when pulled away from $\beta^{\text{eff}}$.
 
@@ -502,9 +478,9 @@ which implicitly defines the equilibrium slope $\beta_t^*$ as a function of weal
 
 The agent's realized bargaining power is
 \[
-\lambda_t = \frac{\text{CE}_t(\beta_t^*) - \overline{\text{CE}}}{S_t(\beta_t^*)},
+\lambda_t = \frac{\text{CE}_t(\beta_t^*) - \overline{\text{CE}}}{\Sigma_t(\beta_t^*)},
 \]
-where $S_t(\beta_t^*) = [\text{CE}_t(\beta_t^*) - \overline{\text{CE}}] + [\Pi_t(\beta_t^*) - \overline{\Pi}]$. Adjusting the surplus split requires changing $\beta_t$, which directly affects both risk sharing and incentive provision, so $S(\beta_t)$ varies with $\beta_t$ and the Pareto frontier is curved rather than linear, as illustrated in Figure \ref{fig:ntu_frontier}.
+where $\Sigma_t(\beta_t^*) = [\text{CE}_t(\beta_t^*) - \overline{\text{CE}}] + [\Pi_t(\beta_t^*) - \overline{\Pi}]$. Adjusting the surplus split requires changing $\beta_t$, which directly affects both risk sharing and incentive provision, so $S(\beta_t)$ varies with $\beta_t$ and the Pareto frontier is curved rather than linear, as illustrated in Figure \ref{fig:ntu_frontier}.
 
 \begin{figure}[htbp]
 \centering
@@ -569,7 +545,6 @@ with the second term present only in the binding regime and vanishing as $W \to 
 \begin{appendices}
 \section{Appendix: Boundedness of the equilibrium slope}\label{app:beta_bounds}
 
-\textcolor{blue}{
 Throughout, fix $W_t$ in the binding regime and write $\nu:=\theta^2/k$, $\kappa:=\gamma\sigma^2$, so that $\Pi_t(\beta)=D(\beta)+\beta\underline y-\underline w_t$ and $\text{CE}_t(\beta)=C(\beta)-\beta\underline y+\underline w_t$ as in Case 2 of Section \ref{subsec:nash}. The proof below treats $\nu\ge\kappa$ and $\nu<\kappa$ as two cases. \\
 \textbf{A fact about concave functions.} If $g$ is strictly concave on $[0,1]$ with $g(0)>c$ and $g(\beta_0)=c$ for some $\beta_0\in(0,1]$, then $g'(\beta_0)<0$. This is an elementary property of strictly concave, hence strictly unimodal, functions, proved directly here rather than cited, since the argument is shorter than locating a suitable reference: if $g$ were still increasing at $\beta_0$, unimodality of a concave function would force $g\ge g(0)>c$ on $[0,\beta_0]$, contradicting $g(\beta_0)=c$; so the crossing must lie on the decreasing branch. \\
 \begin{assumption}[Regularity of the binding-regime bracket]\label{ass:beta_bounds_reg}
@@ -597,14 +572,13 @@ Nonemptiness of the feasible set forces $\widehat\beta_{\mathrm{CE}}<\widehat\be
 \[
 G(\beta) := (1-\delta)\,\frac{\Pi_t'(\beta)}{\Pi_t(\beta)-\overline{\Pi}} + \delta\,\frac{\text{CE}_t'(\beta)}{\text{CE}_t(\beta)-\overline{\text{CE}}}
 \]
-is continuous, with $\Pi_t(\beta)-\overline\Pi\to0^+$ and $\Pi_t'(\beta)\to\Pi_t'(\widehat\beta_\Pi)<0$ as $\beta\to\widehat\beta_\Pi^-$, so the second component stays finite while the first diverges to $-\infty$: $G(\beta)\to-\infty$. Symmetrically, $\text{CE}_t(\beta)-\overline{\text{CE}}\to0^+$ and $\text{CE}_t'(\beta)\to\text{CE}_t'(\widehat\beta_{\mathrm{CE}})>0$ as $\beta\to\widehat\beta_{\mathrm{CE}}^+$, so $G(\beta)\to+\infty$. By the Intermediate Value Theorem, $G$ has a root in $(\widehat\beta_{\mathrm{CE}},\widehat\beta_\Pi)\subset(0,1)$. To see that this root is $\beta_t^*$ itself, let $N(\beta):=[\Pi_t(\beta)-\overline\Pi]^{1-\delta}[\text{CE}_t(\beta)-\overline{\text{CE}}]^{\delta}$ denote the Nash product; $N$ extends continuously to $[\widehat\beta_{\mathrm{CE}},\widehat\beta_\Pi]$ with $N(\widehat\beta_{\mathrm{CE}})=N(\widehat\beta_\Pi)=0$ (one factor vanishes at each endpoint) and $N>0$ somewhere in between, by the nonemptiness of the feasible bracket. By the Extreme Value Theorem, $N$ attains its maximum over $[\widehat\beta_{\mathrm{CE}},\widehat\beta_\Pi]$ at an interior point, where $N$ is differentiable; that point is therefore a critical point of $N$, hence a root of $G=(\log N)'$. This identifies $\beta_t^*\in(\widehat\beta_{\mathrm{CE}},\widehat\beta_\Pi)\subset(0,1)$ directly, without invoking global concavity of the Nash product. (When $\nu\ge\kappa$, Proposition~\ref{prop:frontier_concavity} additionally gives unconditional concavity of the constrained Pareto frontier, the standard sufficient condition for uniqueness of the Nash bargaining solution; we do not verify that implication here, since it is not needed for the boundedness claim above.)\\
+is continuous, with $\Pi_t(\beta)-\overline\Pi\to0^+$ and $\Pi_t'(\beta)\to\Pi_t'(\widehat\beta_\Pi)<0$ as $\beta\to\widehat\beta_\Pi^-$, so the second component stays finite while the first diverges to $-\infty$: $G(\beta)\to-\infty$. Symmetrically, $\text{CE}_t(\beta)-\overline{\text{CE}}\to0^+$ and $\text{CE}_t'(\beta)\to\text{CE}_t'(\widehat\beta_{\mathrm{CE}})>0$ as $\beta\to\widehat\beta_{\mathrm{CE}}^+$, so $G(\beta)\to+\infty$. By the Intermediate Value Theorem, $G$ has a root in $(\widehat\beta_{\mathrm{CE}},\widehat\beta_\Pi)\subset(0,1)$. To see that this root is $\beta_t^*$ itself, let $N(\beta):=[\Pi_t(\beta)-\overline\Pi]^{1-\delta}[\text{CE}_t(\beta)-\overline{\text{CE}}]^{\delta}$ denote the Nash product; $N$ extends continuously to $[\widehat\beta_{\mathrm{CE}},\widehat\beta_\Pi]$ with $N(\widehat\beta_{\mathrm{CE}})=N(\widehat\beta_\Pi)=0$ (one factor vanishes at each endpoint) and $N>0$ somewhere in between, by the nonemptiness of the feasible bracket. By the Extreme Value Theorem, $N$ attains its maximum over $[\widehat\beta_{\mathrm{CE}},\widehat\beta_\Pi]$ at an interior point, where $N$ is differentiable; that point is therefore a critical point of $N$, hence a root of $G=(\log N)'$. This identifies $\beta_t^*\in(\widehat\beta_{\mathrm{CE}},\widehat\beta_\Pi)\subset(0,1)$ directly, without invoking global concavity of the Nash product. (When $\nu\ge\kappa$, Proposition~\ref{prop:frontier_concavity} additionally gives concavity of the constrained Pareto frontier on its Pareto-relevant segment, the standard sufficient condition for uniqueness of the Nash bargaining solution; we do not verify that implication here, since it is not needed for the boundedness claim above.)\\
 \textbf{Case $\nu<\kappa$.} Now $\text{CE}_t''(\beta)=\nu-\kappa<0$, so $\text{CE}_t$ is itself strictly concave, with $\text{CE}_t'(\beta)=(\nu-\kappa)\beta+|\underline y|$ strictly decreasing in $\beta$: positive for $\beta<\tilde\beta$, zero at $\tilde\beta:=|\underline y|/(\kappa-\nu)>0$, and negative for $\beta>\tilde\beta$. $\Pi_t$ remains strictly concave exactly as above, so (i) and (iii) give the same $\widehat\beta_\Pi\in(0,1)$ with $\Pi_t(\widehat\beta_\Pi)=\overline\Pi$, $\Pi_t'(\widehat\beta_\Pi)<0$, and $\Pi_t(\beta)>\overline\Pi \iff \beta<\widehat\beta_\Pi$.\\
 By (ii), $\text{CE}_t(0)<\overline{\text{CE}}$, and $\text{CE}_t$ is strictly increasing on $[0,\min(1,\tilde\beta)]$. By the nonemptiness of the feasible set, $\text{CE}_t$ exceeds $\overline{\text{CE}}$ somewhere in $(0,1]$, and since $\min(1,\tilde\beta)$ is where $\text{CE}_t$ attains its maximum on $[0,1]$, $\text{CE}_t(\min(1,\tilde\beta))>\overline{\text{CE}}$. By the Intermediate Value Theorem there is a unique $\widehat\beta_{\mathrm{CE}}^{-}\in(0,\min(1,\tilde\beta))$ with $\text{CE}_t(\widehat\beta_{\mathrm{CE}}^{-})=\overline{\text{CE}}$, and since $\widehat\beta_{\mathrm{CE}}^{-}<\tilde\beta$, $\text{CE}_t'(\widehat\beta_{\mathrm{CE}}^{-})>0$ directly from the formula above.\\
 Past its peak, $\text{CE}_t$ is strictly decreasing on $[\tilde\beta,1]$ whenever $\tilde\beta<1$. If $\tilde\beta\ge1$, or if $\tilde\beta<1$ and $\text{CE}_t(1)\ge\overline{\text{CE}}$, set $\widehat\beta_{\mathrm{CE}}^{+}:=1$: $\text{CE}_t$ never returns to $\overline{\text{CE}}$ within $[0,1]$. Otherwise $\tilde\beta<1$ and $\text{CE}_t(1)<\overline{\text{CE}}$, and by the Intermediate Value Theorem there is a unique $\widehat\beta_{\mathrm{CE}}^{+}\in(\tilde\beta,1)$ with $\text{CE}_t(\widehat\beta_{\mathrm{CE}}^{+})=\overline{\text{CE}}$; since $\widehat\beta_{\mathrm{CE}}^{+}>\tilde\beta$, $\text{CE}_t'(\widehat\beta_{\mathrm{CE}}^{+})<0$. Either way, $\text{CE}_t(\beta)>\overline{\text{CE}} \iff \beta\in(\widehat\beta_{\mathrm{CE}}^{-},\widehat\beta_{\mathrm{CE}}^{+})$ on $[0,1]$.\\
-Let $\widehat\beta^{*}:=\min(\widehat\beta_\Pi,\widehat\beta_{\mathrm{CE}}^{+})$. Nonemptiness of the feasible set forces $\widehat\beta_{\mathrm{CE}}^{-}<\widehat\beta^{*}$, so $(\widehat\beta_{\mathrm{CE}}^{-},\widehat\beta^{*})\subset(0,1)$ is exactly where both surpluses are strictly positive, and $G$ is defined and continuous on it as above. As $\beta\to(\widehat\beta_{\mathrm{CE}}^{-})^+$, $\text{CE}_t(\beta)-\overline{\text{CE}}\to0^+$ with $\text{CE}_t'(\beta)\to\text{CE}_t'(\widehat\beta_{\mathrm{CE}}^{-})>0$, so $G(\beta)\to+\infty$ exactly as in the case $\nu\ge\kappa$. If $\widehat\beta^{*}=\widehat\beta_\Pi$, the same argument as above gives $G(\beta)\to-\infty$ as $\beta\to(\widehat\beta^{*})^-$; if instead $\widehat\beta^{*}=\widehat\beta_{\mathrm{CE}}^{+}<\widehat\beta_\Pi$, then as $\beta\to(\widehat\beta_{\mathrm{CE}}^{+})^-$, $\text{CE}_t(\beta)-\overline{\text{CE}}\to0^+$ with $\text{CE}_t'(\beta)\to\text{CE}_t'(\widehat\beta_{\mathrm{CE}}^{+})<0$, so the second term of $G$ diverges to $-\infty$ while the first stays finite (since $\Pi_t(\widehat\beta_{\mathrm{CE}}^{+})>\overline\Pi$, as $\widehat\beta_{\mathrm{CE}}^{+}<\widehat\beta_\Pi$), so again $G(\beta)\to-\infty$. By the Intermediate Value Theorem, $G$ has a root in $(\widehat\beta_{\mathrm{CE}}^{-},\widehat\beta^{*})\subset(0,1)$. As in the case $\nu\ge\kappa$, $N(\beta):=[\Pi_t(\beta)-\overline\Pi]^{1-\delta}[\text{CE}_t(\beta)-\overline{\text{CE}}]^{\delta}$ extends continuously to $[\widehat\beta_{\mathrm{CE}}^{-},\widehat\beta^{*}]$ with $N(\widehat\beta_{\mathrm{CE}}^{-})=N(\widehat\beta^{*})=0$ and $N>0$ somewhere inside, so by the Extreme Value Theorem its maximum is attained at an interior point, which is a root of $G$; this identifies $\beta_t^*\in(\widehat\beta_{\mathrm{CE}}^{-},\widehat\beta^{*})\subset(0,1)$. Unlike the case $\nu\ge\kappa$, Proposition~\ref{prop:frontier_concavity} does not give unconditional concavity here, so this argument deliberately does not claim uniqueness of the maximizer: it establishes only that $\beta_t^*$, whichever root of \eqref{eq:foc_binding} the Nash bargaining problem selects, is interior.
+Let $\widehat\beta^{*}:=\min(\widehat\beta_\Pi,\widehat\beta_{\mathrm{CE}}^{+})$. Nonemptiness of the feasible set forces $\widehat\beta_{\mathrm{CE}}^{-}<\widehat\beta^{*}$, so $(\widehat\beta_{\mathrm{CE}}^{-},\widehat\beta^{*})\subset(0,1)$ is exactly where both surpluses are strictly positive, and $G$ is defined and continuous on it as above. As $\beta\to(\widehat\beta_{\mathrm{CE}}^{-})^+$, $\text{CE}_t(\beta)-\overline{\text{CE}}\to0^+$ with $\text{CE}_t'(\beta)\to\text{CE}_t'(\widehat\beta_{\mathrm{CE}}^{-})>0$, so $G(\beta)\to+\infty$ exactly as in the case $\nu\ge\kappa$. If $\widehat\beta^{*}=\widehat\beta_\Pi$, the same argument as above gives $G(\beta)\to-\infty$ as $\beta\to(\widehat\beta^{*})^-$; if instead $\widehat\beta^{*}=\widehat\beta_{\mathrm{CE}}^{+}<\widehat\beta_\Pi$, then as $\beta\to(\widehat\beta_{\mathrm{CE}}^{+})^-$, $\text{CE}_t(\beta)-\overline{\text{CE}}\to0^+$ with $\text{CE}_t'(\beta)\to\text{CE}_t'(\widehat\beta_{\mathrm{CE}}^{+})<0$, so the second term of $G$ diverges to $-\infty$ while the first stays finite (since $\Pi_t(\widehat\beta_{\mathrm{CE}}^{+})>\overline\Pi$, as $\widehat\beta_{\mathrm{CE}}^{+}<\widehat\beta_\Pi$), so again $G(\beta)\to-\infty$. By the Intermediate Value Theorem, $G$ has a root in $(\widehat\beta_{\mathrm{CE}}^{-},\widehat\beta^{*})\subset(0,1)$. As in the case $\nu\ge\kappa$, $N(\beta):=[\Pi_t(\beta)-\overline\Pi]^{1-\delta}[\text{CE}_t(\beta)-\overline{\text{CE}}]^{\delta}$ extends continuously to $[\widehat\beta_{\mathrm{CE}}^{-},\widehat\beta^{*}]$ with $N(\widehat\beta_{\mathrm{CE}}^{-})=N(\widehat\beta^{*})=0$ and $N>0$ somewhere inside, so by the Extreme Value Theorem its maximum is attained at an interior point, which is a root of $G$; this identifies $\beta_t^*\in(\widehat\beta_{\mathrm{CE}}^{-},\widehat\beta^{*})\subset(0,1)$. Unlike the case $\nu\ge\kappa$, Proposition~\ref{prop:frontier_concavity} gives concavity here only under conditions (i)-(ii), so this argument deliberately does not claim uniqueness of the maximizer: it establishes only that $\beta_t^*$, whichever root of \eqref{eq:foc_binding} the Nash bargaining problem selects, is interior.
 \end{proof}
 Writing $\beta_{\min} := \inf_{W_t \text{ binding}} \beta_t^*(W_t)$ and $\beta_{\max} := \sup_{W_t \text{ binding}} \beta_t^*(W_t)$, the lemma gives $0 < \beta_{\min} \le \beta_{\max} < 1$ pointwise at each $W_t$; that the infimum and supremum over the whole binding domain are themselves attained in $(0,1)$ requires the continuity-in-$W$ and compactness argument that will be available once the dynamic environment and its domain assumption are added.
-}
 
 \begin{figure}[htbp]
 \centering
@@ -688,16 +662,15 @@ Writing $\beta_{\min} := \inf_{W_t \text{ binding}} \beta_t^*(W_t)$ and $\beta_{
 
 \section{Appendix: Direction of $\lambda'(W_t)$ in the binding regime}\label{app:lambda_dynamics}
 
-\textcolor{blue}{
-Fix $W_t$ in the binding regime and write $\Pi_s:=\Pi_t(\beta)-\overline\Pi$, $\text{CE}_s:=\text{CE}_t(\beta)-\overline{\text{CE}}$, $S:=\Pi_s+\text{CE}_s$, evaluated at the equilibrium slope $\beta_t^*$ solving \eqref{eq:foc_binding}. Realized bargaining power is $\lambda_t=\text{CE}_s/S$; since $\underline w_t=\overline w-\gamma_w W_t$, its sensitivity to wealth is $\lambda'(W_t)=-\gamma_w\,(d\lambda/d\underline w)|_{W_t}$ by the chain rule.\\
+Fix $W_t$ in the binding regime and write $\Pi_s:=\Pi_t(\beta)-\overline\Pi$, $\text{CE}_s:=\text{CE}_t(\beta)-\overline{\text{CE}}$, $\Sigma:=\Pi_s+\text{CE}_s$, evaluated at the equilibrium slope $\beta_t^*$ solving \eqref{eq:foc_binding}. Realized bargaining power is $\lambda_t=\text{CE}_s/\Sigma$; since $\underline w_t=\overline w-\gamma_w W_t$, its sensitivity to wealth is $\lambda'(W_t)=-\gamma_w\,(d\lambda/d\underline w)|_{W_t}$ by the chain rule.\\
 \begin{proposition}[Direction of bargaining-power dynamics]\label{prop:lambda_dynamics}
 Suppose $\nu\ge\kappa$. Then, at every $W_t$ in the binding regime, $\text{CE}_t'(\beta_t^*)>0$ and $\Pi_t'(\beta_t^*)<0$, and
 \[
-\frac{d\beta_t^*}{d\underline w_t} < 0, \qquad \frac{d\lambda_t}{d\underline w_t} = \frac{1}{S} + \frac{d\beta_t^*}{d\underline w_t}\cdot\frac{\Pi_s\,\text{CE}_t'(\beta_t^*)}{(1-\delta)S^2}.
+\frac{d\beta_t^*}{d\underline w_t} < 0, \qquad \frac{d\lambda_t}{d\underline w_t} = \frac{1}{\Sigma} + \frac{d\beta_t^*}{d\underline w_t}\cdot\frac{\Pi_s\,\text{CE}_t'(\beta_t^*)}{(1-\delta)\Sigma^2}.
 \]
 Whenever
 \begin{equation}\label{eq:lambda_sign_condition}
-\left|\frac{d\beta_t^*}{d\underline w_t}\right|\cdot \text{CE}_t'(\beta_t^*)\cdot\frac{\Pi_s}{1-\delta} \;<\; S,
+\left|\frac{d\beta_t^*}{d\underline w_t}\right|\cdot \text{CE}_t'(\beta_t^*)\cdot\frac{\Pi_s}{1-\delta} \;<\; \Sigma,
 \end{equation}
 the direct transfer effect dominates the indirect incentive effect, so $d\lambda_t/d\underline w_t>0$ and therefore $\lambda'(W_t)<0$: bargaining power is strictly decreasing in accumulated wealth in the binding regime, and $\lambda_t>\delta$ throughout, converging to $\delta$ as $W_t\to\overline W$.
 \end{proposition}
@@ -707,11 +680,11 @@ Write $G(\beta,\underline w_t):=(1-\delta)\Pi_t'(\beta)/\Pi_s+\delta\,\text{CE}_
 \frac{\partial G}{\partial\underline w_t}=\frac{(1-\delta)\Pi_t'(\beta_t^*)}{\Pi_s^2}-\frac{\delta\,\text{CE}_t'(\beta_t^*)}{\text{CE}_s^2}.
 \]
 The FOC \eqref{eq:foc_binding} gives $(1-\delta)\Pi_t'(\beta_t^*)/\Pi_s=-\delta\,\text{CE}_t'(\beta_t^*)/\text{CE}_s$, so $\Pi_t'(\beta_t^*)$ and $\text{CE}_t'(\beta_t^*)$ always have opposite signs, regardless of $\nu$ versus $\kappa$. Since $\nu\ge\kappa$, Lemma \ref{lem:beta_bounds} (case $\nu\ge\kappa$) gives $\text{CE}_t'(\beta_t^*)>0$ unconditionally, so $\Pi_t'(\beta_t^*)<0$. Both terms of $\partial G/\partial\underline w_t$ are then negative, so $\partial G/\partial\underline w_t<0$, and with $\mathrm{SOC}<0$, $d\beta_t^*/d\underline w_t=-(\partial G/\partial\underline w_t)/\mathrm{SOC}<0$.\\
-Differentiating $\lambda_t=\text{CE}_s/S$ totally in $\underline w_t$ through both its direct dependence and its dependence via $\beta_t^*$, and using $d\Pi_s/d\underline w_t=-1+\Pi_t'(\beta_t^*)\,d\beta_t^*/d\underline w_t$, $d\text{CE}_s/d\underline w_t=1+\text{CE}_t'(\beta_t^*)\,d\beta_t^*/d\underline w_t$, and $dS/d\underline w_t=S'(\beta_t^*)\,d\beta_t^*/d\underline w_t$ (the direct $\pm1$ terms cancel, since $\underline w_t$ is a pure transfer that leaves total surplus unchanged except through $\beta_t^*$), the quotient rule gives
+Differentiating $\lambda_t=\text{CE}_s/\Sigma$ totally in $\underline w_t$ through both its direct dependence and its dependence via $\beta_t^*$, and using $d\Pi_s/d\underline w_t=-1+\Pi_t'(\beta_t^*)\,d\beta_t^*/d\underline w_t$, $d\text{CE}_s/d\underline w_t=1+\text{CE}_t'(\beta_t^*)\,d\beta_t^*/d\underline w_t$, and $dS/d\underline w_t=\Sigma'(\beta_t^*)\,d\beta_t^*/d\underline w_t$ (the direct $\pm1$ terms cancel, since $\underline w_t$ is a pure transfer that leaves total surplus unchanged except through $\beta_t^*$), the quotient rule gives
 \[
-\frac{d\lambda_t}{d\underline w_t}=\frac{1}{S}+\frac{d\beta_t^*}{d\underline w_t}\cdot\frac{\text{CE}_t'(\beta_t^*)S-\text{CE}_s\,S'(\beta_t^*)}{S^2}.
+\frac{d\lambda_t}{d\underline w_t}=\frac{1}{\Sigma}+\frac{d\beta_t^*}{d\underline w_t}\cdot\frac{\text{CE}_t'(\beta_t^*)\Sigma-\text{CE}_s\,\Sigma'(\beta_t^*)}{\Sigma^2}.
 \]
-Since $S'(\beta_t^*)=\Pi_t'(\beta_t^*)+\text{CE}_t'(\beta_t^*)$, the numerator simplifies to $\text{CE}_t'(\beta_t^*)\Pi_s-\text{CE}_s\,\Pi_t'(\beta_t^*)$; substituting $\Pi_t'(\beta_t^*)=-\frac{\delta}{1-\delta}\frac{\Pi_s}{\text{CE}_s}\text{CE}_t'(\beta_t^*)$ from the FOC reduces it to $\Pi_s\,\text{CE}_t'(\beta_t^*)/(1-\delta)$, giving the stated expression for $d\lambda_t/d\underline w_t$. Since $\text{CE}_t'(\beta_t^*)>0$ and $d\beta_t^*/d\underline w_t<0$, the second term is negative; condition \eqref{eq:lambda_sign_condition} is exactly the statement that its magnitude is smaller than the direct term $1/S$, so $d\lambda_t/d\underline w_t>0$. The chain rule $\lambda'(W_t)=-\gamma_w\,(d\lambda_t/d\underline w_t)$ then gives $\lambda'(W_t)<0$ for $\gamma_w>0$. Since $\lambda_t=\delta$ exactly at $W_t=\overline W$ (the slack-regime value) and $\lambda_t$ is decreasing on the binding domain, $\lambda_t>\delta$ throughout.
+Since $\Sigma'(\beta_t^*)=\Pi_t'(\beta_t^*)+\text{CE}_t'(\beta_t^*)$, the numerator simplifies to $\text{CE}_t'(\beta_t^*)\Pi_s-\text{CE}_s\,\Pi_t'(\beta_t^*)$; substituting $\Pi_t'(\beta_t^*)=-\frac{\delta}{1-\delta}\frac{\Pi_s}{\text{CE}_s}\text{CE}_t'(\beta_t^*)$ from the FOC reduces it to $\Pi_s\,\text{CE}_t'(\beta_t^*)/(1-\delta)$, giving the stated expression for $d\lambda_t/d\underline w_t$. Since $\text{CE}_t'(\beta_t^*)>0$ and $d\beta_t^*/d\underline w_t<0$, the second term is negative; condition \eqref{eq:lambda_sign_condition} is exactly the statement that its magnitude is smaller than the direct term $1/\Sigma$, so $d\lambda_t/d\underline w_t>0$. The chain rule $\lambda'(W_t)=-\gamma_w\,(d\lambda_t/d\underline w_t)$ then gives $\lambda'(W_t)<0$ for $\gamma_w>0$. Since $\lambda_t=\delta$ exactly at $W_t=\overline W$ (the slack-regime value) and $\lambda_t$ is decreasing on the binding domain, $\lambda_t>\delta$ throughout.
 \end{proof}
 Since $\lambda_t=\lambda(W_t)$ and the stochastic component of $W_{t+1}-W_t$ is $\beta_t^*\sigma\varepsilon_t$, the same first-order expansion used elsewhere, combined with the derivative of the logit map $d\ell/d\lambda=1/[\lambda(1-\lambda)]$, gives the law of motion
 \[
@@ -719,7 +692,6 @@ Since $\lambda_t=\lambda(W_t)$ and the stochastic component of $W_{t+1}-W_t$ is 
 \]
 so with $\lambda'(W_t)<0$ established above, a positive output shock ($\varepsilon_t>0$) strictly lowers $\ell_t$, and hence $\lambda_t$, in the binding regime.\\
 When $\nu<\kappa$, the same argument applies verbatim wherever $\text{CE}_t'(\beta_t^*)>0$, which by Lemma \ref{lem:beta_bounds} (case $\nu<\kappa$) holds whenever $\beta_t^*<\tilde\beta=|\underline y|/(\kappa-\nu)$; the opposite conclusion, $\lambda'(W_t)>0$, holds on the complementary range $\beta_t^*>\tilde\beta$, since there $\text{CE}_t'(\beta_t^*)<0$ flips the sign of every step above.
-}
 
 \begin{figure}[htbp]
 \centering
