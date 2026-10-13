@@ -28,6 +28,22 @@ Puntos del timing que sostienen el modelo:
 - El contrato se firma antes del esfuerzo y no se renegocia dentro del periodo. Si se pudiera renegociar con el esfuerzo ya hundido, las partes volverían a $\beta = 0$ y el incentivo no tendría efecto (Remark sobre renegociación en el draft).
 - Entre periodos la renegociación es total. No hay compromiso intertemporal: cada periodo se firma un contrato nuevo, y lo único que lleva de un periodo al siguiente es $W$.
 
+### 2.1 Qué se negocia en $t$ y secuencia desde $t = 0$
+
+En el periodo $t$ se negocia $(\alpha_t, \beta_t)$, el contrato que rige la producción y el pago de ese mismo periodo. El contrato $(\alpha_{t+1}, \beta_{t+1})$ no se pacta en $t$: se negocia desde cero al inicio de $t+1$, con $W_{t+1}$ como estado.
+
+El futuro entra en la negociación de $t$ solo por la continuación. Elegir $(\alpha_t, \beta_t)$ mueve $W_{t+1}$, y $W_{t+1}$ determina qué tan restrictiva será la LL mañana y con ella el resultado de la negociación de $t+1$, es decir $V_P(W_{t+1})$ y $V_A(W_{t+1})$. Las partes saben cómo se resolverá la negociación de mañana pero no pueden fijar sus términos hoy. El producto de Nash dinámico es
+
+$$\big[\Pi(\alpha_t,\beta_t) + \rho\,E\,V_P(W_{t+1}) - \overline{\Pi}\big]^{1-\delta}\,\big[CE(\alpha_t,\beta_t) + \rho\,E\,V_A(W_{t+1}) - \overline{CE}\big]^{\delta}.$$
+
+Secuencia desde el inicio:
+
+1. **$t = 0$**: $W_0$ es una condición inicial exógena, pública. Fija el piso $\underline{w}(W_0)$.
+2. Negociación Nash de $(\alpha_0, \beta_0)$ con peso $\delta$, sujeta a la LL de $W_0$.
+3. La agente elige $a_0 = \beta_0\theta/k$, se realiza $y_0 = \theta a_0 + \sigma\varepsilon_0$ y se paga $w_0 = \alpha_0 + \beta_0 y_0$.
+4. $W_1 = W_0 + w_0 - \frac{k}{2}a_0^2$.
+5. **$t = 1$**: se observa $W_1$ y se repite el mismo problema, con el mismo $\delta$ y el mismo conjunto de parámetros, pero con otro piso de LL porque $W_1 \ne W_0$.
+
 ## 3. Cómo se determinan $\alpha_t$ y $\beta_t$
 
 Ambos salen de resolver, en el paso 1,
@@ -37,6 +53,8 @@ $$\max_{(\alpha,\beta)\in\Gamma(W_t)} \; [\Pi - \overline{\Pi}]^{1-\delta}\,[CE 
 con $\Pi = D(\beta) - \alpha$, $CE = \alpha + C(\beta)$, $D(\beta) = \frac{\theta^2}{k}\beta(1-\beta)$ y $C(\beta) = \frac{\beta^2}{2}\left(\frac{\theta^2}{k} - \gamma\sigma^2\right)$. La IC ya está sustituida. La LL es la única restricción que muerde, y de si está activa o no depende cómo se reparte el trabajo entre $\alpha$ y $\beta$.
 
 Sea $\nu = \theta^2/k$ y $\kappa = \gamma\sigma^2$.
+
+Una nota de notación. La fórmula $\beta_t^* = \frac{\theta^2/k}{\gamma\sigma^2 + \theta^2/k}$ del draft no depende de $t$: todos sus ingredientes son constantes, así que en la parte estática $\beta_t$ es igual en todos los periodos, y el subíndice solo sugiere una variación que no existe. Esa fórmula es el nivel eficiente $\beta^{\text{eff}}$ y vale en el benchmark de principal-diseñador y en el régimen holgado. El único $\beta$ que varía en el tiempo es el del régimen restringido, y lo hace a través de $W_t$. Se propone escribir **$\beta^{\text{eff}}$** (sin subíndice) para el nivel constante y **$\beta^*(W_t)$** para el régimen restringido.
 
 **Régimen holgado ($W_t \ge \overline{W}$).**
 - $\alpha$ es una transferencia pura (suma 1 al agente y resta 1 al principal), así que la frontera de Pareto es una recta de pendiente $-1$.
@@ -70,7 +88,7 @@ Una sola cosa: **$W$**, por $W_{t+1} = W_t + \alpha_t + \beta_t y_t - \frac{k}{2
 
 Hay dos objetos distintos con nombres parecidos:
 
-- **$\delta$ (primitivo, exógeno)**: el peso de la agente en el producto de Nash. Es constante en el tiempo.
+- **$\delta$ (primitivo, exógeno)**: el peso de la agente en el producto de Nash. Es constante en el tiempo: **el peso del Nash bargaining no se actualiza**.
 - **$\lambda_t$ (realizado, endógeno)**: la fracción del excedente neto que efectivamente recibe la agente, $\lambda_t = (CE_t - \overline{CE})/\Sigma_t$ con $\Sigma_t$ la suma de los dos excedentes netos.
 
 La relación entre ambos:
@@ -78,6 +96,12 @@ La relación entre ambos:
 - Régimen holgado: $\lambda_t = \delta$.
 - Régimen restringido: $\lambda_t \ne \delta$. En la calibración base $\lambda_t > \delta$ y decrece con $W$ hasta llegar a $\delta$ en $\overline{W}$ (Proposición de Apéndice B en el draft).
 - Como $W$ se mueve con los shocks de producto, $\lambda_t$ es una variable de estado que evoluciona: shock positivo sube $W$, baja $\lambda$ (cuando $W < \overline{W}$). Esa es la historia de poder de negociación endógeno.
+
+La cadena completa por la que se mueve el poder efectivo es
+
+$$W_t \;\to\; \underline{w}(W_t) \;\to\; \text{contratos factibles } \Gamma(W_t) \;\to\; (\alpha_t, \beta_t) \text{ con el mismo } \delta \;\to\; \lambda_t = \lambda(W_t).$$
+
+Decir que "el peso efectivo se actualiza" vale solo para $\lambda_t$, que es un resultado del contrato. Un modelo donde $\delta_t$ misma evolucione como parámetro (la ley de movimiento reducida de Di Giannatale) es otra especificación. El aporte de este paper es que la ley de movimiento del poder sale de la LL y de $W$ en lugar de postularse.
 
 Sobre el protocolo: el Nash bargaining es axiomático. No hay ofertas, contraofertas ni turnos; nadie propone. $\delta$ resume cuánto pesa cada parte sin explicar de dónde sale.
 
@@ -94,6 +118,17 @@ Parámetros: $\theta = 1$, $k = 2$, $\gamma = 1$, $\sigma = 0.3$, $\delta = 0.4$
 
 Lectura: una agente pobre recibe menos incentivos ($\beta$ bajo, esfuerzo bajo) y se queda con más que su peso nominal $\delta$. Al enriquecerse converge a $(\beta^{\text{eff}}, \delta)$.
 
+### Dos periodos, con shock positivo y negativo ($W_0 = 0.5$)
+
+En $t = 0$: $\beta_0 = 0.746$, $\alpha_0 = -0.027$, esfuerzo $a_0 = 0.373$, $\lambda_0 = 0.419$.
+
+| $\varepsilon_0$ | $y_0$ | $w_0$ | $W_1$ | $\beta_1$ | $\lambda_1$ |
+|---|---|---|---|---|---|
+| $+1$ | 0.673 | 0.476 | 0.836 | 0.826 | 0.404 |
+| $-1$ | 0.073 | 0.028 | 0.389 | 0.719 | 0.424 |
+
+Estos valores son de la versión estática (sin continuación) y sin $\rho_W$. En $W_1 = 0.836$ la LL sigue activa porque $\overline{W} = 0.931$. Un shock positivo enriquece a la agente, afloja la LL, acerca $\beta$ a $\beta^{\text{eff}}$ y baja $\lambda$ hacia $\delta$. Uno negativo hace lo contrario. Con un $\delta$ idéntico en los dos periodos, el poder efectivo depende del historial de shocks a través de $W$.
+
 ## 8. Huecos e inconsistencias a decidir
 
 Ordenados de más a menos importantes para la definición del juego.
@@ -106,5 +141,5 @@ Ordenados de más a menos importantes para la definición del juego.
 6. **Quién puede abandonar.** No hay regla de salida. Si en algún $W$ el conjunto factible es vacío, el código cae a $\beta^{\text{eff}}$ en vez de terminar la relación. Hay que decidir qué pasa cuando $\Sigma_t \le 0$.
 7. **Restricción de $W$.** ¿Puede $W$ ser negativa? ¿Hay endeudamiento? Hoy el dominio es una grilla compacta; no está dicho en el modelo.
 8. **Protocolo de bargaining.** Decidir si basta con Nash axiomático con $\delta$ exógeno o si conviene un microfundamento (alternating offers a la Binmore-Rubinstein-Wolinsky) donde $\delta$ salga de paciencia relativa o riesgo de ruptura. Esto afecta cómo se interpreta "poder de negociación".
-9. **Notación del timing.** El draft dice "at $t=0$ the public state is observed" dentro de un periodo, y choca con el índice de periodo $t = 0, 1, \dots$. Conviene un índice distinto para las etapas (por ejemplo etapas I a V).
+9. **Notación.** (a) El draft dice "at $t=0$ the public state is observed" dentro de un periodo, y choca con el índice de periodo $t = 0, 1, \dots$. Conviene un índice distinto para las etapas (por ejemplo etapas I a V). (b) $\beta_t^*$ sugiere variación temporal en la parte estática donde no la hay; usar $\beta^{\text{eff}}$ para el nivel constante y $\beta^*(W_t)$ para el régimen restringido (ver sección 3).
 10. **Dinámica ausente del draft.** `bargainigpower_draft.tex` todavía no tiene el entorno dinámico (ley de $W$, Bellman, PMSE); los apéndices usan $W_{t+1} - W_t = \beta_t^* \sigma \varepsilon_t$ sin que esté definida en el texto. Está registrado en `NOTES.md`.
