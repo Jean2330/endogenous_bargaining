@@ -1,0 +1,371 @@
+\documentclass[12pt, aspectratio=169]{beamer}
+
+\usetheme[sectionpage=none]{metropolis}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{frametitle}{fg=black, bg=white}
+\setbeamercolor{progress bar}{fg=black, bg=lightgray}
+\setbeamercolor*{normal text}{fg=black}
+\usepackage[spanish]{babel}
+\usepackage{csquotes}
+\spanishdecimal{.}
+
+% Reduce frame title box height
+\setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=1.8ex,dp=0.6ex]{frametitle}
+        \hspace*{1ex}\insertframetitle%
+    \end{beamercolorbox}%
+}
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{3pt}
+\makeatother
+
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\hypersetup{colorlinks, citecolor=gray, linkcolor=black}
+
+\usepackage{xcolor}
+\definecolor{lucasteal}{rgb}{0.18,.31,.31}
+\setbeamertemplate{itemize item}{\color{lucasteal}$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{\color{lucasteal}$\bullet$}
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{3pt}}{\enditemize}
+\newenvironment{wideenumerate}{\enumerate\addtolength{\itemsep}{3pt}}{\endenumerate}
+\setbeamertemplate{itemize/enumerate body begin}{\footnotesize}
+\setbeamertemplate{itemize/enumerate subbody begin}{\scriptsize}
+
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, fit}
+
+\newcommand{\CE}{\text{CE}}
+\newcommand{\eff}{\text{eff}}
+
+% Estilos de las figuras: verde azulado = estado, violeta = negociacion, gris = dado de afuera o mecanico
+\tikzset{
+  caja/.style={draw, rounded corners=2pt, minimum width=2.5cm, minimum height=1cm, align=center, font=\scriptsize, inner sep=3pt},
+  estado/.style={caja, fill=teal!15, draw=teal!60!black},
+  nash/.style={caja, fill=violet!15, draw=violet!60!black},
+  dado/.style={caja, fill=gray!12, draw=gray!60},
+  flecha/.style={-{Stealth[length=2mm]}, thick, gray!70},
+  periodo/.style={draw, dashed, rounded corners=3pt, gray!70, inner sep=6pt}
+}
+
+\title{Poder de negociación endógeno}
+\subtitle{Timing y reglas del juego}
+\date{Documento de trabajo para discusión}
+\author{Jean L. Marroquín}
+\institute{CIDE}
+
+\begin{document}
+\maketitle
+
+% =========================================================
+\begin{frame}{Piezas del juego}
+    \begin{wideitemize}
+        \item \textbf{Jugadores}: principal neutral al riesgo (él) y agente con utilidad CARA (ella)
+        \item \textbf{Tiempo}: discreto, $t=0,1,2,\dots$, horizonte infinito, descuento común $\rho$
+        \item \textbf{Estado}: riqueza acumulada de la agente, $W_t$, información pública
+        \item \textbf{Contrato}: lineal, $w_t=\alpha_t+\beta_t y_t$, dura un solo periodo
+        \item \textbf{Tecnología}: $y_t=\theta a_t+\sigma\varepsilon_t$, con $\varepsilon_t\sim N(0,1)$ i.i.d. y costo de esfuerzo $\tfrac{k}{2}a_t^2$
+        \item \textbf{Responsabilidad limitada (LL)}: $\alpha_t+\beta_t\underline{y}\ge\underline{w}(W_t)=\overline{w}-\gamma_w W_t$. Mientras más rica la agente, más laxa la restricción
+        \item \textbf{Reparto}: Nash bargaining con peso exógeno $\delta$ para la agente y pagos de desacuerdo exógenos $(\overline{\Pi},\overline{\CE})$
+    \end{wideitemize}
+\end{frame}
+
+% =========================================================
+\begin{frame}{Línea del tiempo dentro de un periodo $t$}
+    \begin{center}
+    \begin{tikzpicture}
+        \node[estado] (a) at (0,0) {Observa $W_t$\\ {\tiny público}};
+        \node[nash]   (b) at (2.85,0) {Nash $(\alpha_t,\beta_t)$\\ {\tiny peso $\delta$ y LL, IC, IR}};
+        \node[dado]   (c) at (5.7,0) {Elige $a_t$\\ {\tiny $a_t=\beta_t\theta/k$}};
+        \node[dado]   (d) at (8.55,0) {Sale $y_t$\\ {\tiny $\theta a_t+\sigma\varepsilon_t$}};
+        \node[dado]   (e) at (11.4,0) {Paga $w_t$\\ {\tiny $\alpha_t+\beta_t y_t$}};
+        \draw[flecha] (a)--(b);
+        \draw[flecha] (b)--(c);
+        \draw[flecha] (c)--(d);
+        \draw[flecha] (d)--(e);
+        \node[estado, minimum width=5.4cm] (u) at (5.7,-2.1) {Se actualiza la riqueza\\ {\tiny $W_{t+1}=W_t+w_t-\tfrac{k}{2}a_t^2$}};
+        \draw[flecha] (e.south) |- (u.east);
+        \node[font=\scriptsize, gray!60!black, align=center] at (5.7,-3.5) {Empieza $t+1$ con un contrato nuevo y el mismo peso $\delta$};
+    \end{tikzpicture}
+    \end{center}
+    \begin{wideitemize}
+        \item El contrato se firma antes del esfuerzo y no se renegocia dentro del periodo. Con el esfuerzo ya hundido, las partes volverían a $\beta=0$ y el incentivo no tendría efecto
+        \item Entre periodos la renegociación es total: no hay compromiso intertemporal
+    \end{wideitemize}
+\end{frame}
+
+% =========================================================
+\begin{frame}{¿Qué se negocia en $t$?}
+    \begin{wideitemize}
+        \item Se negocia $(\alpha_t,\beta_t)$, el contrato que rige la producción y el pago del mismo periodo
+        \item El contrato $(\alpha_{t+1},\beta_{t+1})$ se negocia desde cero al inicio de $t+1$, con $W_{t+1}$ como estado
+        \item El futuro entra solo por la continuación: $(\alpha_t,\beta_t)$ mueve $W_{t+1}$, y $W_{t+1}$ determina el piso de LL de mañana y con él el resultado de la negociación de $t+1$
+        \item Las partes saben cómo se resolverá mañana, pero no pueden fijar sus términos hoy
+    \end{wideitemize}
+    \vspace{0.3cm}
+    \[
+    \max_{(\alpha_t,\beta_t)\in\Gamma(W_t)}\;
+    \Big[\Pi_t+\rho\,E\,V_P(W_{t+1})-\overline{\Pi}\Big]^{1-\delta}
+    \Big[\CE_t+\rho\,E\,V_A(W_{t+1})-\overline{\CE}\Big]^{\delta}
+    \]
+    \begin{center}
+    {\footnotesize con $\Pi_t=D(\beta_t)-\alpha_t$, $\;\CE_t=\alpha_t+C(\beta_t)$, y $\Gamma(W_t)$ el conjunto de contratos que cumplen LL, IC e IR}
+    \end{center}
+\end{frame}
+
+% =========================================================
+\begin{frame}{Cómo se fija el contrato: insumos, restricciones y resultados}
+    \begin{center}
+    \begin{tikzpicture}[scale=0.92, transform shape]
+        \node[estado, minimum width=2.9cm, minimum height=0.85cm] (w)  at (0,0)   {Riqueza $W_t$\\ {\tiny estado público}};
+        \node[dado,   minimum width=2.9cm, minimum height=0.85cm] (te) at (3.2,0) {Tecnología\\ {\tiny $\theta,k,\sigma,\gamma$}};
+        \node[dado,   minimum width=2.9cm, minimum height=0.85cm] (de) at (6.4,0) {Desacuerdo\\ {\tiny $\overline{\Pi},\overline{\CE}$}};
+        \node[nash,   minimum width=2.9cm, minimum height=0.85cm] (dl) at (9.6,0) {Peso $\delta$\\ {\tiny fijo en el tiempo}};
+
+        \node[nash, minimum width=2.9cm, minimum height=0.85cm] (ll) at (0,-1.5)   {LL\\ {\tiny $\alpha+\beta\underline{y}\ge\underline{w}(W_t)$}};
+        \node[nash, minimum width=2.9cm, minimum height=0.85cm] (ic) at (3.2,-1.5) {IC\\ {\tiny $a=\beta\theta/k$}};
+        \node[nash, minimum width=2.9cm, minimum height=0.85cm] (ir) at (6.4,-1.5) {IR\\ {\tiny excedentes $>0$}};
+
+        \node[nash, minimum width=12.5cm, minimum height=0.85cm] (na) at (4.8,-3) {Nash bargaining\\ {\tiny máx (excedente del principal)$^{1-\delta}\times$(excedente de la agente)$^{\delta}$, sujeto a LL, IC, IR}};
+
+        \node[estado, minimum width=2.9cm, minimum height=0.85cm] (co) at (0,-4.5)   {$(\alpha_t,\beta_t)$\\ {\tiny contrato de $t$}};
+        \node[estado, minimum width=2.9cm, minimum height=0.85cm] (la) at (3.2,-4.5) {$\lambda_t$\\ {\tiny poder efectivo}};
+        \node[dado,   minimum width=2.9cm, minimum height=0.85cm] (va) at (9.6,-4.5) {$\rho\,E[V(W_{t+1})]$\\ {\tiny valor de mañana}};
+
+        \draw[flecha] (w)--(ll);
+        \draw[flecha] (te)--(ic);
+        \draw[flecha] (de)--(ir);
+        \draw[flecha] (ll)--(ll |- na.north);
+        \draw[flecha] (ic)--(ic |- na.north);
+        \draw[flecha] (ir)--(ir |- na.north);
+        \draw[flecha] (dl)--(dl |- na.north);
+        \draw[flecha] (co |- na.south)--(co);
+        \draw[flecha] (la |- na.south)--(la);
+        \draw[flecha] (va)--(va |- na.south);
+    \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+% =========================================================
+\begin{frame}{Dos regímenes dentro del Nash}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{LL holgada} ($W_t\ge\overline{W}$)
+            \begin{wideitemize}
+                \item $\alpha$ es una transferencia pura: la frontera de Pareto es una recta de pendiente $-1$
+                \item $\beta=\beta^{\eff}=\dfrac{\theta^2/k}{\gamma\sigma^2+\theta^2/k}$, constante en $t$
+                \item $\alpha$ reparte el excedente
+                \item La agente recibe exactamente la fracción $\delta$: $\lambda_t=\delta$
+            \end{wideitemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{LL activa} ($W_t<\overline{W}$)
+            \begin{wideitemize}
+                \item La LL ata $\alpha_t=\underline{w}(W_t)-\beta_t\underline{y}$, así que $\alpha$ deja de ser libre
+                \item Solo queda $\beta$ para elegir: $\beta^*(W_t)\ne\beta^{\eff}$
+                \item $\beta$ cumple dos funciones a la vez (incentivos y reparto) y se pierde excedente
+                \item La frontera se curva y $\lambda_t\ne\delta$
+            \end{wideitemize}
+        \end{column}
+    \end{columns}
+    \vspace{0.3cm}
+    \begin{center}
+    {\footnotesize $\overline{W}$: riqueza a la que el $\alpha$ del régimen holgado cumple la LL con igualdad}
+    \end{center}
+\end{frame}
+
+% =========================================================
+\begin{frame}{Después de firmar: cómo se actualiza todo}
+    \begin{center}
+    \begin{tikzpicture}[scale=0.95, transform shape]
+        \node[dado] (eps) at (5.7,1.5) {Shock $\varepsilon_t$\\ {\tiny $N(0,1)$}};
+        \node[estado] (c) at (0,0)    {Contrato\\ {\tiny $(\alpha_t,\beta_t)$ público}};
+        \node[dado]   (a) at (2.85,0) {Esfuerzo $a_t$\\ {\tiny no observado}};
+        \node[dado]   (y) at (5.7,0)  {Producto $y_t$\\ {\tiny $\theta a_t+\sigma\varepsilon_t$}};
+        \node[dado]   (w) at (8.55,0) {Pago $w_t$\\ {\tiny $\alpha_t+\beta_t y_t$}};
+        \node[estado] (W) at (11.4,0) {Riqueza $W_{t+1}$\\ {\tiny $W_t+w_t-\tfrac{k}{2}a_t^2$}};
+        \draw[flecha] (eps)--(y);
+        \draw[flecha] (c)--(a);
+        \draw[flecha] (a)--(y);
+        \draw[flecha] (y)--(w);
+        \draw[flecha] (w)--(W);
+
+        \node[nash] (p1) at (5.7,-2.4)  {Piso de LL en $t+1$\\ {\tiny $\underline{w}(W_{t+1})$}};
+        \node[nash] (p2) at (8.55,-2.4) {Valor de mañana\\ {\tiny entra al Nash de $t$}};
+        \node[nash] (p3) at (11.4,-2.4) {Poder en $t+1$\\ {\tiny $\lambda(W_{t+1})$}};
+        \draw[gray!70, thick] (W.south) -- (11.4,-1.3) -- (5.7,-1.3);
+        \draw[flecha] (5.7,-1.3)--(p1.north);
+        \draw[flecha] (8.55,-1.3)--(p2.north);
+        \draw[flecha] (11.4,-1.3)--(p3.north);
+    \end{tikzpicture}
+    \end{center}
+    \begin{wideitemize}
+        \item La IC fija el esfuerzo: dado $\beta_t$, la agente elige $a_t=\beta_t\theta/k$
+        \item El shock $\varepsilon_t$ entra solo al producto, y por esa vía a $w_t$ y a $W_{t+1}$
+        \item $W_{t+1}$ es lo único que pasa de un periodo al siguiente
+    \end{wideitemize}
+\end{frame}
+
+% =========================================================
+\begin{frame}{Información: quién sabe qué}
+    \begin{center}
+    \footnotesize
+    \begin{tabular}{p{4.9cm}p{4.1cm}p{4.1cm}}
+        \toprule
+        & \textbf{Principal} & \textbf{Agente} \\
+        \midrule
+        $W_t$, parámetros y desacuerdo & observa & observa \\
+        Contrato $(\alpha_t,\beta_t)$ & observa & observa \\
+        Esfuerzo $a_t$ & lo infiere por la IC & lo elige \\
+        Shock $\varepsilon_t$ & no lo conoce antes de $y_t$ & no lo conoce antes de $y_t$ \\
+        $y_t$, $w_t$, $W_{t+1}$ & observa & observa \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \begin{wideitemize}
+        \item La única fricción informacional es el riesgo moral sobre el esfuerzo
+        \item No hay información privada antes de firmar: ni selección adversa ni tipos
+        \item Las funciones de continuación $V_P,V_A$ son conocimiento común (equilibrio Markov estacionario)
+    \end{wideitemize}
+\end{frame}
+
+% =========================================================
+\begin{frame}{Secuencia desde $t=0$}
+    \begin{center}
+    \begin{tikzpicture}[scale=0.88, transform shape]
+        \node[estado] (a0) at (0,0)    {Observa $W_0$\\ {\tiny público}};
+        \node[nash]   (b0) at (2.85,0) {Nash $(\alpha_0,\beta_0)$\\ {\tiny peso $\delta$}};
+        \node[dado]   (c0) at (5.7,0)  {Elige $a_0$\\ {\tiny $\beta_0\theta/k$}};
+        \node[dado]   (d0) at (8.55,0) {Sale $y_0$\\ {\tiny $\theta a_0+\sigma\varepsilon_0$}};
+        \node[dado]   (e0) at (11.4,0) {Paga $w_0$\\ {\tiny $\alpha_0+\beta_0 y_0$}};
+        \draw[flecha] (a0)--(b0); \draw[flecha] (b0)--(c0); \draw[flecha] (c0)--(d0); \draw[flecha] (d0)--(e0);
+        \node[periodo, fit=(a0)(e0), label={[font=\scriptsize]above left:Periodo $t=0$}] {};
+
+        \node[estado, minimum width=5.4cm] (u) at (5.7,-2.1) {Se actualiza la riqueza\\ {\tiny $W_1=W_0+w_0-\tfrac{k}{2}a_0^2$}};
+        \draw[flecha] (e0.south) |- (u.east);
+
+        \node[estado] (a1) at (0,-4.2)    {Observa $W_1$\\ {\tiny otro piso de LL}};
+        \node[nash]   (b1) at (2.85,-4.2) {Nash $(\alpha_1,\beta_1)$\\ {\tiny mismo $\delta$}};
+        \node[dado]   (c1) at (5.7,-4.2)  {Esfuerzo y pago\\ {\tiny como en $t=0$}};
+        \node[estado] (d1) at (8.55,-4.2) {Actualiza $W_2$\\ {\tiny y así sigue}};
+        \node[nash]   (e1) at (11.4,-4.2) {$\lambda_1=\lambda(W_1)$\\ {\tiny poder efectivo}};
+        \draw[flecha] (a1)--(b1); \draw[flecha] (b1)--(c1); \draw[flecha] (c1)--(d1);
+        \node[periodo, fit=(a1)(e1), label={[font=\scriptsize]above left:Periodo $t=1$}] {};
+        \draw[flecha] (u.south) -- (5.7,-3.3);
+    \end{tikzpicture}
+    \end{center}
+    \begin{wideitemize}
+        \item $W_0$ es una condición inicial exógena. De $t=1$ en adelante se repite el mismo problema con el mismo $\delta$ y el mismo conjunto de parámetros, pero con otro piso de LL porque $W_1\ne W_0$
+    \end{wideitemize}
+\end{frame}
+
+% =========================================================
+\begin{frame}{¿Dónde entra el poder de negociación?}
+    \begin{wideitemize}
+        \item $\delta$ \textbf{(primitivo, exógeno)}: el peso de la agente en el producto de Nash. Constante en el tiempo, no se actualiza
+        \item $\lambda_t$ \textbf{(realizado, endógeno)}: la fracción del excedente neto que efectivamente recibe la agente
+    \end{wideitemize}
+    {\small
+    \[
+    \lambda_t=\frac{\CE_t-\overline{\CE}}{\Sigma_t},\qquad
+    \Sigma_t=(\CE_t-\overline{\CE})+(\Pi_t-\overline{\Pi})
+    \]}
+    \begin{wideitemize}
+        \item LL holgada: $\lambda_t=\delta$. LL activa: $\lambda_t\ne\delta$ (en la calibración base $\lambda_t>\delta$ y decrece con $W_t$ hasta $\delta$ en $\overline{W}$)
+        \item Como $W$ se mueve con los shocks de producto, $\lambda_t$ evoluciona con el historial de shocks, por la cadena
+    \end{wideitemize}
+    {\small
+    \[
+    W_t\;\to\;\underline{w}(W_t)\;\to\;\Gamma(W_t)\;\to\;(\alpha_t,\beta_t)\text{ con el mismo }\delta\;\to\;\lambda_t=\lambda(W_t)
+    \]}
+\end{frame}
+
+% =========================================================
+\begin{frame}{Qué se actualiza entre periodos}
+    \begin{wideitemize}
+        \item Una sola cosa: la riqueza, $W_{t+1}=W_t+\alpha_t+\beta_t y_t-\tfrac{k}{2}a_t^2$. La agente no consume: toda la paga neta del costo de esfuerzo se acumula
+        \item Todo lo demás es función de $W_t$: $\alpha^*(W)$, $\beta^*(W)$, $\lambda(W)$, $V_P(W)$, $V_A(W)$
+        \item No se actualizan $\delta$, los pagos de desacuerdo, $\underline{y}$ ni los parámetros de la tecnología
+        \item Lazo de retroalimentación: $W_t\to\underline{w}(W_t)\to\beta^*_t\to\lambda_t$, y de vuelta por $\beta^*_t\sigma\varepsilon_t\to W_{t+1}$
+    \end{wideitemize}
+    \textbf{Notación propuesta para $\beta$}
+    \begin{wideitemize}
+        \item $\beta^{\eff}$ (sin subíndice) para el nivel constante del benchmark y del régimen holgado
+        \item $\beta^*(W_t)$ para el régimen restringido, donde $t$ entra solo a través de $W_t$
+        \item En la parte estática del borrador $\beta^*_t$ no varía con $t$, aunque el subíndice lo sugiere
+    \end{wideitemize}
+\end{frame}
+
+% =========================================================
+\begin{frame}{Ejemplo numérico: un periodo en la calibración base}
+    {\footnotesize $\theta=1$, $k=2$, $\gamma=1$, $\sigma=0.3$, $\delta=0.4$, $\overline{w}=-0.3$, $\gamma_w=0.2$, $\underline{y}=-0.5$, desacuerdos en 0. Entonces $\beta^{\eff}=0.8475$, $S^{\eff}=0.2119$ y $\overline{W}=0.931$}
+    \vspace{0.2cm}
+    \begin{center}
+    \begin{tabular}{cccccccc}
+        \toprule
+        $W_t$ & Piso $\underline{w}$ & Régimen & $\beta^*$ & $\alpha^*$ & Esfuerzo & $\lambda$ \\
+        \midrule
+        0.2 & $-0.340$ & activa  & 0.6715 & $-0.0043$ & 0.336 & 0.435 \\
+        0.5 & $-0.400$ & activa  & 0.7464 & $-0.0268$ & 0.373 & 0.419 \\
+        0.8 & $-0.460$ & activa  & 0.8175 & $-0.0513$ & 0.409 & 0.405 \\
+        1.2 & $-0.540$ & holgada & 0.8475 & $-0.0625$ & 0.424 & 0.400 \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \begin{wideitemize}
+        \item Una agente pobre recibe menos incentivos ($\beta$ y esfuerzo bajos) y se queda con más que su peso nominal $\delta$
+        \item Al enriquecerse converge a $(\beta^{\eff},\delta)$
+        \item Valores de la versión estática, sin continuación y sin depreciación de la riqueza
+    \end{wideitemize}
+\end{frame}
+
+% =========================================================
+\begin{frame}{Ejemplo: dos periodos con shock positivo y negativo}
+    {\footnotesize Partimos de $W_0=0.5$: $\beta_0=0.746$, $\alpha_0=-0.027$, $a_0=0.373$, $\lambda_0=0.419$}
+    \vspace{0.2cm}
+    \begin{center}
+    \begin{tabular}{rccccc}
+        \toprule
+        $\varepsilon_0$ & $y_0$ & $w_0$ & $W_1$ & $\beta_1$ & $\lambda_1$ \\
+        \midrule
+        $+1$ & 0.673 & 0.476 & 0.836 & 0.826 & 0.404 \\
+        $-1$ & 0.073 & 0.028 & 0.389 & 0.719 & 0.424 \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \begin{wideitemize}
+        \item En $W_1=0.836$ la LL sigue activa porque $\overline{W}=0.931$
+        \item Un shock positivo enriquece a la agente, afloja la LL, acerca $\beta$ a $\beta^{\eff}$ y baja $\lambda$ hacia $\delta$. Uno negativo hace lo contrario
+        \item Con el mismo $\delta$ en los dos periodos, el poder efectivo depende del historial de shocks a través de $W$
+    \end{wideitemize}
+\end{frame}
+
+% =========================================================
+\begin{frame}{Puntos abiertos para discutir (1/2)}
+    \begin{wideenumerate}
+        \item \textbf{Ley de movimiento de $W$.} La teoría usa $W_{t+1}=W_t+w_t-c(a_t)$, que en la calibración base deriva sin límite. La implementación numérica agrega una depreciación $\rho_W=0.85$. Hay que modelar de dónde sale esa pérdida de riqueza o cambiar otra pieza para que el proceso sea estacionario
+        \item \textbf{¿Qué es el desacuerdo en el juego dinámico?} Se resta un pago de un periodo a un objeto que incluye valores de continuación descontados. Hoy se evita fijándolo en 0. Falta definir qué pasa si la negociación se rompe y si depende de $W$
+        \item \textbf{Dos definiciones de $\lambda$.} Estática en el borrador, con continuación en la versión dinámica. Los resultados sobre la dirección de $\lambda'(W)$ están probados para la estática
+        \item \textbf{Régimen holgado en el problema dinámico.} Falta demostrar que $\beta^{\eff}$ y $\lambda=\delta$ siguen valiendo cuando $\alpha$ y $\beta$ mueven $W_{t+1}$ y con él la continuación. El umbral $\overline{W}$ se calcula hoy sin continuación
+    \end{wideenumerate}
+\end{frame}
+
+\begin{frame}{Puntos abiertos para discutir (2/2)}
+    \begin{wideenumerate}
+        \setcounter{enumi}{4}
+        \item \textbf{LL con shocks gaussianos.} La LL se impone en $\underline{y}$, que no es el mínimo del soporte. Si $y_t<\underline{y}$ el salario queda bajo el piso y no hay regla para ese caso
+        \item \textbf{Regla de salida.} Qué ocurre si en algún $W$ el conjunto factible es vacío o el excedente neto es no positivo
+        \item \textbf{Dominio de $W$.} Si puede ser negativa y si hay endeudamiento
+        \item \textbf{Protocolo de bargaining.} Nash axiomático con $\delta$ exógeno, o un microfundamento (ofertas alternadas) donde $\delta$ salga de paciencia relativa o riesgo de ruptura
+        \item \textbf{Notación.} Índice distinto para las etapas dentro del periodo, para no chocar con el índice $t$ de los periodos, y $\beta^{\eff}$ frente a $\beta^*(W_t)$
+    \end{wideenumerate}
+\end{frame}
+
+\end{document}
